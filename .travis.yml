@@ -1,2 +1,2 @@
 language: java
-install: mvn clean install -DskipTests -f rgbycch-rest-api/
+install: mvn clean install -DskipTests
