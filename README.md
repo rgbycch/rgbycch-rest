@@ -3,3 +3,9 @@
 
 # rgbycch-rest
 RESTful API for rgbycch system
+
+SETUP
+clone the project and open a terminal window at the project folder
+run 'mvn clean install -DskipTests' to build the api
+change directory to rgbycch-service
+run 'mvn jetty:run -DskipTests' to start the test api at http://localhost:8080
