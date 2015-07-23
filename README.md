@@ -10,6 +10,4 @@ SETUP
 
 2 run 'mvn clean install -DskipTests' to build the api
 
-3 change directory to rgbycch-service
-
-4 run 'mvn jetty:run -DskipTests' to start the test api at http://localhost:8080
+3 run 'mvn jetty:run -DskipTests' to start the test api at http://localhost:8080
