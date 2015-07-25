@@ -5,6 +5,7 @@ package com.gffny.rgbycch.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * @author John D. Gaffney | gffny.com
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 public class Match extends BaseEntity {
 
     private static final long serialVersionUID = 3347742352229388847L;
+    private Competition competition;
 
     /*
      * (non-Javadoc)
@@ -25,6 +27,15 @@ public class Match extends BaseEntity {
     public String name() {
 	// TODO Auto-generated method stub
 	return null;
+    }
+
+    @Transient
+    public Competition getCompetition() {
+	return competition;
+    }
+
+    public void setCompetition(Competition competition) {
+	this.competition = competition;
     }
 
 }
