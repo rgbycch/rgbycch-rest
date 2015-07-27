@@ -16,9 +16,6 @@ import javax.persistence.Transient;
 @Table(name = "t_club")
 public class Club extends BaseEntity {
 
-    /**
-     * 
-     */
     private static final long serialVersionUID = 5962234299751456450L;
     private String name;
 

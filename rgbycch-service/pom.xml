@@ -26,6 +26,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlets</artifactId>
+			<version>8.1.17.v20150415</version>
+		</dependency>
 	</dependencies>
 	<packaging>war</packaging>
 	<build>

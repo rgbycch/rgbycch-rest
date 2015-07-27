@@ -25,11 +25,13 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.gffny.rgbycch.Application;
+import com.mangofactory.swagger.plugin.EnableSwagger;
 
 /**
  * @author John D. Gaffney | gffny.com
  *
  */
+@EnableSwagger
 @Configuration
 @Import({ ApplicationConfig.class })
 @ComponentScan(basePackageClasses = Application.class, includeFilters = @Filter(Controller.class), useDefaultFilters = false)
@@ -70,7 +72,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
+	registry.addResourceHandler("/swagger/**").addResourceLocations("/swagger/");
     }
 
     /**
