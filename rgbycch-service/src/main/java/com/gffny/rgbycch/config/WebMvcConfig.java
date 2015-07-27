@@ -72,7 +72,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
+	registry.addResourceHandler("/swagger/**").addResourceLocations("/swagger/");
     }
 
     /**
