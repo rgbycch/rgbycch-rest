@@ -12,4 +12,4 @@ SETUP
 
 3 run 'mvn jetty:run -DskipTests' to start the test api at http://localhost:8080
 
-NOTE: There are a number of ways to look at look at the Swagger API documentation. One can look http://localhost:8080/api-docs for the raw json data from swagger. One can also look at http://localhost:8080/swagger to use the embedded swagger-ui tool
+NOTE: There are a number of ways to look at look at the Swagger API documentation. One can look http://localhost:8080/api-docs for the raw json data from swagger. One can also look at http://localhost:8080/swagger/index.html to use the embedded swagger-ui tool
