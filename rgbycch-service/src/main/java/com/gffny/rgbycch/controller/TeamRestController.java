@@ -49,11 +49,10 @@ public class TeamRestController extends V1RestController {
      * @param id
      * @return
      */
-    @ApiOperation(value = "get team by id", notes = "Get a team by id", response = Team.class, responseContainer = "Object")
+    @ApiOperation(value = "get team by id", notes = "Get a team by id", response = Team.class)
     @RequestMapping(value = "/team/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
-    public Team getTeam(@PathVariable Integer id) {
+    public @ResponseBody Team getTeam(@PathVariable Integer id) {
 	LOG.debug("get team with id {}", id);
 	Team team = teamService.findById(id);
 	return team;
@@ -65,11 +64,11 @@ public class TeamRestController extends V1RestController {
      * @param player
      * @return
      */
-    @ApiOperation(value = "update team by id", notes = "set a team by id", response = Team.class, responseContainer = "Object")
+    @ApiOperation(value = "update team by id", notes = "set a team by id", httpMethod = "POST", response = Team.class)
     @RequestMapping(value = "/team/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
-    public Team setTeam(@PathVariable Integer id, @RequestBody Team team) {
+    public @ResponseBody Team setTeam(@PathVariable Integer id,
+	    @RequestBody Team team) {
 	LOG.debug("update team with id {}, name {}", id, team.name());
 	throw new NotImplementedException();
     }
