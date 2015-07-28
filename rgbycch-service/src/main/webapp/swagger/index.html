@@ -33,7 +33,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://localhost:8080/api-docs";
+        url = "http://localhost:8080/v2/api-docs";
       }
 
       // Pre load translate...
@@ -110,6 +110,11 @@
       <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
     </form> -->
+    <form id='api_selector'>
+      <input placeholder="http://localhost:8080/v2/api-docs" id="input_baseUrl" hidden="true" name="baseUrl" type="text"/>
+      <input placeholder="api_key" id="input_apiKey" name="apiKey" type="text" hidden="true"/>
+      <a id="explore" href="#" data-sw-translate>Explore</a>
+    </form>
   </div>
 </div>
 
