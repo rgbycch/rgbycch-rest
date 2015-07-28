@@ -24,14 +24,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 import com.gffny.rgbycch.Application;
-import com.mangofactory.swagger.plugin.EnableSwagger;
 
 /**
  * @author John D. Gaffney | gffny.com
  *
  */
-@EnableSwagger
+@EnableSwagger2
 @Configuration
 @Import({ ApplicationConfig.class })
 @ComponentScan(basePackageClasses = Application.class, includeFilters = @Filter(Controller.class), useDefaultFilters = false)
@@ -72,7 +76,25 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	registry.addResourceHandler("/swagger/**").addResourceLocations("/swagger/");
+	registry.addResourceHandler("/swagger/**").addResourceLocations(
+		"/swagger/");
+    }
+
+    @Bean
+    public Docket swaggerSpringMvcPlugin() {
+	// TODO at a later date, make this a #environmentDependentConfiguration
+	boolean isEnabled = true;
+	return new Docket(DocumentationType.SWAGGER_2).enable(isEnabled)
+	// .groupName("iOS")
+		.apiInfo(apiInfo());
+    }
+
+    private ApiInfo apiInfo() {
+	ApiInfo apiInfo = new ApiInfo("rgbycch-api",
+		"RESTful API, built using Spring-MVC for rgbycch system",
+		"0.1", "*need to add Terms of Service*", "domain@gffny.com",
+		"MIT", "http://opensource.org/licenses/MIT");
+	return apiInfo;
     }
 
     /**
