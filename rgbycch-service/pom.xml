@@ -61,11 +61,6 @@
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>com.oracle</groupId>
-						<artifactId>ojdbc7</artifactId>
-						<version>${ojdbc7.version}</version>
-					</dependency>
-					<dependency>
 						<groupId>com.jolbox</groupId>
 						<artifactId>bonecp</artifactId>
 						<version>0.8.0.RELEASE</version>
