@@ -3,6 +3,8 @@
  */
 package com.gffny.rgbycch.controller;
 
+import io.swagger.annotations.ApiOperation;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,11 +44,11 @@ public class PlayerCreationRestController extends V1RestController {
 	return new Player();
     }
 
+    @ApiOperation(value = "create a player", notes = "create a player", httpMethod = "GET", response = Player.class)
     @RequestMapping(value = "/player", method = RequestMethod.POST)
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Player create(@RequestBody Player player, BindingResult bindingResult)
-	    throws BindException {
+    public @ResponseBody Player createPlayer(@RequestBody Player player,
+	    BindingResult bindingResult) throws BindException {
 
 	// insert validation
 	return playerService.insert(player);

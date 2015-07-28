@@ -3,6 +3,8 @@
  */
 package com.gffny.rgbycch.controller;
 
+import io.swagger.annotations.ApiOperation;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -48,10 +50,10 @@ public class PlayerRestController extends V1RestController {
      * @param id
      * @return
      */
+    @ApiOperation(value = "get player by id", notes = "get a player by id", httpMethod = "GET", response = Player.class)
     @RequestMapping(value = "/player/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
-    public Player getPlayer(@PathVariable Integer id) {
+    public @ResponseBody Player getPlayer(@PathVariable Integer id) {
 	LOG.debug("get player with id {}", id);
 	Player player = playerService.findById(id);
 	return player;
@@ -63,10 +65,11 @@ public class PlayerRestController extends V1RestController {
      * @param player
      * @return
      */
+    @ApiOperation(value = "set player by id", notes = "set a player by id", httpMethod = "POST", response = Player.class)
     @RequestMapping(value = "/player/{id}", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
-    public Player setPlayer(@PathVariable Integer id, @RequestBody Player player) {
+    public @ResponseBody Player setPlayer(@PathVariable Integer id,
+	    @RequestBody Player player) {
 	LOG.debug("update player with id {}, firstName {}, surname {}", id,
 		player.getFirstName(), player.getLastName());
 	throw new NotImplementedException();
