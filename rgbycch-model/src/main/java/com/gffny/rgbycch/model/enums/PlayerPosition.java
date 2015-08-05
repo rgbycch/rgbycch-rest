@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
  */
 public enum PlayerPosition {
 
-    PP10(10);
+    PP1(1), PP2(2), PP3(3), PP4(4), PP5(5), PP6(6), PP7(7), PP8(8), PP9(9), PP10(
+	    10), PP11(11), PP12(12), PP13(13), PP14(14), PP15(15);
 
     private int positionNumber;
 

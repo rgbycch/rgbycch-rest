@@ -44,7 +44,7 @@ public class PlayerCreationRestController extends V1RestController {
 	return new Player();
     }
 
-    @ApiOperation(value = "create a player", notes = "create a player", httpMethod = "GET", response = Player.class)
+    @ApiOperation(value = "create a player", notes = "create a player", httpMethod = "POST", response = Player.class)
     @RequestMapping(value = "/player", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
     public @ResponseBody Player createPlayer(@RequestBody Player player,
