@@ -4,6 +4,17 @@
 class Api::V1::UsersController < ApplicationController
   respond_to :json
 
+  swagger_controller :users, "User Management"
+
+  swagger_api :show do
+    summary "Fetches a single User"
+    param :path, :id, :integer, :optional, "User Id"
+    response :ok, "Success", :User
+    response :unauthorized
+    response :not_acceptable
+    response :not_found
+  end
+
   ##
   # Method for showing one user
 
