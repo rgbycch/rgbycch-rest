@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'active_model_serializers'
 gem 'figaro'
+gem 'devise'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
@@ -28,10 +29,10 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'shoulda-matchers'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-
