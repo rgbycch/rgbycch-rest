@@ -6,6 +6,9 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = '2210481a802c0f722fa51a2155805ef6460b16f9822f494e06d9205c350c41fc95e719d3c48eb61b4c937b78136edb1566a7856693e4c2c1265fcedaee2edf2c'
 
+  # ==> travis-ci builds
+  config.secret_key = '505b7fe50403924250a9dff026af8bbd7dbd975132ec827de2cd34d714c8a0430af54c7cff13c2f37b686e39918d42d77d4a23c0ba2e051d2e0c373e1868591e'
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
