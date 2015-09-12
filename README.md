@@ -20,11 +20,15 @@ $ gem install rails -v 4.0
 ```
 cd ~/.pow
 ln -s ~/workspace/rgbycch-rest
+(pow can be restarted by running touch ~/.pow/restart.txt)
 ```
 8. Install the bundle by executing a ```bundle install``` command at the base of the project.
-9. Navigate to the [base of the server](http://rgbycch-rest.dev:3000) and you should see the rails sample start page.
+9. Generate your configuration using ```bundle exec figaro install```
+10. Navigate to the [base of the server](http://rgbycch-rest.dev:3000) and you should see the rails sample start page.
 
 # Running Tests
+
+# API documentation
 
 # Contributing
 Contributions to the development of the RESTful API application are always welcome. Some guidelines:
