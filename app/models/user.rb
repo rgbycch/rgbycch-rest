@@ -1,3 +1,6 @@
+##
+# Defines all attributes for a user in the system.
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

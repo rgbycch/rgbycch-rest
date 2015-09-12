@@ -1,3 +1,6 @@
+##
+# Class used for versioning the API.
+
 class ApiConstraints
   def initialize(options)
     @version = options[:version]
