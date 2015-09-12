@@ -11,7 +11,6 @@ gem 'figaro'
 gem 'devise'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
-gem 'swagger-docs', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -24,6 +23,7 @@ gem 'swagger-docs', group: :doc
 
 group :development, :test do
   gem 'byebug'
+  gem 'swagger-docs'
 end
 
 group :test do
