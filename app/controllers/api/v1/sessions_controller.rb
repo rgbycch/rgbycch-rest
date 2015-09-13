@@ -1,4 +1,10 @@
+##
+# All CRUD operations for sessions are handled in this controller
+
 class Api::V1::SessionsController < ApplicationController
+
+  ##
+  # Method for creating a new session and saving it to the current user
 
   def create
     user_password = params[:session][:password]
@@ -14,6 +20,9 @@ class Api::V1::SessionsController < ApplicationController
       render json: { errors: "Invalid email or password" }, status: 422
     end
   end
+
+  ##
+  # Method for destroying the current session. Similar to a logout operation.
 
   def destroy
     user = User.find_by(auth_token: params[:id])
