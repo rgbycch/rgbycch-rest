@@ -8,7 +8,7 @@ describe Api::V1::UsersController, :type => :controller do
       get :show, id: @user.id
     end
 
-    it "returns the information about a reporter on a hash" do
+    it "returns the information about a user on a hash" do
       user_response = json_response
       expect(user_response[:email]).to eql @user.email
     end
