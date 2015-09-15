@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json },
             constraints: { subdomain: 'api' }, path: '/'  do
     scope module: :v1 do
-      resources :users, :only => [:show, :create, :update, :destroy]
-      resources :clubs, :only => [:show, :create, :update, :destroy]
-      resources :sessions, :only => [:create, :destroy]
+      resources :users, :only       => [:show, :create, :update, :destroy]
+      resources :clubs, :only       => [:show, :create, :update, :destroy]
+      resources :event_types, :only => [:show, :create, :update, :destroy]
+      resources :sessions, :only    => [:create, :destroy]
     end
   end
 end
