@@ -34,7 +34,6 @@ describe Api::V1::UsersController, :type => :controller do
 
     context "when is not created" do
       before(:each) do
-        #notice I'm not including the email
         @invalid_user_attributes = { password: "12345678",
                                      password_confirmation: "12345678" }
         post :create, { user: @invalid_user_attributes }
