@@ -2,11 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6d56f7f-eb7e-4e0d-9415-49c0b8aa754f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/club.rb" afterPath="$PROJECT_DIR$/app/models/club.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/club_spec.rb" afterPath="$PROJECT_DIR$/spec/models/club_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/Application.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/BaseEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Club.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Competition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Match.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/MatchEventType.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Player.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Practice.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Team.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/enums/PlayerPosition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-model/src/main/resources/application.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/config/JpaConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/ClubDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/GenericDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/MatchDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/PlayerDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/TeamDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/impl/ClubDaoJpaImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/impl/GenericDaoJpaImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/impl/MatchDaoJpaImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/impl/PlayerDaoJpaImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-persistence/src/main/java/com/gffny/rgbycch/dao/impl/TeamDaoJpaImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/jetty-dev.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/pom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/config/ApplicationConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/config/WebAppInitializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/config/WebMvcConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/ClubRestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/HealthController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/MatchRestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/PlayerCreationRestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/PlayerRestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/TeamRestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/controller/V1RestController.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/ClubService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/EntityManagmentService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/MatchService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/PlayerService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/TeamService.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/impl/ClubServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/impl/MatchServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/impl/PlayerServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/java/com/gffny/rgbycch/service/impl/TeamServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/css/print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/css/reset.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/css/screen.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/css/typography.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-700.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-700.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-700.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-700.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-700.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/fonts/droid-sans-v6-latin-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/explorer_icons.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/favicon-16x16.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/favicon-32x32.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/logo_small.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/pet_store_api.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/throbber.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/images/wordnik_api.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lang/en.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lang/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lang/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lang/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lang/translator.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/backbone-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/handlebars-2.0.0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/highlight.7.3.pack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/jquery-1.8.0.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/jquery.ba-bbq.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/jquery.slideto.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/jquery.wiggle.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/marked.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/swagger-oauth.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/underscore-min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/lib/underscore-min.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/o2c.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/swagger-ui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/main/webapp/swagger/swagger-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/rgbycch-service/src/test/java/com/gffny/rgbycch/dao/GenericDaoJpaImplTest.java" afterPath="" />
     </list>
     <ignored path="rgbycch-rest.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,28 +116,7 @@
     <favorites_list name="rgbycch-rest" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="player.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/player.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="10" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="club.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/models/club.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.115207374">
-              <caret line="5" column="10" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -161,88 +229,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="factories" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rgbycch-rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,9 +396,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27825466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27825466" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -451,20 +437,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/concerns/authenticable.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/environments/development.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -700,14 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rgbycch-model/src/main/java/com/gffny/rgbycch/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.59907836">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/role.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.023041476">
@@ -818,18 +782,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/player.rb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.59907836">
+          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/club.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.115207374">
           <caret line="5" column="10" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/player.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13824885">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="10" />
           <folding />
         </state>
       </provider>
