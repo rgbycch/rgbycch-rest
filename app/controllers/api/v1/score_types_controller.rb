@@ -43,7 +43,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   private
 
   ##
-  # Strong params for the EventType class.
+  # Strong params for the ScoreType class.
 
   def score_type_params
     params.require(:score_type).permit(:title, :url, :points)
