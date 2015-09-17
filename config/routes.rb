@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :score_types, :only       => [:show, :create, :update, :destroy]
       resources :player_positions, :only  => [:show, :create, :update, :destroy]
       resources :roles, :only             => [:show, :create, :update, :destroy]
+      resources :players, :only           => [:show, :create, :update, :destroy]
       resources :sessions, :only          => [:create, :destroy]
     end
   end
