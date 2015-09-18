@@ -17,6 +17,7 @@ describe Api::V1::ClubsController, :type => :controller do
         club_response = json_response
         expect(club_response[:name]).not_to be_nil
         expect(club_response[:url]).not_to be_nil
+        expect(club_response[:founded]).not_to be_nil
       end
 
       it { should respond_with 200 }

@@ -46,7 +46,7 @@ class Api::V1::ClubsController < ApplicationController
   # Strong params for the Club class.
 
   def club_params
-    params.require(:club).permit(:name, :url)
+    params.require(:club).permit(:name, :url, :founded)
   end
 
 end
