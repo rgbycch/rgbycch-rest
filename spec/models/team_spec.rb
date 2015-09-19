@@ -6,6 +6,7 @@ describe Team do
   subject { @team }
 
   it { should respond_to(:title) }
+  it { should respond_to(:club_id) }
 
   it { should validate_presence_of :title }
 

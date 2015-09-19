@@ -9,6 +9,8 @@ describe Club do
   it { should respond_to(:url) }
   it { should respond_to(:founded) }
 
+  it { should have_many(:teams) }
+
   it { should validate_presence_of :name }
 
   it { should be_valid }
