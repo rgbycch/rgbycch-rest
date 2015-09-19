@@ -11,6 +11,7 @@ describe Player do
   it { should respond_to(:dob) }
   it { should respond_to(:email) }
   it { should respond_to(:phone_number) }
+  it { should respond_to(:teams) }
 
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }

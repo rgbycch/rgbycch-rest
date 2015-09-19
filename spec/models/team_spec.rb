@@ -7,6 +7,7 @@ describe Team do
 
   it { should respond_to(:title) }
   it { should respond_to(:club_id) }
+  it { should respond_to(:players) }
 
   it { should validate_presence_of :title }
 
