@@ -3,5 +3,4 @@
 
 class Team < ActiveRecord::Base
   validates :title, presence: true
-  has_one :club
 end
