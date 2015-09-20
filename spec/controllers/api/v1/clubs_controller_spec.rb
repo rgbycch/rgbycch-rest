@@ -14,7 +14,7 @@ describe Api::V1::ClubsController, :type => :controller do
       end
 
       it "returns the information about a club in a hash" do
-        club_response = json_response
+        club_response = json_response[:club]
         expect(club_response[:name]).not_to be_nil
         expect(club_response[:url]).not_to be_nil
         expect(club_response[:founded]).not_to be_nil
@@ -52,7 +52,7 @@ describe Api::V1::ClubsController, :type => :controller do
         end
 
         it "renders the json representation for the club just created" do
-          club_response = json_response
+          club_response = json_response[:club]
           expect(club_response[:name]).to eql @club_attributes[:name]
           expect(club_response[:url]).to eql @club_attributes[:url]
         end
@@ -89,6 +89,47 @@ describe Api::V1::ClubsController, :type => :controller do
       end
 
       it { should respond_with 401 }
+    end
+
+  end
+
+  describe "PUT/PATCH #update" do
+
+    before(:each) do
+      @club = FactoryGirl.create :club
+    end
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+      end
+
+      context "when is successfully updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @club.id, club: { name: "Updated Club Name" } }
+        end
+
+        it "renders the json representation for the updated club" do
+          club_response = json_response[:club]
+          expect(club_response[:name]).to eql "Updated Club Name"
+        end
+
+        it { should respond_with 200 }
+      end
+
+    end
+
+    context "User is not logged in" do
+
+      before(:each) do
+        patch :update, { id: @club.id, club: { name: "Updated Club Name" } }
+      end
+
+      it { should respond_with 401 }
+
     end
 
   end

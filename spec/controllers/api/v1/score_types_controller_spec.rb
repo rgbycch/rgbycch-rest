@@ -15,7 +15,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
       end
 
       it "returns the information about a score type in a hash" do
-        score_type_response = json_response
+        score_type_response = json_response[:score_type]
         expect(score_type_response[:title]).not_to be_nil
         expect(score_type_response[:url]).not_to be_nil
         expect(score_type_response[:points]).not_to be_nil
@@ -54,7 +54,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         end
 
         it "renders the json representation for the score type just created" do
-          score_type_response = json_response
+          score_type_response = json_response[:score_type]
           expect(score_type_response[:title]).to eql @score_type_attributes[:title]
           expect(score_type_response[:url]).to eql @score_type_attributes[:url]
         end
@@ -91,6 +91,47 @@ describe Api::V1::ScoreTypesController, :type => :controller do
       end
 
       it { should respond_with 401 }
+    end
+
+  end
+
+  describe "PUT/PATCH #update" do
+
+    before(:each) do
+      @score_type = FactoryGirl.create :score_type
+    end
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+      end
+
+      context "when is successfully updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @score_type.id, score_type: { title: "Updated Score Type Title" } }
+        end
+
+        it "renders the json representation for the updated score type" do
+          score_type_response = json_response[:score_type]
+          expect(score_type_response[:title]).to eql "Updated Score Type Title"
+        end
+
+        it { should respond_with 200 }
+      end
+
+    end
+
+    context "User is not logged in" do
+
+      before(:each) do
+        patch :update, { id: @score_type.id, score_type: { title: "Updated Score Type Title" } }
+      end
+
+      it { should respond_with 401 }
+
     end
 
   end

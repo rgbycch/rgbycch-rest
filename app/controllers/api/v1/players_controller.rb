@@ -28,7 +28,12 @@ class Api::V1::PlayersController < ApplicationController
   # Method for updating a player details
 
   def update
-
+    player = Player.find(params[:id])
+    if player.update(player_params)
+      render json: player, status: 200, location: [:api, player]
+    else
+      render json: { errors: player.errors }, status: 422
+    end
   end
 
   ##

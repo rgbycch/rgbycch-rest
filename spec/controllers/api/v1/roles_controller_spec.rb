@@ -15,7 +15,7 @@ describe Api::V1::RolesController, :type => :controller do
       end
 
       it "returns the information about an role in a hash" do
-        role_response = json_response
+        role_response = json_response[:role]
         expect(role_response[:title]).not_to be_nil
         expect(role_response[:url]).not_to be_nil
       end
@@ -53,7 +53,7 @@ describe Api::V1::RolesController, :type => :controller do
         end
 
         it "renders the json representation for the role just created" do
-          role_response = json_response
+          role_response = json_response[:role]
           expect(role_response[:title]).to eql @role_attributes[:title]
           expect(role_response[:url]).to eql @role_attributes[:url]
         end
@@ -90,6 +90,47 @@ describe Api::V1::RolesController, :type => :controller do
       end
 
       it { should respond_with 401 }
+    end
+
+  end
+
+  describe "PUT/PATCH #update" do
+
+    before(:each) do
+      @role = FactoryGirl.create :role
+    end
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+      end
+
+      context "when is successfully updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @role.id, role: { title: "Updated Role Title" } }
+        end
+
+        it "renders the json representation for the updated role" do
+          roles_response = json_response[:role]
+          expect(roles_response[:title]).to eql "Updated Role Title"
+        end
+
+        it { should respond_with 200 }
+      end
+
+    end
+
+    context "User is not logged in" do
+
+      before(:each) do
+        patch :update, { id: @role.id, role: { title: "Updated Role Title" } }
+      end
+
+      it { should respond_with 401 }
+
     end
 
   end

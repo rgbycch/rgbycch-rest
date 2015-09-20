@@ -28,7 +28,12 @@ class Api::V1::RolesController < ApplicationController
   # Method for updating an role's details
 
   def update
-
+    role = Role.find(params[:id])
+    if role.update(role_params)
+      render json: role, status: 200, location: [:api, role]
+    else
+      render json: { errors: role.errors }, status: 422
+    end
   end
 
   ##

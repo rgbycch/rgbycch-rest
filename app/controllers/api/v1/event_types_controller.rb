@@ -28,7 +28,12 @@ class Api::V1::EventTypesController < ApplicationController
   # Method for updating an event type's details
 
   def update
-
+    event_type = EventType.find(params[:id])
+    if event_type.update(event_type_params)
+      render json: event_type, status: 200, location: [:api, event_type]
+    else
+      render json: { errors: event_type.errors }, status: 422
+    end
   end
 
   ##

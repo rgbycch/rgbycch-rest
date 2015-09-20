@@ -10,12 +10,11 @@ describe Api::V1::PlayersController, :type => :controller do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
         @player = FactoryGirl.create :player
-
         get :show, id: @player.id
       end
 
       it "returns the information about a player in a hash" do
-        player_response = json_response
+        player_response = json_response[:player]
 
         expect(player_response[:first_name]).not_to be_nil
         expect(player_response[:last_name]).not_to be_nil
@@ -58,7 +57,7 @@ describe Api::V1::PlayersController, :type => :controller do
         end
 
         it "renders the json representation for the player just created" do
-          player_response = json_response
+          player_response = json_response[:player]
           expect(player_response[:title]).to eql @player_attributes[:title]
           expect(player_response[:url]).to eql @player_attributes[:url]
         end
@@ -95,6 +94,47 @@ describe Api::V1::PlayersController, :type => :controller do
       end
 
       it { should respond_with 401 }
+    end
+
+  end
+
+  describe "PUT/PATCH #update" do
+
+    before(:each) do
+      @player = FactoryGirl.create :player
+    end
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+      end
+
+      context "when is successfully updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @player.id, player: { first_name: "Updated First Name" } }
+        end
+
+        it "renders the json representation for the updated player" do
+          player_response = json_response[:player]
+          expect(player_response[:first_name]).to eql "Updated First Name"
+        end
+
+        it { should respond_with 200 }
+      end
+
+    end
+
+    context "User is not logged in" do
+
+      before(:each) do
+        patch :update, { id: @player.id, player: { first_name: "Updated First Name" } }
+      end
+
+      it { should respond_with 401 }
+
     end
 
   end

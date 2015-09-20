@@ -28,7 +28,12 @@ class Api::V1::ClubsController < ApplicationController
   # Method for updating a club's details
 
   def update
-
+    club = Club.find(params[:id])
+    if club.update(club_params)
+      render json: club, status: 200, location: [:api, club]
+    else
+      render json: { errors: club.errors }, status: 422
+    end
   end
 
   ##

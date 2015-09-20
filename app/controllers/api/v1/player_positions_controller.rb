@@ -28,7 +28,12 @@ class Api::V1::PlayerPositionsController < ApplicationController
   # Method for updating a player position details
 
   def update
-
+    player_position = PlayerPosition.find(params[:id])
+    if player_position.update(player_position_params)
+      render json: player_position, status: 200, location: [:api, player_position]
+    else
+      render json: { errors: player_position.errors }, status: 422
+    end
   end
 
   ##

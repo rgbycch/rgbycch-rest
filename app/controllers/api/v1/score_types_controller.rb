@@ -28,7 +28,12 @@ class Api::V1::ScoreTypesController < ApplicationController
   # Method for updating a score type's details
 
   def update
-
+    score_type = ScoreType.find(params[:id])
+    if score_type.update(score_type_params)
+      render json: score_type, status: 200, location: [:api, score_type]
+    else
+      render json: { errors: score_type.errors }, status: 422
+    end
   end
 
   ##
