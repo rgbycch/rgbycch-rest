@@ -28,7 +28,28 @@ describe PlayerPosition do
       preferred_positions.each do |preferred_position|
         expect(PreferredPosition.find(preferred_position)).to raise_error ActiveRecord::RecordNotFound
       end
+
     end
+
+  end
+
+  describe ".filter_by_title" do
+
+    before(:each) do
+      @player_position1 = FactoryGirl.create :player_position, title: "Full Back"
+      @player_position2 = FactoryGirl.create :player_position, title: "Scrum Half"
+      @player_position3 = FactoryGirl.create :player_position, title: "Out Half"
+      @player_position4 = FactoryGirl.create :player_position, title: "Blindside Flanker"
+    end
+
+    context "when a 'Half' title pattern is sent" do
+
+      it "returns the positions matching" do
+        expect(PlayerPosition.filter_by_title("Half").sort).to match_array([@player_position2, @player_position3])
+      end
+
+    end
+
   end
 
 end

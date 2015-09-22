@@ -14,4 +14,23 @@ describe ScoreType do
 
   it { should be_valid }
 
+  describe ".filter_by_title" do
+
+    before(:each) do
+      @score_type1 = FactoryGirl.create :score_type, title: "Conversion"
+      @score_type2 = FactoryGirl.create :score_type, title: "Penalty Try"
+      @score_type3 = FactoryGirl.create :score_type, title: "Penalty"
+      @score_type4 = FactoryGirl.create :score_type, title: "Try"
+    end
+
+    context "when a 'Penalty' title pattern is sent" do
+
+      it "returns the score types matching" do
+        expect(ScoreType.filter_by_title("Penalty").sort).to match_array([@score_type2, @score_type3])
+      end
+
+    end
+
+  end
+
 end

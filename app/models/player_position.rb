@@ -7,4 +7,7 @@ class PlayerPosition < Role
             presence: true
   has_many :preferred_positions, dependent: :destroy
   has_many :players, through: :preferred_positions
+  scope :filter_by_title, lambda { |keyword|
+    where("lower(title) LIKE ?", "%#{keyword.downcase}%" )
+  }
 end
