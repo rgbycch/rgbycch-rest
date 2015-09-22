@@ -8,4 +8,13 @@ class Team < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword|
     where("lower(title) LIKE ?", "%#{keyword.downcase}%" )
   }
+
+  ##
+  # Search method used by the index endpoint of the Teams controller.
+
+  def self.search(params = {})
+    teams = params[:team_ids].present? ? Team.find(params[:team_ids]) : Team.all
+    teams = teams.filter_by_title(params[:keyword]) if params[:keyword]
+    teams
+  end
 end

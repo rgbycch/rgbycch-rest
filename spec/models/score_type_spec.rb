@@ -14,7 +14,7 @@ describe ScoreType do
 
   it { should be_valid }
 
-  describe ".filter_by_title" do
+  context "filtering and searching" do
 
     before(:each) do
       @score_type1 = FactoryGirl.create :score_type, title: "Conversion"
@@ -23,10 +23,35 @@ describe ScoreType do
       @score_type4 = FactoryGirl.create :score_type, title: "Try"
     end
 
-    context "when a 'Penalty' title pattern is sent" do
+    describe ".filter_by_title" do
 
-      it "returns the score types matching" do
-        expect(ScoreType.filter_by_title("Penalty").sort).to match_array([@score_type2, @score_type3])
+      context "when a 'Penalty' title pattern is sent" do
+
+        it "returns the score types matching" do
+          expect(ScoreType.filter_by_title("Penalty").sort).to match_array([@score_type2, @score_type3])
+        end
+
+      end
+
+    end
+
+    describe ".search" do
+
+      context "when an empty hash is sent" do
+
+        it "returns all the score types" do
+          expect(ScoreType.search({})).to match_array([@score_type1, @score_type2, @score_type3, @score_type4])
+        end
+
+      end
+
+      context "when score_type_ids is present" do
+
+        it "returns the score types associated with those ids" do
+          search_hash = { score_type_ids: [@score_type1.id, @score_type2.id]}
+          expect(ScoreType.search(search_hash)).to match_array([@score_type1, @score_type2])
+        end
+
       end
 
     end

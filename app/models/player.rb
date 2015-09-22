@@ -10,4 +10,13 @@ class Player < ActiveRecord::Base
   scope :filter_by_name, lambda { |keyword|
     where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(nick_name) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%", "%#{keyword.downcase}%" )
   }
+
+  ##
+  # Search method used by the index endpoint of the Players controller.
+
+  def self.search(params = {})
+    players = params[:player_ids].present? ? Player.find(params[:player_ids]) : Player.all
+    players = players.filter_by_name(params[:keyword]) if params[:keyword]
+    players
+  end
 end

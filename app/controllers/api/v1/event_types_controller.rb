@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for event types are handled in this controller
+# All CRUD and search operations for event types are handled in this controller
 
 class Api::V1::EventTypesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for an event type
+
+  def index
+    respond_with EventType.search(event_type_search_params)
+  end
 
   ##
   # Method for showing one event type
@@ -52,6 +59,13 @@ class Api::V1::EventTypesController < ApplicationController
 
   def event_type_params
     params.require(:event_type).permit(:title, :url)
+  end
+
+  ##
+  # Strong params used when searching for EventTypes
+
+  def event_type_search_params
+    params.permit(:event_type_ids, :keyword)
   end
 
 end

@@ -11,7 +11,7 @@ describe Role do
 
   it { should be_valid }
 
-  describe ".filter_by_title" do
+  context "filtering and searching" do
 
     before(:each) do
       @role1 = FactoryGirl.create :role, title: "Manager"
@@ -20,10 +20,35 @@ describe Role do
       @role4 = FactoryGirl.create :role, title: "Physio"
     end
 
-    context "when a 'Coach' title pattern is sent" do
+    describe ".filter_by_title" do
 
-      it "returns the roles matching" do
-        expect(Role.filter_by_title("Coach").sort).to match_array([@role2])
+      context "when a 'Coach' title pattern is sent" do
+
+        it "returns the roles matching" do
+          expect(Role.filter_by_title("Coach").sort).to match_array([@role2])
+        end
+
+      end
+
+    end
+
+    describe ".search" do
+
+      context "when an empty hash is sent" do
+
+        it "returns all the roles" do
+          expect(Role.search({})).to match_array([@role1, @role2, @role3, @role4])
+        end
+
+      end
+
+      context "when role_ids is present" do
+
+        it "returns the roles associated with those ids" do
+          search_hash = { role_ids: [@role1.id, @role2.id]}
+          expect(Role.search(search_hash)).to match_array([@role1, @role2])
+        end
+
       end
 
     end

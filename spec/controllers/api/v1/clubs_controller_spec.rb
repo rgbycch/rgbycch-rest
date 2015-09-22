@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::ClubsController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        4.times { FactoryGirl.create :club }
+        get :index
+      end
+
+      it "returns 4 clubs from the database" do
+        clubs_response = json_response[:clubs]
+        expect(clubs_response.size).to eq(4)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do

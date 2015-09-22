@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for clubs are handled in this controller
+# All CRUD and search operations for clubs are handled in this controller
 
 class Api::V1::ClubsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for a club
+
+  def index
+    respond_with Club.search(club_search_params)
+  end
 
   ##
   # Method for showing one club
@@ -52,6 +59,13 @@ class Api::V1::ClubsController < ApplicationController
 
   def club_params
     params.require(:club).permit(:name, :url, :founded)
+  end
+
+  ##
+  # Strong params used when searching for Clubs
+
+  def club_search_params
+    params.permit(:club_ids, :keyword)
   end
 
 end

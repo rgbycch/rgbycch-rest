@@ -1,12 +1,19 @@
 ##
-# All CRUD operations for score types are handled in this controller
+# All CRUD and search operations for score types are handled in this controller
 
 class Api::V1::ScoreTypesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
   ##
-  # Method for showing one event type
+  # Method for searching for a score type
+
+  def index
+    respond_with ScoreType.search(score_type_search_params)
+  end
+
+  ##
+  # Method for showing one score type
 
   def show
     respond_with ScoreType.find(params[:id])
@@ -52,6 +59,13 @@ class Api::V1::ScoreTypesController < ApplicationController
 
   def score_type_params
     params.require(:score_type).permit(:title, :url, :points)
+  end
+
+  ##
+  # Strong params used when searching for ScoreTypes
+
+  def score_type_search_params
+    params.permit(:score_type_ids, :keyword)
   end
 
 end

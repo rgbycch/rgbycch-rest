@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for players are handled in this controller
+# All CRUD and search operations for players are handled in this controller
 
 class Api::V1::PlayersController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for a player
+
+  def index
+    respond_with Player.search(player_search_params)
+  end
 
   ##
   # Method for showing one player
@@ -53,4 +60,12 @@ class Api::V1::PlayersController < ApplicationController
   def player_params
     params.require(:player).permit(:first_name, :last_name, :nick_name, :dob, :email, :phone_number)
   end
+
+  ##
+  # Strong params used when searching for Players
+
+  def player_search_params
+    params.permit(:player_ids, :keyword)
+  end
+
 end

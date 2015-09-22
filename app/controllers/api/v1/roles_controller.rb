@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for roles are handled in this controller
+# All CRUD and search operations for roles are handled in this controller
 
 class Api::V1::RolesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for a role
+
+  def index
+    respond_with Role.search(role_search_params)
+  end
 
   ##
   # Method for showing one role
@@ -52,6 +59,13 @@ class Api::V1::RolesController < ApplicationController
 
   def role_params
     params.require(:role).permit(:title, :url)
+  end
+
+  ##
+  # Strong params used when searching for Roles
+
+  def role_search_params
+    params.permit(:role_ids, :keyword)
   end
 
 end

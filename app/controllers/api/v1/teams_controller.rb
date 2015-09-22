@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for teams are handled in this controller
+# All CRUD and search operations for teams are handled in this controller
 
 class Api::V1::TeamsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for a score type
+
+  def index
+    respond_with Team.search(team_search_params)
+  end
 
   ##
   # Method for showing one team
@@ -52,6 +59,13 @@ class Api::V1::TeamsController < ApplicationController
 
   def team_params
     params.require(:team).permit(:title)
+  end
+
+  ##
+  # Strong params used when searching for Teams
+
+  def team_search_params
+    params.permit(:team_ids, :keyword)
   end
 
 end

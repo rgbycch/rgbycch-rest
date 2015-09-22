@@ -10,4 +10,13 @@ class PlayerPosition < Role
   scope :filter_by_title, lambda { |keyword|
     where("lower(title) LIKE ?", "%#{keyword.downcase}%" )
   }
+
+  ##
+  # Search method used by the index endpoint of the PlayerPositions controller.
+
+  def self.search(params = {})
+    player_positions = params[:player_position_ids].present? ? PlayerPosition.find(params[:player_position_ids]) : PlayerPosition.all
+    player_positions = player_positions.filter_by_title(params[:keyword]) if params[:keyword]
+    player_positions
+  end
 end

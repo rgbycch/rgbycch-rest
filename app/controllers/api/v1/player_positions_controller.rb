@@ -1,9 +1,16 @@
 ##
-# All CRUD operations for player positions are handled in this controller
+# All CRUD and search operations for player positions are handled in this controller
 
 class Api::V1::PlayerPositionsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
+
+  ##
+  # Method for searching for an event type
+
+  def index
+    respond_with PlayerPosition.search(player_position_search_params)
+  end
 
   ##
   # Method for showing one event type
@@ -53,4 +60,12 @@ class Api::V1::PlayerPositionsController < ApplicationController
   def player_position_params
     params.require(:player_position).permit(:title, :url, :position_number)
   end
+
+  ##
+  # Strong params used when searching for Players
+
+  def player_position_search_params
+    params.permit(:player_position_ids, :keyword)
+  end
+
 end

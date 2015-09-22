@@ -37,7 +37,7 @@ describe Player do
 
   end
 
-  describe ".filter_by_name" do
+  context "filtering and searching" do
 
     before(:each) do
       @player1 = FactoryGirl.create :player, first_name: "Tom", last_name: "Thumb", nick_name: "Tommy Four Fingers"
@@ -46,10 +46,35 @@ describe Player do
       @player4 = FactoryGirl.create :player, first_name: "Jimmy", last_name: "Hill", nick_name: "Hatchet Header"
     end
 
-    context "when a 'Hatchet' name pattern is sent" do
+    describe ".filter_by_name" do
 
-      it "returns the players matching" do
-        expect(Player.filter_by_name("Hatchet").sort).to match_array([@player2, @player3, @player4])
+      context "when a 'Hatchet' name pattern is sent" do
+
+        it "returns the players matching" do
+          expect(Player.filter_by_name("Hatchet").sort).to match_array([@player2, @player3, @player4])
+        end
+
+      end
+
+    end
+
+    describe ".search" do
+
+      context "when an empty hash is sent" do
+
+        it "returns all the players" do
+          expect(Player.search({})).to match_array([@player1, @player2, @player3, @player4])
+        end
+
+      end
+
+      context "when player_ids is present" do
+
+        it "returns the players associated with those ids" do
+          search_hash = { player_ids: [@player1.id, @player2.id]}
+          expect(Player.search(search_hash)).to match_array([@player1, @player2])
+        end
+
       end
 
     end

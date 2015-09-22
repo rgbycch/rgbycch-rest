@@ -8,4 +8,13 @@ class ScoreType < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword|
     where("lower(title) LIKE ?", "%#{keyword.downcase}%" )
   }
+
+  ##
+  # Search method used by the index endpoint of the Score Types controller.
+
+  def self.search(params = {})
+    score_types = params[:score_type_ids].present? ? ScoreType.find(params[:score_type_ids]) : ScoreType.all
+    score_types = score_types.filter_by_title(params[:keyword]) if params[:keyword]
+    score_types
+  end
 end

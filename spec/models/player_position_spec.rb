@@ -33,7 +33,7 @@ describe PlayerPosition do
 
   end
 
-  describe ".filter_by_title" do
+  context "filtering and searching" do
 
     before(:each) do
       @player_position1 = FactoryGirl.create :player_position, title: "Full Back"
@@ -42,10 +42,35 @@ describe PlayerPosition do
       @player_position4 = FactoryGirl.create :player_position, title: "Blindside Flanker"
     end
 
-    context "when a 'Half' title pattern is sent" do
+    describe ".filter_by_title" do
 
-      it "returns the positions matching" do
-        expect(PlayerPosition.filter_by_title("Half").sort).to match_array([@player_position2, @player_position3])
+      context "when a 'Half' title pattern is sent" do
+
+        it "returns the positions matching" do
+          expect(PlayerPosition.filter_by_title("Half").sort).to match_array([@player_position2, @player_position3])
+        end
+
+      end
+
+    end
+
+    describe ".search" do
+
+      context "when an empty hash is sent" do
+
+        it "returns all the players" do
+          expect(PlayerPosition.search({})).to match_array([@player_position1, @player_position2, @player_position3, @player_position4])
+        end
+
+      end
+
+      context "when player_position_ids is present" do
+
+        it "returns the player positions associated with those ids" do
+          search_hash = { player_position_ids: [@player_position1.id, @player_position2.id]}
+          expect(PlayerPosition.search(search_hash)).to match_array([@player_position1, @player_position2])
+        end
+
       end
 
     end

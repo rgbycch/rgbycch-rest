@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::PlayersController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        3.times { FactoryGirl.create :player }
+        get :index
+      end
+
+      it "returns 3 players from the database" do
+        players_response = json_response[:players]
+        expect(players_response.size).to eq(3)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do
