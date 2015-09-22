@@ -6,7 +6,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   before_action :authenticate_with_token!
 
   ##
-  # Method for showing one event type
+  # Method for showing one preferred position
 
   def show
     respond_with PreferredPosition.find(params[:id])
