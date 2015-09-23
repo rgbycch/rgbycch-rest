@@ -22,15 +22,27 @@ ln -s ~/workspace/rgbycch-rest
 ```
 8. Install the bundle by executing a ```bundle install``` command at the base of the project.
 9. Generate your configuration using ```bundle exec figaro install```
-10. Navigate to the [base of the server](http://rgbycch-rest.dev) and you should see the rails sample start page.
-11. Generate a user by executing the following code from the base of the project:
+10. Get the database up and running:
+```
+rm db/*.sqlite3
+bundle exec bin/rake db:create
+bundle exec bin/rake db:migrate
+bundle exec bin/rake db:seed
+bundle exec bin/rake db:test:prepare
+```
+11. Start the server
+```
+bundle exec bin/rails server
+```
+12. Navigate to the [base of the server](http://rgbycch-rest.dev) and you should see the rails sample start page.
+13. Generate a user by executing the following code from the base of the project:
 ```
 rails console
 User.create({email: "tom@rgbycch.com",
                           password: "12345678",
                           password_confirmation: "12345678"})
 ```
-12. Ensure that this user has been successfully created by:
+14. Ensure that this user has been successfully created by:
 ```
 curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
 ```
@@ -42,6 +54,7 @@ If you ever want a completely fresh install of the db, just clobber it with:
 rm db/*.sqlite3
 bundle exec bin/rake db:create
 bundle exec bin/rake db:migrate
+bundle exec bin/rake db:seed
 bundle exec bin/rake db:test:prepare
 ```
 # Documentation

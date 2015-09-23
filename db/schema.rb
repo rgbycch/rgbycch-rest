@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 20150922093700) do
 
   add_index "players_teams", ["player_id", "team_id"], name: "index_players_teams_on_player_id_and_team_id"
 
-  create_table "preferred_playing_positions", force: :cascade do |t|
-    t.integer  "preferential_indicator"
-    t.integer  "player_id"
-    t.integer  "player_position_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "preferred_playing_positions", ["player_id"], name: "index_preferred_playing_positions_on_player_id"
-
   create_table "preferred_positions", force: :cascade do |t|
     t.integer  "player_id"
     t.integer  "player_position_id"
