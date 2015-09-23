@@ -38,3 +38,4 @@ bower.json
 
 /doc
 /public/api-docs.json
+/public/api/v1/*
