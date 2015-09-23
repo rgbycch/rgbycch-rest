@@ -5,14 +5,41 @@ class Api::V1::UsersController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!, only: [:update, :destroy]
 
-  swagger_controller :users, "User Management"
+  swagger_controller :users, "Users"
 
   swagger_api :show do
-    summary "Fetches a single User"
-    param :path, :id, :integer, :optional, "User Id"
-    response :ok, "Success", :User
-    response :unauthorized
+    summary "Gets a User"
+    param :path, :id, :integer, :required, "user_id"
+    response :ok, "Success", :user
     response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new User"
+    param :form, :email, :string, :required, "email"
+    param :form, :password, :string, :required, "password"
+    param :form, :password_confirmation, :string, :required, "password_confirmation"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing User"
+    param :path, :id, :integer, :required, "user_id"
+    param :form, :email, :string, :optional, "email"
+    param :form, :password, :string, :optional, "password"
+    param :form, :password_confirmation, :string, :optional, "password_confirmation"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing User"
+    param :path, :id, :integer, :required, "user_id"
+    response :unauthorized
     response :not_found
   end
 

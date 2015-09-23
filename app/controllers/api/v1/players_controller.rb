@@ -5,6 +5,59 @@ class Api::V1::PlayersController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
+  swagger_controller :players, "Players"
+
+  swagger_api :index do
+    summary "Searches for a Player"
+    param :query, :player_ids, :string, :optional, "player_ids"
+    param :query, :keyword, :string, :optional, "keyword"
+    response :ok, "Success", :players
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :show do
+    summary "Gets a Player"
+    param :path, :id, :integer, :required, "player_id"
+    response :ok, "Success", :player
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new Player"
+    param :form, :first_name, :string, :required, "first_name"
+    param :form, :last_name, :string, :required, "last_name"
+    param :form, :nick_name, :string, :optional, "nick_name"
+    param :form, :dob, :string, :optional, "dob"
+    param :form, :email, :string, :optional, "email"
+    param :form, :phone_number, :string, :optional, "phone_number"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing Player"
+    param :path, :id, :integer, :required, "player_id"
+    param :form, :first_name, :string, :optional, "first_name"
+    param :form, :last_name, :string, :optional, "last_name"
+    param :form, :nick_name, :string, :optional, "nick_name"
+    param :form, :dob, :string, :optional, "dob"
+    param :form, :email, :string, :optional, "email"
+    param :form, :phone_number, :string, :optional, "phone_number"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing Player"
+    param :path, :id, :integer, :required, "player_id"
+    response :unauthorized
+    response :not_found
+  end
+
   ##
   # Method for searching for a player
 

@@ -37,3 +37,4 @@ bower.json
 /config/application.yml
 
 /doc
+/public/api-docs.json

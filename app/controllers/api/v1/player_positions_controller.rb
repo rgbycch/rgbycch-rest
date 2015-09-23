@@ -5,15 +5,62 @@ class Api::V1::PlayerPositionsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
+  swagger_controller :player_positions, "Player Positions"
+
+  swagger_api :index do
+    summary "Searches for a Player Position"
+    param :query, :player_position_ids, :string, :optional, "player_position_ids"
+    param :query, :keyword, :string, :optional, "keyword"
+    response :ok, "Success", :player_positions
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :show do
+    summary "Gets a Player Position"
+    param :path, :id, :integer, :required, "player_position_id"
+    response :ok, "Success", :player_position
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new Player Position"
+    param :form, :title, :string, :required, "title"
+    param :form, :url, :string, :optional, "url"
+    param :form, :position_number, :integer, :required, "position_number"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing Player Position"
+    param :path, :id, :integer, :required, "player_position_id"
+    param :form, :title, :string, :optional, "title"
+    param :form, :url, :string, :optional, "url"
+    param :form, :position_number, :integer, :optional, "position_number"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing Player Position"
+    param :path, :id, :integer, :required, "player_position_id"
+    response :unauthorized
+    response :not_found
+  end
+
   ##
-  # Method for searching for an event type
+  # Method for searching for an player position
 
   def index
     respond_with PlayerPosition.search(player_position_search_params)
   end
 
   ##
-  # Method for showing one event type
+  # Method for showing one player position
 
   def show
     respond_with PlayerPosition.find(params[:id])
@@ -62,7 +109,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   ##
-  # Strong params used when searching for Players
+  # Strong params used when searching for Player Positions.
 
   def player_position_search_params
     params.permit(:player_position_ids, :keyword)

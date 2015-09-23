@@ -5,6 +5,44 @@ class Api::V1::PreferredPositionsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
+  swagger_controller :preferred_positions, "Preferred Positions"
+
+  swagger_api :show do
+    summary "Gets a Preferred Position"
+    param :path, :id, :integer, :required, "preferred_position_id"
+    response :ok, "Success", :preferred_position
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new Preferred Position"
+    param :form, :player_id, :string, :required, "player_id"
+    param :form, :player_position_id, :string, :required, "player_position_id"
+    param :form, :preference, :integer, :required, "preference"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing Preferred Position"
+    param :path, :id, :integer, :required, "preferred_position_id"
+    param :form, :player_id, :string, :optional, "player_id"
+    param :form, :player_position_id, :string, :optional, "player_position_id"
+    param :form, :preference, :integer, :optional, "preference"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing Preferred Position"
+    param :path, :id, :integer, :required, "preferred_position_id"
+    response :unauthorized
+    response :not_found
+  end
+
   ##
   # Method for showing one preferred position
 

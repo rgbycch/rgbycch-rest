@@ -5,6 +5,53 @@ class Api::V1::ClubsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
+  swagger_controller :clubs, "Clubs"
+
+  swagger_api :index do
+    summary "Searches for a Club"
+    param :query, :club_ids, :string, :optional, "club_ids"
+    param :query, :keyword, :string, :optional, "keyword"
+    response :ok, "Success", :clubs
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :show do
+    summary "Gets a Club"
+    param :path, :id, :integer, :required, "club_id"
+    response :ok, "Success", :club
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new Club"
+    param :form, :name, :string, :required, "name"
+    param :form, :url, :string, :optional, "url"
+    param :form, :founded, :string, :optional, "founded"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing Club"
+    param :path, :id, :integer, :required, "club_id"
+    param :form, :name, :string, :optional, "name"
+    param :form, :url, :string, :optional, "url"
+    param :form, :founded, :string, :optional, "founded"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing Club"
+    param :path, :id, :integer, :required, "club_id"
+    response :unauthorized
+    response :not_found
+  end
+
   ##
   # Method for searching for a club
 

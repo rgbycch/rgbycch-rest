@@ -5,6 +5,51 @@ class Api::V1::EventTypesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
+  swagger_controller :event_types, "Event Types"
+
+  swagger_api :index do
+    summary "Searches for an Event Type"
+    param :query, :event_type_ids, :string, :optional, "event_type_ids"
+    param :query, :keyword, :string, :optional, "keyword"
+    response :ok, "Success", :event_types
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :show do
+    summary "Gets an Event Type"
+    param :path, :id, :integer, :required, "event_type_id"
+    response :ok, "Success", :event_type
+    response :not_acceptable
+    response :not_found
+  end
+
+  swagger_api :create do
+    summary "Creates a new Event Type"
+    param :form, :title, :string, :required, "title"
+    param :form, :url, :string, :optional, "url"
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :update do
+    summary "Updates an existing Event Type"
+    param :path, :id, :integer, :required, "event_type_id"
+    param :form, :title, :string, :optional, "title"
+    param :form, :url, :string, :optional, "url"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :destroy do
+    summary "Deletes an existing Event Type"
+    param :path, :id, :integer, :required, "event_type_id"
+    response :unauthorized
+    response :not_found
+  end
+
   ##
   # Method for searching for an event type
 
