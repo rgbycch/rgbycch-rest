@@ -26,7 +26,7 @@ class Api::V1::ClubsController < ApplicationController
 
   swagger_api :create do
     summary "Creates a new Club"
-    param :form, :name, :string, :required, "name"
+    param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
     param :form, :founded, :string, :optional, "founded"
     response :not_acceptable
@@ -36,7 +36,7 @@ class Api::V1::ClubsController < ApplicationController
   swagger_api :update do
     summary "Updates an existing Club"
     param :path, :id, :integer, :required, "club_id"
-    param :form, :name, :string, :optional, "name"
+    param :form, :title, :string, :optional, "title"
     param :form, :url, :string, :optional, "url"
     param :form, :founded, :string, :optional, "founded"
     response :unauthorized
@@ -105,7 +105,7 @@ class Api::V1::ClubsController < ApplicationController
   # Strong params for the Club class.
 
   def club_params
-    params.require(:club).permit(:name, :url, :founded)
+    params.require(:club).permit(:title, :url, :founded)
   end
 
   ##

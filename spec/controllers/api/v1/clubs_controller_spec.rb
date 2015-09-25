@@ -36,7 +36,7 @@ describe Api::V1::ClubsController, :type => :controller do
 
       it "returns the information about a club in a hash" do
         club_response = json_response[:club]
-        expect(club_response[:name]).not_to be_nil
+        expect(club_response[:title]).not_to be_nil
         expect(club_response[:url]).not_to be_nil
         expect(club_response[:founded]).not_to be_nil
       end
@@ -74,7 +74,7 @@ describe Api::V1::ClubsController, :type => :controller do
 
         it "renders the json representation for the club just created" do
           club_response = json_response[:club]
-          expect(club_response[:name]).to eql @club_attributes[:name]
+          expect(club_response[:title]).to eql @club_attributes[:title]
           expect(club_response[:url]).to eql @club_attributes[:url]
         end
 
@@ -95,7 +95,7 @@ describe Api::V1::ClubsController, :type => :controller do
 
         it "renders the json errors on why the club could not be created" do
           club_response = json_response
-          expect(club_response[:errors][:name]).to include "can't be blank"
+          expect(club_response[:errors][:title]).to include "can't be blank"
         end
 
         it { should respond_with 422 }
@@ -130,12 +130,12 @@ describe Api::V1::ClubsController, :type => :controller do
       context "when is successfully updated" do
 
         before(:each) do
-          patch :update, { user_id: @user.id, id: @club.id, club: { name: "Updated Club Name" } }
+          patch :update, { user_id: @user.id, id: @club.id, club: { title: "Updated Club Title" } }
         end
 
         it "renders the json representation for the updated club" do
           club_response = json_response[:club]
-          expect(club_response[:name]).to eql "Updated Club Name"
+          expect(club_response[:title]).to eql "Updated Club Title"
         end
 
         it { should respond_with 200 }
@@ -146,7 +146,7 @@ describe Api::V1::ClubsController, :type => :controller do
     context "User is not logged in" do
 
       before(:each) do
-        patch :update, { id: @club.id, club: { name: "Updated Club Name" } }
+        patch :update, { id: @club.id, club: { title: "Updated Club Title" } }
       end
 
       it { should respond_with 401 }

@@ -3,7 +3,7 @@
 
 class ClubSerializer < ActiveModel::Serializer
 
-  attributes :id, :name, :url, :founded
+  attributes :id, :title, :url, :founded
 
   has_many :teams
 

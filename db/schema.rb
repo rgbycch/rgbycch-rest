@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922093700) do
+ActiveRecord::Schema.define(version: 20150925090316) do
 
   create_table "clubs", force: :cascade do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "url",        default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
