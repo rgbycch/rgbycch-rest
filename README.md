@@ -25,9 +25,7 @@ ln -s ~/workspace/rgbycch-rest
 10. Get the database up and running:
 ```
 rm db/*.sqlite3
-bundle exec bin/rake db:create
-bundle exec bin/rake db:migrate
-bundle exec bin/rake db:seed
+bundle exec bin/rake db:setup
 bundle exec bin/rake db:test:prepare
 ```
 11. Start the server
@@ -52,9 +50,7 @@ curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
 If you ever want a completely fresh install of the db, just clobber it with:
 ```
 rm db/*.sqlite3
-bundle exec bin/rake db:create
-bundle exec bin/rake db:migrate
-bundle exec bin/rake db:seed
+bundle exec bin/rake db:setup
 bundle exec bin/rake db:test:prepare
 ```
 # Documentation
