@@ -3,7 +3,6 @@
 
 class EventType < ActiveRecord::Base
   extend Searchable
-
   validates :title, presence: true
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 

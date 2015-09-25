@@ -5,9 +5,7 @@ class Club < ActiveRecord::Base
   extend Searchable
   validates :title, presence: true
   has_many :teams
-  scope :filter_by_title, lambda { |keyword|
-    where("lower(title) LIKE ?", "%#{keyword.downcase}%" )
-  }
+  scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   def self.id_params_identifier
     :club_ids
