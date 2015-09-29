@@ -9,7 +9,7 @@ describe Api::V1::PlayersController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        3.times { FactoryGirl.create :player }
+        3.times { FactoryGirl.create :player}
         get :index
       end
 

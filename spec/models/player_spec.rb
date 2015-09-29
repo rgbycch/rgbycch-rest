@@ -51,7 +51,7 @@ describe Player do
       context "when a 'Hatchet' name pattern is sent" do
 
         it "returns the players matching" do
-          expect(Player.filter_by_name("Hatchet").sort).to match_array([@player2, @player3, @player4])
+          expect(Player.filter_by_title("Hatchet").sort).to match_array([@player2, @player3, @player4])
         end
 
       end
