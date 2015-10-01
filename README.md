@@ -25,12 +25,12 @@ ln -s ~/workspace/rgbycch-rest
 10. Get the database up and running:
 ```
 rm db/*.sqlite3
-bundle exec bin/rake db:setup
-bundle exec bin/rake db:test:prepare
+bundle exec rake db:setup
+bundle exec rake db:test:prepare
 ```
 11. Start the server
 ```
-bundle exec bin/rails server
+bundle exec rails server
 ```
 12. Navigate to the [base of the server](http://rgbycch-rest.dev) and you should see the rails sample start page.
 13. Generate a user by executing the following code from the base of the project:
@@ -50,8 +50,8 @@ curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
 If you ever want a completely fresh install of the db, just clobber it with:
 ```
 rm db/*.sqlite3
-bundle exec bin/rake db:setup
-bundle exec bin/rake db:test:prepare
+bundle exec rake db:setup
+bundle exec rake db:test:prepare
 ```
 # Documentation
 ## swagger
@@ -61,7 +61,7 @@ rake swagger:docs
 ```
 Once the documentation has been generated, run the server with:
 ```
-bundle exec bin/rails server
+bundle exec rails server
 ```
 To view the API docs, navigate to:
 ```
