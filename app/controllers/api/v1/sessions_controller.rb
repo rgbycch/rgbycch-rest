@@ -7,6 +7,7 @@ class Api::V1::SessionsController < ApplicationController
   # Method for creating a new session and saving it to the current user
 
   def create
+
     user_password = params[:session][:password]
     user_email = params[:session][:email]
     user = user_email.present? && User.find_by(email: user_email)

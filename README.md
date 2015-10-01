@@ -44,6 +44,10 @@ User.create({email: "tom@rgbycch.com",
 ```
 curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
 ```
+The user's current session ```auth_token``` can easily be returned at any time with:
+```
+curl -H 'Accept: application/json,application/vnd.rgbycch.v1' -X POST 'http://api.rgbycch-rest.dev/sessions.json' -d 'session[email]=tom@rgbycch.com&session[password]=12345678'
+```
 # Running Tests
 - ```bundle exec rspec spec```
 # Creating and Recreating the Database
