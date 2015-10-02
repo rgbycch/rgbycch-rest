@@ -30,18 +30,41 @@ describe Api::V1::EventTypesController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @event_type = FactoryGirl.create :event_type
-
-        get :show, id: @event_type.id
       end
 
-      it "returns the information about an event type in a hash" do
-        event_type_response = json_response[:event_type]
-        expect(event_type_response[:title]).not_to be_nil
-        expect(event_type_response[:url]).not_to be_nil
+      context "User requests an event type which is present" do
+
+        before(:each) do
+          @event_type = FactoryGirl.create :event_type
+
+          get :show, id: @event_type.id
+        end
+
+        it "returns the information about an event type in a hash" do
+          event_type_response = json_response[:event_type]
+          expect(event_type_response[:title]).not_to be_nil
+          expect(event_type_response[:url]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests an event type which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          event_type_response = json_response
+          expect(event_type_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
 
 

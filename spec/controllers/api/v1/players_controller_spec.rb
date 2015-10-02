@@ -30,22 +30,46 @@ describe Api::V1::PlayersController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @player = FactoryGirl.create :player
-        get :show, id: @player.id
       end
 
-      it "returns the information about a player in a hash" do
-        player_response = json_response[:player]
+      context "User requests a player which is present" do
 
-        expect(player_response[:first_name]).not_to be_nil
-        expect(player_response[:last_name]).not_to be_nil
-        expect(player_response[:nick_name]).not_to be_nil
-        expect(player_response[:dob]).not_to be_nil
-        expect(player_response[:email]).not_to be_nil
-        expect(player_response[:phone_number]).not_to be_nil
+        before(:each) do
+          @player = FactoryGirl.create :player
+
+          get :show, id: @player.id
+        end
+
+        it "returns the information about a player in a hash" do
+          player_response = json_response[:player]
+
+          expect(player_response[:first_name]).not_to be_nil
+          expect(player_response[:last_name]).not_to be_nil
+          expect(player_response[:nick_name]).not_to be_nil
+          expect(player_response[:dob]).not_to be_nil
+          expect(player_response[:email]).not_to be_nil
+          expect(player_response[:phone_number]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests a player which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          player_response = json_response
+          expect(player_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
 
 

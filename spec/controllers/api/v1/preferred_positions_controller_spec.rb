@@ -9,19 +9,42 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @preferred_position = FactoryGirl.create :preferred_position
-
-        get :show, id: @preferred_position.id
       end
 
-      it "returns the information about a preferred position in a hash" do
-        preferred_position_response = json_response[:preferred_position]
-        expect(preferred_position_response[:preference]).not_to be_nil
-        expect(preferred_position_response[:player][:id]).not_to be_nil
-        expect(preferred_position_response[:player_position][:id]).not_to be_nil
+      context "User requests a preferred position which is present" do
+
+        before(:each) do
+          @preferred_position = FactoryGirl.create :preferred_position
+
+          get :show, id: @preferred_position.id
+        end
+
+        it "returns the information about a preferred position in a hash" do
+          preferred_position_response = json_response[:preferred_position]
+          expect(preferred_position_response[:preference]).not_to be_nil
+          expect(preferred_position_response[:player][:id]).not_to be_nil
+          expect(preferred_position_response[:player_position][:id]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests a preferred position which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          preferred_position_response = json_response
+          expect(preferred_position_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
 
 

@@ -30,18 +30,42 @@ describe Api::V1::ClubsController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @club = FactoryGirl.create :club
-        get :show, id: @club.id
       end
 
-      it "returns the information about a club in a hash" do
-        club_response = json_response[:club]
-        expect(club_response[:title]).not_to be_nil
-        expect(club_response[:url]).not_to be_nil
-        expect(club_response[:founded]).not_to be_nil
+      context "User requests a club which is present" do
+
+        before(:each) do
+          @club = FactoryGirl.create :club
+
+          get :show, id: @club.id
+        end
+
+        it "returns the information about a club in a hash" do
+          club_response = json_response[:club]
+          expect(club_response[:title]).not_to be_nil
+          expect(club_response[:url]).not_to be_nil
+          expect(club_response[:founded]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests a club which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          club_response = json_response
+          expect(club_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
 
     context "User is not logged in" do

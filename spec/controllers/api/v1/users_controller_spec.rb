@@ -3,17 +3,39 @@ require 'spec_helper'
 describe Api::V1::UsersController, :type => :controller do
 
   describe "GET #show" do
-    before(:each) do
-      @user = FactoryGirl.create :user
-      get :show, id: @user.id
+
+    context "User requests a user which is present" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+
+        get :show, id: @user.id
+      end
+
+      it "returns the information about a user on a hash" do
+        user_response = json_response[:user]
+        expect(user_response[:email]).to eql @user.email
+      end
+
+      it { should respond_with 200 }
+
     end
 
-    it "returns the information about a user on a hash" do
-      user_response = json_response[:user]
-      expect(user_response[:email]).to eql @user.email
+    context "User requests a user which is not present" do
+
+      before(:each) do
+        get :show, id: "zzz"
+      end
+
+      it "returns an error to the api client" do
+        user_response = json_response
+        expect(user_response).to have_key(:error)
+      end
+
+      it { should respond_with 404 }
+
     end
 
-    it { should respond_with 200 }
   end
 
   describe "POST #create" do

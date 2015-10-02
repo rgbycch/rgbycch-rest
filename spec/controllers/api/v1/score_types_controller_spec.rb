@@ -9,21 +9,43 @@ describe Api::V1::ScoreTypesController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @score_type = FactoryGirl.create :score_type
-
-        get :show, id: @score_type.id
       end
 
-      it "returns the information about a score type in a hash" do
-        score_type_response = json_response[:score_type]
-        expect(score_type_response[:title]).not_to be_nil
-        expect(score_type_response[:url]).not_to be_nil
-        expect(score_type_response[:points]).not_to be_nil
+      context "User requests a score type which is present" do
+
+        before(:each) do
+          @score_type = FactoryGirl.create :score_type
+
+          get :show, id: @score_type.id
+        end
+
+        it "returns the information about a score type in a hash" do
+          score_type_response = json_response[:score_type]
+          expect(score_type_response[:title]).not_to be_nil
+          expect(score_type_response[:url]).not_to be_nil
+          expect(score_type_response[:points]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests a score type which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          score_type_response = json_response
+          expect(score_type_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
-
 
     context "User is not logged in" do
 

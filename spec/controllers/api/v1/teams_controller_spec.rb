@@ -9,16 +9,40 @@ describe Api::V1::TeamsController, :type => :controller do
       before(:each) do
         @user = FactoryGirl.create :user
         api_authorization_header @user.auth_token
-        @team = FactoryGirl.create :team
-        get :show, id: @team.id
       end
 
-      it "returns the information about a team in a hash" do
-        team_response = json_response[:team]
-        expect(team_response[:title]).not_to be_nil
+      context "User requests a team which is not present" do
+
+        before(:each) do
+          @team = FactoryGirl.create :team
+
+          get :show, id: @team.id
+        end
+
+        it "returns the information about a team in a hash" do
+          team_response = json_response[:team]
+          expect(team_response[:title]).not_to be_nil
+        end
+
+        it { should respond_with 200 }
+
       end
 
-      it { should respond_with 200 }
+      context "User requests a team which is not present" do
+
+        before(:each) do
+          get :show, id: "zzz"
+        end
+
+        it "returns an error to the api client" do
+          team_response = json_response
+          expect(team_response).to have_key(:error)
+        end
+
+        it { should respond_with 404 }
+
+      end
+
     end
 
     context "User is not logged in" do
