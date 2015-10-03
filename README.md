@@ -42,11 +42,15 @@ User.create({email: "tom@rgbycch.com",
 ```
 14. Ensure that this user has been successfully created by:
 ```
-curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
+curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1.json
 ```
 The user's current session ```auth_token``` can easily be returned at any time with:
 ```
 curl -H 'Accept: application/json,application/vnd.rgbycch.v1' -X POST 'http://api.rgbycch-rest.dev/sessions.json' -d 'session[email]=tom@rgbycch.com&session[password]=12345678'
+```
+Creating a new player should be as easy as:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X POST http://api.rgbycch-rest.dev/players.json -d '{"player": {"first_name": "First Name", "last_name": "Last Name", "nick_name": "Nick Name", "dob": "d", "email": "email@gmail.com", "phone_number": "123456789"}}'
 ```
 # Running Tests
 - ```bundle exec rspec spec```
