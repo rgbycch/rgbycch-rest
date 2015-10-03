@@ -79,6 +79,10 @@ Updating an existing player:
 ```
 curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' --request PATCH http://api.rgbycch-rest.dev/players/1.json -d '{"player": {"first_name": "First Name"}}'
 ```
+Deleting a player:
+```
+curl -v -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: RKcyU8wPJT1t77Tve8sQ' -H 'Content-Type: application/json' --request DELETE http://api.rgbycch-rest.dev/players/1.json
+```
 # Documentation
 ## swagger
 Run the following command to generate the swagger API documentation.
