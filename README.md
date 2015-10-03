@@ -44,22 +44,40 @@ User.create({email: "tom@rgbycch.com",
 ```
 curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1.json
 ```
-The user's current session ```auth_token``` can easily be returned at any time with:
-```
-curl -H 'Accept: application/json,application/vnd.rgbycch.v1' -X POST 'http://api.rgbycch-rest.dev/sessions.json' -d 'session[email]=tom@rgbycch.com&session[password]=12345678'
-```
-Creating a new player should be as easy as:
-```
-curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X POST http://api.rgbycch-rest.dev/players.json -d '{"player": {"first_name": "First Name", "last_name": "Last Name", "nick_name": "Nick Name", "dob": "d", "email": "email@gmail.com", "phone_number": "123456789"}}'
-```
 # Running Tests
-- ```bundle exec rspec spec```
+```bundle exec rspec spec```
 # Creating and Recreating the Database
 If you ever want a completely fresh install of the db, just clobber it with:
 ```
 rm db/*.sqlite3
 bundle exec rake db:setup
 bundle exec rake db:test:prepare
+```
+# CRUD with curl
+Before you start making any API calls, you'll need an ```authToken``` back for one of the users in the system.
+A user's current session ```authToken``` can easily be returned at any time with:
+```
+curl -H 'Accept: application/json,application/vnd.rgbycch.v1' -X POST 'http://api.rgbycch-rest.dev/sessions.json' -d 'session[email]=tom@rgbycch.com&session[password]=12345678'
+```
+Creating a new player should be as easy as:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X POST http://api.rgbycch-rest.dev/players.json -d '{"player": {"first_name": "First Name", "last_name": "Last Name", "nick_name": "Nick Name", "dob": "2015-09-17T10:24:05.000Z", "email": "email@gmail.com", "phone_number": "123456789"}}'
+```
+Finding a player by id:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X GET http://api.rgbycch-rest.dev/players/1.json
+```
+Finding a player by ids:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X GET http://api.rgbycch-rest.dev/players?player_ids=1,2
+```
+Finding a player by keyword:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X GET http://api.rgbycch-rest.dev/players?keyword=Tom
+```
+Updating an existing player:
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' --request PATCH http://api.rgbycch-rest.dev/players/1.json -d '{"player": {"first_name": "First Name"}}'
 ```
 # Documentation
 ## swagger
