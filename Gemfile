@@ -32,6 +32,7 @@ group :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'simplecov', :require => false
+  gem 'database_cleaner'
 end
 
 group :development do
