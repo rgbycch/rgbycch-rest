@@ -2,14 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
 gem 'sqlite3'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
 gem 'active_model_serializers'
 gem 'figaro'
 gem 'devise'
-# bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
 # Use ActiveModel has_secure_password
@@ -17,9 +12,6 @@ gem 'sdoc', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'byebug'
