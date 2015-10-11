@@ -7,6 +7,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
 
   swagger_controller :preferred_positions, "Preferred Positions"
 
+  # :nocov:
   swagger_api :show do
     summary "Gets a Preferred Position"
     param :path, :id, :integer, :required, "preferred_position_id"
@@ -42,6 +43,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for showing one preferred position

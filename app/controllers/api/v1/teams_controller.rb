@@ -7,6 +7,7 @@ class Api::V1::TeamsController < ApplicationController
 
   swagger_controller :teams, "Teams"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for a Team"
     param :query, :team_ids, :string, :optional, "team_ids"
@@ -47,6 +48,7 @@ class Api::V1::TeamsController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for a score type

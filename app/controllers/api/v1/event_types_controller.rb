@@ -7,6 +7,7 @@ class Api::V1::EventTypesController < ApplicationController
 
   swagger_controller :event_types, "Event Types"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for an Event Type"
     param :query, :event_type_ids, :string, :optional, "event_type_ids"
@@ -49,6 +50,7 @@ class Api::V1::EventTypesController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for an event type

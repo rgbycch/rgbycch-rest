@@ -7,6 +7,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
 
   swagger_controller :player_positions, "Player Positions"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for a Player Position"
     param :query, :player_position_ids, :string, :optional, "player_position_ids"
@@ -51,6 +52,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for an player position

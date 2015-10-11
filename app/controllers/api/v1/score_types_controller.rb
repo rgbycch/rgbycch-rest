@@ -7,6 +7,7 @@ class Api::V1::ScoreTypesController < ApplicationController
 
   swagger_controller :score_types, "Score Types"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for Score Types"
     param :query, :score_type_ids, :string, :optional, "score_type_ids"
@@ -51,6 +52,7 @@ class Api::V1::ScoreTypesController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for a score type

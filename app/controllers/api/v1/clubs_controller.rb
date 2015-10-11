@@ -7,6 +7,7 @@ class Api::V1::ClubsController < ApplicationController
 
   swagger_controller :clubs, "Clubs"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for a Club"
     param :query, :club_ids, :string, :optional, "club_ids"
@@ -51,6 +52,7 @@ class Api::V1::ClubsController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for a club

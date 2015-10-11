@@ -7,6 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
   swagger_controller :users, "Users"
 
+  # :nocov:
   swagger_api :show do
     summary "Gets a User"
     param :path, :id, :integer, :required, "user_id"
@@ -42,6 +43,7 @@ class Api::V1::UsersController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for showing one user

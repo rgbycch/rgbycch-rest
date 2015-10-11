@@ -7,6 +7,7 @@ class Api::V1::RolesController < ApplicationController
 
   swagger_controller :roles, "Roles"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for a Role"
     param :query, :role_ids, :string, :optional, "role_ids"
@@ -49,6 +50,7 @@ class Api::V1::RolesController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for a role

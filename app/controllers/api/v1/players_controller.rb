@@ -7,6 +7,7 @@ class Api::V1::PlayersController < ApplicationController
 
   swagger_controller :players, "Players"
 
+  # :nocov:
   swagger_api :index do
     summary "Searches for a Player"
     param :query, :player_ids, :string, :optional, "player_ids"
@@ -57,6 +58,7 @@ class Api::V1::PlayersController < ApplicationController
     response :unauthorized
     response :not_found
   end
+  # :nocov:
 
   ##
   # Method for searching for a player
