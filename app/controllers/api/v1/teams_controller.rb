@@ -70,7 +70,7 @@ class Api::V1::TeamsController < ApplicationController
     if team.save
       render json: team, status: 201, location: [:api, team]
     else
-      render json: { errors: team.errors }, status: 422
+      failed_to_create(team, "team")
     end
   end
 
@@ -82,7 +82,7 @@ class Api::V1::TeamsController < ApplicationController
     if team.update(team_params)
       render json: team, status: 200, location: [:api, team]
     else
-      render json: { errors: team.errors }, status: 422
+      failed_to_update(team, "team")
     end
   end
 

@@ -74,7 +74,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
     if player_position.save
       render json: player_position, status: 201, location: [:api, player_position]
     else
-      render json: { errors: player_position.errors }, status: 422
+      failed_to_create(player_position, "player_position")
     end
   end
 
@@ -86,7 +86,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
     if player_position.update(player_position_params)
       render json: player_position, status: 200, location: [:api, player_position]
     else
-      render json: { errors: player_position.errors }, status: 422
+      failed_to_update(player_position, "player_position")
     end
   end
 

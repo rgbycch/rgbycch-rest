@@ -80,7 +80,7 @@ class Api::V1::PlayersController < ApplicationController
     if player.save
       render json: player, status: 201, location: [:api, player]
     else
-      render json: { errors: player.errors }, status: 422
+      failed_to_create(player, "player")
     end
   end
 
@@ -92,7 +92,7 @@ class Api::V1::PlayersController < ApplicationController
     if player.update(player_params)
       render json: player, status: 200, location: [:api, player]
     else
-      render json: { errors: player.errors }, status: 422
+      failed_to_update(player, "player")
     end
   end
 

@@ -74,7 +74,7 @@ class Api::V1::ScoreTypesController < ApplicationController
     if score_type.save
       render json: score_type, status: 201, location: [:api, score_type]
     else
-      render json: { errors: score_type.errors }, status: 422
+      failed_to_create(score_type, "score_type")
     end
   end
 
@@ -86,7 +86,7 @@ class Api::V1::ScoreTypesController < ApplicationController
     if score_type.update(score_type_params)
       render json: score_type, status: 200, location: [:api, score_type]
     else
-      render json: { errors: score_type.errors }, status: 422
+      failed_to_update(score_type, "score_type")
     end
   end
 

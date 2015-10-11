@@ -72,7 +72,7 @@ class Api::V1::EventTypesController < ApplicationController
     if event_type.save
       render json: event_type, status: 201, location: [:api, event_type]
     else
-      render json: { errors: event_type.errors }, status: 422
+      failed_to_create(event_type, "event_type")
     end
   end
 
@@ -84,7 +84,7 @@ class Api::V1::EventTypesController < ApplicationController
     if event_type.update(event_type_params)
       render json: event_type, status: 200, location: [:api, event_type]
     else
-      render json: { errors: event_type.errors }, status: 422
+      failed_to_update(event_type, "event_type")
     end
   end
 

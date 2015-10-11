@@ -58,7 +58,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
     if preferred_position.save
       render json: preferred_position, status: 201, location: [:api, preferred_position]
     else
-      render json: { errors: preferred_position.errors }, status: 422
+      failed_to_create(preferred_position, "preferred_position")
     end
   end
 
@@ -70,7 +70,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
     if preferred_position.update(preferred_position_params)
       render json: preferred_position, status: 200, location: [:api, preferred_position]
     else
-      render json: { errors: preferred_position.errors }, status: 422
+      failed_to_update(preferred_position, "preferred_position")
     end
   end
 

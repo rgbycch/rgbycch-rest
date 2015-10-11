@@ -72,7 +72,7 @@ class Api::V1::RolesController < ApplicationController
     if role.save
       render json: role, status: 201, location: [:api, role]
     else
-      render json: { errors: role.errors }, status: 422
+      failed_to_create(role, "role")
     end
   end
 
@@ -84,7 +84,7 @@ class Api::V1::RolesController < ApplicationController
     if role.update(role_params)
       render json: role, status: 200, location: [:api, role]
     else
-      render json: { errors: role.errors }, status: 422
+      failed_to_update(role, "role")
     end
   end
 

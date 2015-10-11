@@ -74,7 +74,7 @@ class Api::V1::ClubsController < ApplicationController
     if club.save
       render json: club, status: 201, location: [:api, club]
     else
-      render json: { errors: club.errors }, status: 422
+      failed_to_create(club, "club")
     end
   end
 
@@ -86,7 +86,7 @@ class Api::V1::ClubsController < ApplicationController
     if club.update(club_params)
       render json: club, status: 200, location: [:api, club]
     else
-      render json: { errors: club.errors }, status: 422
+      failed_to_update(club, "club")
     end
   end
 

@@ -58,7 +58,7 @@ class Api::V1::UsersController < ApplicationController
     if user.save
       render json: user, status: 201, location: [:api, user]
     else
-      render json: { errors: user.errors }, status: 422
+      failed_to_create(user, "user")
     end
   end
 
@@ -70,7 +70,7 @@ class Api::V1::UsersController < ApplicationController
     if user.update(user_params)
       render json: user, status: 200, location: [:api, user]
     else
-      render json: { errors: user.errors }, status: 422
+      failed_to_update(user, "user")
     end
   end
 
