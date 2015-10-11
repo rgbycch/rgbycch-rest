@@ -166,6 +166,25 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "when is not updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @player_position.id, player_position: { title: nil } }
+        end
+
+        it "renders an errors json" do
+          player_position_response = json_response
+          expect(player_position_response).to have_key(:errors)
+        end
+
+        it "renders the json errors on why the player position could not be created" do
+          player_position_response = json_response
+          expect(player_position_response[:errors][:title]).to include "can't be blank"
+        end
+
+        it { should respond_with 422 }
+      end
+
     end
 
     context "User is not logged in" do

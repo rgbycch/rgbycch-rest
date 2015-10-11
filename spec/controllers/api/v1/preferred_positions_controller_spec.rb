@@ -144,6 +144,25 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "when is not updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @preferred_position.id, preferred_position: { preference: -2 } }
+        end
+
+        it "renders an errors json" do
+          preferred_position_response = json_response
+          expect(preferred_position_response).to have_key(:errors)
+        end
+
+        it "renders the json errors on why the preferred position could not be created" do
+          preferred_position_response = json_response
+          expect(preferred_position_response[:errors][:preference]).to include "must be greater than or equal to 0"
+        end
+
+        it { should respond_with 422 }
+      end
+
     end
 
     context "User is not logged in" do

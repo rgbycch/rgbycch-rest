@@ -170,6 +170,25 @@ describe Api::V1::PlayersController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "when is not updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @player.id, player: { last_name: nil } }
+        end
+
+        it "renders an errors json" do
+          player_response = json_response
+          expect(player_response).to have_key(:errors)
+        end
+
+        it "renders the json errors on why the player could not be created" do
+          player_response = json_response
+          expect(player_response[:errors][:last_name]).to include "can't be blank"
+        end
+
+        it { should respond_with 422 }
+      end
+
     end
 
     context "User is not logged in" do

@@ -165,6 +165,25 @@ describe Api::V1::ClubsController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "when is not updated" do
+
+        before(:each) do
+          post :update, { user_id: @user.id, id: @club.id, club: { title: nil } }
+        end
+
+        it "renders an errors json" do
+          club_response = json_response
+          expect(club_response).to have_key(:errors)
+        end
+
+        it "renders the json errors on why the club could not be created" do
+          club_response = json_response
+          expect(club_response[:errors][:title]).to include "can't be blank"
+        end
+
+        it { should respond_with 422 }
+      end
+
     end
 
     context "User is not logged in" do

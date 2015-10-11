@@ -144,6 +144,25 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "when is not updated" do
+
+        before(:each) do
+          patch :update, { user_id: @user.id, id: @score_type.id, score_type: { title: nil } }
+        end
+
+        it "renders an errors json" do
+          score_type_response = json_response
+          expect(score_type_response).to have_key(:errors)
+        end
+
+        it "renders the json errors on why the score type could not be created" do
+          score_type_response = json_response
+          expect(score_type_response[:errors][:title]).to include "can't be blank"
+        end
+
+        it { should respond_with 422 }
+      end
+
     end
 
     context "User is not logged in" do

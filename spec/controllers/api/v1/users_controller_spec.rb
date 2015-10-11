@@ -93,7 +93,7 @@ describe Api::V1::UsersController, :type => :controller do
       it { should respond_with 200 }
     end
 
-    context "when is not created" do
+    context "when is not updated" do
       before(:each) do
         @user = FactoryGirl.create :user
         request.headers['Authorization'] =  @user.auth_token
