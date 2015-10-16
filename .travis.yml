@@ -1,8 +1,12 @@
-language: java
-install: mvn clean install
-after_success: mvn jetty:run
+language: ruby
+rvm:
+  - 2.2
 
-notifications:
-  email:
-    on_success: change
-    on_failure: always
+bundler_args: --without development
+
+before_script:
+  - cp config/secrets.template.yml config/secrets.yml
+
+script:
+  - RAILS_ENV=test bundle exec rake db:setup --trace
+  - bundle exec rspec spec
