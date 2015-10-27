@@ -145,12 +145,28 @@ describe Api::V1::TeamsController, :type => :controller do
 
         before(:each) do
           @player = FactoryGirl.create :player
-          put :add_player, { user_id: @user.id, id: @team.id, player_id: @player.id }
+          put :add_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
         end
 
         it "renders the json representation for the updated team" do
           team_response = json_response[:team]
           expect(team_response[:players].count).to eql 1
+        end
+
+        it { should respond_with 200 }
+
+      end
+
+      context "removing a player from a team" do
+
+        before(:each) do
+          @player = FactoryGirl.create :player
+          put :remove_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
+        end
+
+        it "renders the json representation for the updated team" do
+          team_response = json_response[:team]
+          expect(team_response[:players].count).to eql 0
         end
 
         it { should respond_with 200 }
