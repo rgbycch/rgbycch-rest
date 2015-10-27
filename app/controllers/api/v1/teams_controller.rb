@@ -44,8 +44,18 @@ class Api::V1::TeamsController < ApplicationController
 
   swagger_api :add_player do
     summary "Adds a player to an existing Team"
-    param :path, :id, :integer, :required, "team_id"
-    param :form, :player_id, :string, :required, "player_id"
+    param :path, :team_id, :integer, :required, "team_id"
+    param :form, :id, :string, :required, "the player id"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :remove_player do
+    summary "Removes a player from an existing Team"
+    param :path, :team_id, :integer, :required, "team_id"
+    param :form, :id, :string, :required, "the player id"
     response :unauthorized
     response :not_found
     response :not_acceptable
@@ -98,19 +108,21 @@ class Api::V1::TeamsController < ApplicationController
     end
   end
 
-  def players
-    team = Team.find params[:team_id]
-    player = Player.find params[:id]
-    if request.put?
-      team.players << player
-    elsif request.delete?
-      team.players.destroy player
-    end
-    if team.save
-      render json: team, status: 200, location: [:api, team]
-    else
-      failed_to_update(team, "team")
-    end
+  ##
+  # Adding a player to a team
+
+  def add_player
+    team = Team.find(params[:team_id])
+    player = Player.find(params[:id])
+    team.players << player
+    update_team(team)
+  end
+
+  def remove_player
+    team = Team.find(params[:team_id])
+    player = Player.find(params[:id])
+    team.players.delete(player)
+    update_team(team)
   end
 
   ##
@@ -123,6 +135,17 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   private
+
+  ##
+  # Common functionality for updating a team
+
+  def update_team(team)
+    if team.save
+      render json: team, status: 200, location: [:api, team]
+    else
+      failed_to_update(team, "team")
+    end
+  end
 
   ##
   # Strong params for the Team class.
