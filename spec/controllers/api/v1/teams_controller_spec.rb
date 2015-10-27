@@ -145,7 +145,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
         before(:each) do
           @player = FactoryGirl.create :player
-          put :add_player, { user_id: @user.id, id: @team.id, player_id: @player.id }
+          put :players, { user_id: @user.id, team_id: @team.id, id: @player.id }
         end
 
         it "renders the json representation for the updated team" do

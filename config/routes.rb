@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :users, :only               => [:show, :create, :update, :destroy]
       resources :clubs, :only               => [:show, :create, :update, :destroy, :index]
       resources :teams, only: [:show, :create, :update, :destroy, :index] do
-        put 'add_player', on: :member
+        match "players/:id", to: "players", via: [:put, :delete]
       end
       resources :event_types, :only         => [:show, :create, :update, :destroy, :index]
       resources :score_types, :only         => [:show, :create, :update, :destroy, :index]

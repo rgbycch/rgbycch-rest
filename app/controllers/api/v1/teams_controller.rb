@@ -98,13 +98,14 @@ class Api::V1::TeamsController < ApplicationController
     end
   end
 
-  ##
-  # Method for adding a player to a team
-
-  def add_player
-    team = Team.find(params[:id])
-    player = Player.find_by_id(params[:player_id])
-    team.players << player
+  def players
+    team = Team.find params[:team_id]
+    player = Player.find params[:id]
+    if request.put?
+      team.players << player
+    elsif request.delete?
+      team.players.destroy player
+    end
     if team.save
       render json: team, status: 200, location: [:api, team]
     else
