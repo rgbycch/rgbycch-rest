@@ -7,7 +7,9 @@ Rails.application.routes.draw do
     scope module: :v1 do
       resources :users, :only               => [:show, :create, :update, :destroy]
       resources :clubs, :only               => [:show, :create, :update, :destroy, :index]
-      resources :teams, :only               => [:show, :create, :update, :destroy, :index]
+      resources :teams, only: [:show, :create, :update, :destroy, :index] do
+        put 'add_player', on: :member
+      end
       resources :event_types, :only         => [:show, :create, :update, :destroy, :index]
       resources :score_types, :only         => [:show, :create, :update, :destroy, :index]
       resources :player_positions, :only    => [:show, :create, :update, :destroy, :index]

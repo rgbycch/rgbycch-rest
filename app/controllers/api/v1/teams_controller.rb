@@ -42,6 +42,16 @@ class Api::V1::TeamsController < ApplicationController
     response :unprocessable_entity
   end
 
+  swagger_api :add_player do
+    summary "Adds a player to an existing Team"
+    param :path, :id, :integer, :required, "team_id"
+    param :form, :player_id, :string, :required, "player_id"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
   swagger_api :destroy do
     summary "Deletes an existing Team"
     param :path, :id, :integer, :required, "team_id"
@@ -82,6 +92,20 @@ class Api::V1::TeamsController < ApplicationController
   def update
     team = Team.find(params[:id])
     if team.update(team_params)
+      render json: team, status: 200, location: [:api, team]
+    else
+      failed_to_update(team, "team")
+    end
+  end
+
+  ##
+  # Method for adding a player to a team
+
+  def add_player
+    team = Team.find(params[:id])
+    player = Player.find_by_id(params[:player_id])
+    team.players << player
+    if team.save
       render json: team, status: 200, location: [:api, team]
     else
       failed_to_update(team, "team")

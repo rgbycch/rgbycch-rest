@@ -141,6 +141,22 @@ describe Api::V1::TeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "adding a player to a team" do
+
+        before(:each) do
+          @player = FactoryGirl.create :player
+          put :add_player, { user_id: @user.id, id: @team.id, player_id: @player.id }
+        end
+
+        it "renders the json representation for the updated team" do
+          team_response = json_response[:team]
+          expect(team_response[:players].count).to eql 1
+        end
+
+        it { should respond_with 200 }
+
+      end
+
       context "when is not updated" do
 
         before(:each) do
