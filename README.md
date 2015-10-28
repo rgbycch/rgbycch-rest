@@ -81,7 +81,15 @@ curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes
 ```
 Deleting a player:
 ```
-curl -v -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: RKcyU8wPJT1t77Tve8sQ' -H 'Content-Type: application/json' --request DELETE http://api.rgbycch-rest.dev/players/1.json
+curl -v -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' --request DELETE http://api.rgbycch-rest.dev/players/1.json
+```
+Adding a player to an existing team
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X PUT http://api.rgbycch-rest.dev/teams/[team_id_goes_here]/add_player.json -d '{"id": [player_id_goes_here]]}'
+```
+Removing a player from an existing team
+```
+curl -H 'Accept: application/vnd.rgbycch.v1' -H 'Authorization: [auth_token_goes_here]' -H 'Content-Type: application/json' -X PUT http://api.rgbycch-rest.dev/teams/[team_id_goes_here]/remove_player.json -d '{"id": [player_id_goes_here]]}'
 ```
 # Documentation
 ## swagger
