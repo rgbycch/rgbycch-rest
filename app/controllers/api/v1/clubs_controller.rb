@@ -48,8 +48,8 @@ class Api::V1::ClubsController < ApplicationController
 
   swagger_api :add_team do
     summary "Adds a team to an existing Club"
-    param :path, :club_id, :integer, :required, "club_id"
-    param :form, :id, :string, :required, "the team id"
+    param :path, :id, :integer, :required, "id"
+    param :form, :team_id, :integer, :required, "the team id"
     response :unauthorized
     response :not_found
     response :not_acceptable
@@ -106,10 +106,19 @@ class Api::V1::ClubsController < ApplicationController
   # Adding a team to a club
 
   def add_team
-    club = Club.find(params[:club_id])
-    team = Team.find(params[:id])
+    logger.info "find club with id #{params[:club_id]}"
+    club = Club.find(params[:club_id].to_f)
+    logger.info "find team with id #{params[:team_id]}"
+    team = Team.find(params[:team_id])
+    logger.info "number of teams #{club.teams.count}"
     club.teams << team
-    update_club(club)
+    logger.info "added team to club"
+    logger.info "number of teams #{club.teams.count}"
+    if club.save
+      head 200
+    else
+      failed_to_update(club, "club")
+    end
   end
 
   ##
