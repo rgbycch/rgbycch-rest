@@ -118,6 +118,9 @@ class Api::V1::TeamsController < ApplicationController
     update_team(team)
   end
 
+  ##
+  # Removing a player from a team
+
   def remove_player
     team = Team.find(params[:team_id])
     player = Player.find(params[:id])
