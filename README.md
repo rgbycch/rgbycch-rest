@@ -4,8 +4,8 @@
 RESTful API for rgbycch system. Rails based API service.
 # Initial Development Setup for Mac OSX
 1. Install rvm at https://rvm.io
-2. Install the `2.2` version of ruby with ```$ rvm install 2.2```
-3. Ensure you are using the `2.2` version of ruby with a ```rvm use 2.2``` command.
+2. Install the `2.2.3` version of ruby with ```$ rvm install 2.2.3```
+3. Ensure you are using the `2.2.3` version of ruby with a ```rvm use 2.2.3``` command.
 4. Install the following bundles on your system
 ```
 $ gem install bundler
