@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :users, :only               => [:show, :create, :update, :destroy]
       resources :clubs, :only               => [:show, :create, :update, :destroy, :index] do
         put 'add_team'
+        put 'remove_team'
       end
       resources :teams, only: [:show, :create, :update, :destroy, :index] do
         put 'add_player'
