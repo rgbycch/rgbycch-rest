@@ -46,6 +46,8 @@ curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1
 ```
 # Running Tests
 ```bundle exec rspec spec```
+## simplecov
+By default, coverage is executed every time you run the unit tests. See the `coverage` directory for details after running your tests.
 # Creating and Recreating the Database
 If you ever want a completely fresh install of the db, just clobber it with:
 ```
