@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :preferred_positions, :only => [:show, :create, :update, :destroy]
       resources :roles, :only               => [:show, :create, :update, :destroy, :index]
       resources :players, :only             => [:show, :create, :update, :destroy, :index]
+      resources :match_states, :only        => [:show, :create, :update, :destroy, :index]
       resources :sessions, :only            => [:create, :destroy]
     end
   end
