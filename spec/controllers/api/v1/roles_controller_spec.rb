@@ -40,7 +40,7 @@ describe Api::V1::RolesController, :type => :controller do
           get :show, id: @role.id
         end
 
-        it "returns the information about an role in a hash" do
+        it "returns the information about a role in a hash" do
           role_response = json_response[:role]
           expect(role_response[:title]).not_to be_nil
           expect(role_response[:url]).not_to be_nil
@@ -88,7 +88,7 @@ describe Api::V1::RolesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when an role is successfully created" do
+      context "when a role is successfully created" do
 
         before(:each) do
           @role_attributes = FactoryGirl.attributes_for :role

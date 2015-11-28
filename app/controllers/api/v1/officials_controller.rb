@@ -18,7 +18,7 @@ class Api::V1::OfficialsController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a Official"
+    summary "Gets an Official"
     param :path, :id, :integer, :required, "official_id"
     response :ok, "Success",  :official
     response :not_acceptable
@@ -53,7 +53,7 @@ class Api::V1::OfficialsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a Official
+  # Method for searching for an Official
 
   def index
     respond_with Official.search(official_search_params)
@@ -67,7 +67,7 @@ class Api::V1::OfficialsController < ApplicationController
   end
 
   ##
-  # Method for creating a Official
+  # Method for creating an Official
 
   def create
     official = Official.new(official_params)
@@ -79,7 +79,7 @@ class Api::V1::OfficialsController < ApplicationController
   end
 
   ##
-  # Method for updating a Official's details
+  # Method for updating an Official's details
 
   def update
     official = Official.find(params[:id])
@@ -91,7 +91,7 @@ class Api::V1::OfficialsController < ApplicationController
   end
 
   ##
-  # Method for deleting a Official from the db
+  # Method for deleting an Official from the db
 
   def destroy
     official = Official.find(params[:id])

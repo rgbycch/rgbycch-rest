@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :players, :only             => [:show, :create, :update, :destroy, :index]
       resources :match_states, :only        => [:show, :create, :update, :destroy, :index]
       resources :officials, :only           => [:show, :create, :update, :destroy, :index]
+      resources :venues, :only              => [:show, :create, :update, :destroy, :index]
       resources :sessions, :only            => [:create, :destroy]
     end
   end

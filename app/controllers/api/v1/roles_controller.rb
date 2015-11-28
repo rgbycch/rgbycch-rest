@@ -67,7 +67,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   ##
-  # Method for creating an role
+  # Method for creating a role
 
   def create
     role = Role.new(role_params)
@@ -79,7 +79,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   ##
-  # Method for updating an role's details
+  # Method for updating a role's details
 
   def update
     role = Role.find(params[:id])
@@ -91,7 +91,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   ##
-  # Method for deleting an role from the db
+  # Method for deleting a role from the db
 
   def destroy
     role = Role.find(params[:id])
