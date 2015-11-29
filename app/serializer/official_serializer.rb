@@ -5,6 +5,8 @@ class OfficialSerializer < ActiveModel::Serializer
 
   attributes :id, :title, :url
 
+  has_many :roles
+
   ##
   # Defines the caching key for an official
 
