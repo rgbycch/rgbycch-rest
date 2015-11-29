@@ -105,7 +105,7 @@ class Api::V1::OfficialsController < ApplicationController
   # Strong params for the Official class.
 
   def official_params
-    params.require( :official).permit(:title, :url)
+    params.require(:official).permit(:title, :url)
   end
 
   ##

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128172239) do
+ActiveRecord::Schema.define(version: 20151129054032) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +27,33 @@ ActiveRecord::Schema.define(version: 20151128172239) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "match_day_players", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "player_position_id"
+    t.integer  "rating"
+    t.integer  "points"
+    t.integer  "fouls"
+    t.integer  "turnovers_for"
+    t.integer  "turnovers_against"
+    t.integer  "penalties_won"
+    t.integer  "penalties_conceded"
+    t.integer  "yellow_cards"
+    t.integer  "red_cards"
+    t.integer  "carries"
+    t.integer  "yards_carried"
+    t.integer  "forward_passes"
+    t.integer  "successful_lineout_throws"
+    t.integer  "unsuccessful_lineout_throws"
+    t.integer  "scrums_won"
+    t.integer  "scrums_lost"
+    t.integer  "successful_garryowens"
+    t.integer  "unsuccessful_garryowens"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "match_day_players", ["player_id"], name: "index_match_day_players_on_player_id"
 
   create_table "match_states", force: :cascade do |t|
     t.string   "title"
