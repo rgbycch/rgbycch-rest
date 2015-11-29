@@ -2,8 +2,8 @@
 # Defines all attributes for a match-day player in the system. A match-day player is different from a regular player in that it records a player's state in a match.
 
 class MatchDayPlayer < ActiveRecord::Base
-  belongs_to :player
-  belongs_to :player_position
+  belongs_to :player, dependent: :destroy
+  belongs_to :player_position, dependent: :destroy
   validates :rating, numericality: { greater_than_or_equal_to: 0 }
   validates :points, numericality: { greater_than_or_equal_to: 0 }
   validates :fouls, numericality: { greater_than_or_equal_to: 0 }
