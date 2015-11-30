@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129054032) do
+ActiveRecord::Schema.define(version: 20151130074544) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "title"
@@ -51,9 +51,18 @@ ActiveRecord::Schema.define(version: 20151129054032) do
     t.integer  "unsuccessful_garryowens"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "match_day_team_id"
   end
 
+  add_index "match_day_players", ["match_day_team_id"], name: "index_match_day_players_on_match_day_team_id"
   add_index "match_day_players", ["player_id"], name: "index_match_day_players_on_player_id"
+
+  create_table "match_day_teams", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "match_states", force: :cascade do |t|
     t.string   "title"
