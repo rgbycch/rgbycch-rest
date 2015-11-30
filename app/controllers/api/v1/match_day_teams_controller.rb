@@ -44,6 +44,26 @@ class Api::V1::MatchDayTeamsController < ApplicationController
     response :unprocessable_entity
   end
 
+  swagger_api :add_match_day_player do
+    summary "Adds a match-day player to an existing match-day Team"
+    param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
+    param :form, :id, :string, :required, "the player id"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
+  swagger_api :remove_player do
+    summary "Removes an existing match-day player from a match-day Team"
+    param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
+    param :form, :id, :string, :required, "the match-day player id"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
   swagger_api :destroy do
     summary "Deletes an existing Match-Day Team"
     param :path, :id, :integer, :required, "match_day_team_id"
@@ -91,6 +111,26 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
+  # Adding a match-day player to a match-day team
+
+  def add_match_day_player
+    match_day_team = MatchDayTeam.find(params[:match_day_team_id])
+    match_day_player = MatchDayPlayer.find(params[:id])
+    match_day_team.match_day_players << match_day_player
+    update_match_day_team(match_day_team)
+  end
+
+  ##
+  # Removing a match-day player from a match-day team
+
+  def remove_match_day_player
+    match_day_team = MatchDayTeam.find(params[:match_day_team_id])
+    match_day_player = MatchDayPlayer.find(params[:id])
+    match_day_team.match_day_players.delete(match_day_player)
+    update_match_day_team(match_day_team)
+  end
+
+  ##
   # Method for deleting a Match-Day Team from the db
 
   def destroy
@@ -100,6 +140,17 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   private
+
+  ##
+  # Common functionality for updating a match-day team
+
+  def update_match_day_team(match_day_team)
+    if match_day_team.save
+      render json: match_day_team, status: 200, location: [:api, match_day_team]
+    else
+      failed_to_update(match_day_team, "match_day_team")
+    end
+  end
 
   ##
   # Strong params for the Match-Day Team class.

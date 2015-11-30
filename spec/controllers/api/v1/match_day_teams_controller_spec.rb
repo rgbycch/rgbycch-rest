@@ -142,6 +142,38 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
+      context "adding a match-day player to a match-day team" do
+
+        before(:each) do
+          @match_day_player = FactoryGirl.create :match_day_player
+          put :add_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
+        end
+
+        it "renders the json representation for the updated match-day team" do
+          match_day_team_response = json_response[:match_day_team]
+          expect(match_day_team_response[:match_day_players].count).to eql 1
+        end
+
+        it { should respond_with 200 }
+
+      end
+
+      context "removing a match-day player from a match-day team" do
+
+        before(:each) do
+          @match_day_player = FactoryGirl.create :match_day_player
+          put :remove_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
+        end
+
+        it "renders the json representation for the updated match-day team" do
+          match_day_team_response = json_response[:match_day_team]
+          expect(match_day_team_response[:match_day_players].count).to eql 0
+        end
+
+        it { should respond_with 200 }
+
+      end
+
       context "when is not updated" do
 
         before(:each) do
