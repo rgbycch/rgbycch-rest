@@ -27,6 +27,7 @@ describe MatchDayPlayer do
   it { should respond_to(:unsuccessful_garryowens) }
 
   it { should validate_numericality_of(:rating).is_greater_than_or_equal_to(0) }
+  it { should validate_numericality_of(:rating).is_less_than_or_equal_to(100) }
   it { should validate_numericality_of(:points).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:fouls).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:turnovers_for).is_greater_than_or_equal_to(0) }
@@ -34,7 +35,9 @@ describe MatchDayPlayer do
   it { should validate_numericality_of(:penalties_won).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:penalties_conceded).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:yellow_cards).is_greater_than_or_equal_to(0) }
+  it { should validate_numericality_of(:yellow_cards).is_less_than_or_equal_to(2) }
   it { should validate_numericality_of(:red_cards).is_greater_than_or_equal_to(0) }
+  it { should validate_numericality_of(:red_cards).is_less_than_or_equal_to(1) }
   it { should validate_numericality_of(:carries).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:yards_carried).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:forward_passes).is_greater_than_or_equal_to(0) }

@@ -5,15 +5,15 @@ class MatchDayPlayer < ActiveRecord::Base
   extend Searchable
   belongs_to :player, dependent: :destroy
   belongs_to :player_position, dependent: :destroy
-  validates :rating, numericality: { greater_than_or_equal_to: 0 }
+  validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :points, numericality: { greater_than_or_equal_to: 0 }
   validates :fouls, numericality: { greater_than_or_equal_to: 0 }
   validates :turnovers_for, numericality: { greater_than_or_equal_to: 0 }
   validates :turnovers_against, numericality: { greater_than_or_equal_to: 0 }
   validates :penalties_won, numericality: { greater_than_or_equal_to: 0 }
   validates :penalties_conceded, numericality: { greater_than_or_equal_to: 0 }
-  validates :yellow_cards, numericality: { greater_than_or_equal_to: 0 }
-  validates :red_cards, numericality: { greater_than_or_equal_to: 0 }
+  validates :yellow_cards, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 2}
+  validates :red_cards, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
   validates :carries, numericality: { greater_than_or_equal_to: 0 }
   validates :yards_carried, numericality: { greater_than_or_equal_to: 0 }
   validates :forward_passes, numericality: { greater_than_or_equal_to: 0 }
