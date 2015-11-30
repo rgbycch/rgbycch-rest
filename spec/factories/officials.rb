@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :official do
     title "Mr Referee"
-    url "http://pics.referee.com/1.png"
+    url     { FFaker::Internet.http_url }
   end
 end

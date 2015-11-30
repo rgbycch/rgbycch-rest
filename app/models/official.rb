@@ -4,6 +4,7 @@
 class Official < ActiveRecord::Base
   extend Searchable
   validates :title, presence: true
+  scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   def self.id_params_identifier
     :official_ids
