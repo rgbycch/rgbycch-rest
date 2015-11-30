@@ -93,4 +93,5 @@ class Api::V1::PreferredPositionsController < ApplicationController
   def preferred_position_params
     params.require(:preferred_position).permit(:preference, :player_id, :player_position_id)
   end
+
 end
