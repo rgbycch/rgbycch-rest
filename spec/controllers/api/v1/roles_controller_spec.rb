@@ -175,7 +175,7 @@ describe Api::V1::RolesController, :type => :controller do
           expect(role_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the role could not be created" do
+        it "renders the json errors on why the role could not be updated" do
           role_response = json_response
           expect(role_response[:errors][:title]).to include "can't be blank"
         end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :officials, :only           => [:show, :create, :update, :destroy, :index]
       resources :venues, :only              => [:show, :create, :update, :destroy, :index]
       resources :match_day_teams, :only     => [:show, :create, :update, :destroy, :index]
+      resources :match_day_players, :only   => [:show, :create, :update, :destroy, :index]
       resources :sessions, :only            => [:create, :destroy]
     end
   end

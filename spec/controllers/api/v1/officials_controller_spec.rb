@@ -152,7 +152,7 @@ describe Api::V1::OfficialsController, :type => :controller do
           expect(official_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the official could not be created" do
+        it "renders the json errors on why the official could not be updated" do
           official_response = json_response
           expect(official_response[:errors][:title]).to include "can't be blank"
         end

@@ -153,7 +153,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
           expect(match_day_team_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the team could not be created" do
+        it "renders the json errors on why the team could not be updated" do
           match_day_team_response = json_response
           expect(match_day_team_response[:errors][:title]).to include "can't be blank"
         end

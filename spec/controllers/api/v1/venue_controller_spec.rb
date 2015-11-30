@@ -159,7 +159,7 @@ describe Api::V1::VenuesController, :type => :controller do
           expect(venue_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the venue could not be created" do
+        it "renders the json errors on why the venue could not be updated" do
           venue_response = json_response
           expect(venue_response[:errors][:title]).to include "can't be blank"
         end

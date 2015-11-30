@@ -152,7 +152,7 @@ describe Api::V1::MatchStatesController, :type => :controller do
           expect(match_state_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the match state could not be created" do
+        it "renders the json errors on why the match state could not be updated" do
           match_state_response = json_response
           expect(match_state_response[:errors][:title]).to include "can't be blank"
         end

@@ -2,6 +2,7 @@
 # Defines all attributes for a match-day player in the system. A match-day player is different from a regular player in that it records a player's state in a match.
 
 class MatchDayPlayer < ActiveRecord::Base
+  extend Searchable
   belongs_to :player, dependent: :destroy
   belongs_to :player_position, dependent: :destroy
   validates :rating, numericality: { greater_than_or_equal_to: 0 }
@@ -22,4 +23,12 @@ class MatchDayPlayer < ActiveRecord::Base
   validates :scrums_lost, numericality: { greater_than_or_equal_to: 0 }
   validates :successful_garryowens, numericality: { greater_than_or_equal_to: 0 }
   validates :unsuccessful_garryowens, numericality: { greater_than_or_equal_to: 0 }
+
+  # TODO
+  scope :filter_by_title, lambda { |keyword| where("lower(player.first_name) LIKE ? OR lower(player.last_name) LIKE ? OR lower(player.nick_name) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%", "%#{keyword.downcase}%" ) }
+
+  def self.id_params_identifier
+    :match_day_player_ids
+  end
+
 end

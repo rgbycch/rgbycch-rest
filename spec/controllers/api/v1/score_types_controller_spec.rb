@@ -155,7 +155,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
           expect(score_type_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the score type could not be created" do
+        it "renders the json errors on why the score type could not be updated" do
           score_type_response = json_response
           expect(score_type_response[:errors][:title]).to include "can't be blank"
         end

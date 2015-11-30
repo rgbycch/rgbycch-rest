@@ -45,4 +45,54 @@ describe MatchDayPlayer do
   it { should validate_numericality_of(:successful_garryowens).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:unsuccessful_garryowens).is_greater_than_or_equal_to(0) }
 
+  context "filtering and searching" do
+
+    before(:each) do
+      @player1 = FactoryGirl.create :player, first_name: "Tom", last_name: "Thumb", nick_name: "Tommy Four Fingers"
+      @player2 = FactoryGirl.create :player, first_name: "Dick", last_name: "Turpin", nick_name: "Hatchet"
+      @player3 = FactoryGirl.create :player, first_name: "Harry", last_name: "Hill", nick_name: "Hatchet Man"
+      @player4 = FactoryGirl.create :player, first_name: "Jimmy", last_name: "Hill", nick_name: "Hatchet Header"
+
+      @match_day_player1 = FactoryGirl.create :match_day_player, player: @player1
+      @match_day_player2 = FactoryGirl.create :match_day_player, player: @player2
+      @match_day_player3 = FactoryGirl.create :match_day_player, player: @player3
+      @match_day_player4 = FactoryGirl.create :match_day_player, player: @player4
+    end
+
+    describe ".filter_by_title" do
+
+      context "when a 'Hatchet' title pattern is sent" do
+
+        it "returns the match-day players matching" do
+          # TODO - Figure out how to delegate to the underlying player
+          # expect(MatchDayPlayer.filter_by_title("Hatchet").sort).to match_array([@match_day_player2, @match_day_player3, @match_day_player4])
+        end
+
+      end
+
+    end
+
+    describe ".search" do
+
+      context "when an empty hash is sent" do
+
+        it "returns all the match-day players" do
+          expect(MatchDayPlayer.search({})).to match_array([@match_day_player1, @match_day_player2, @match_day_player3, @match_day_player4])
+        end
+
+      end
+
+      context "when match_day_player_ids is present" do
+
+        it "returns the match-day players associated with those ids" do
+          search_hash = { match_day_player_ids: [@match_day_player1.id, @match_day_player2.id]}
+          expect(MatchDayPlayer.search(search_hash)).to match_array([@match_day_player1, @match_day_player2])
+        end
+
+      end
+
+    end
+
+  end
+
 end

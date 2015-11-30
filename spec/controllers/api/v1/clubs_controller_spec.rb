@@ -176,7 +176,7 @@ describe Api::V1::ClubsController, :type => :controller do
           expect(club_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the club could not be created" do
+        it "renders the json errors on why the club could not be updated" do
           club_response = json_response
           expect(club_response[:errors][:title]).to include "can't be blank"
         end

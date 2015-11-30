@@ -155,7 +155,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
           expect(preferred_position_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the preferred position could not be created" do
+        it "renders the json errors on why the preferred position could not be updated" do
           preferred_position_response = json_response
           expect(preferred_position_response[:errors][:preference]).to include "must be greater than or equal to 0"
         end

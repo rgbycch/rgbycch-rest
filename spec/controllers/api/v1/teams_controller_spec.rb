@@ -184,7 +184,7 @@ describe Api::V1::TeamsController, :type => :controller do
           expect(team_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the team could not be created" do
+        it "renders the json errors on why the team could not be updated" do
           team_response = json_response
           expect(team_response[:errors][:title]).to include "can't be blank"
         end

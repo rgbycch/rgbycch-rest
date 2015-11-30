@@ -181,7 +181,7 @@ describe Api::V1::PlayersController, :type => :controller do
           expect(player_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the player could not be created" do
+        it "renders the json errors on why the player could not be updated" do
           player_response = json_response
           expect(player_response[:errors][:last_name]).to include "can't be blank"
         end

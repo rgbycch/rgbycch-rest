@@ -176,7 +176,7 @@ describe Api::V1::EventTypesController, :type => :controller do
           expect(event_type_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the event type could not be created" do
+        it "renders the json errors on why the event type could not be updated" do
           event_type_response = json_response
           expect(event_type_response[:errors][:title]).to include "can't be blank"
         end

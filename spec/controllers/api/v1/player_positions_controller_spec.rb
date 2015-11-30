@@ -177,7 +177,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
           expect(player_position_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the player position could not be created" do
+        it "renders the json errors on why the player position could not be updated" do
           player_position_response = json_response
           expect(player_position_response[:errors][:title]).to include "can't be blank"
         end

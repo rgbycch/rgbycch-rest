@@ -106,7 +106,7 @@ describe Api::V1::UsersController, :type => :controller do
         expect(user_response).to have_key(:errors)
       end
 
-      it "renders the json errors on whye the user could not be created" do
+      it "renders the json errors on whye the user could not be updated" do
         user_response = json_response
         expect(user_response[:errors][:email]).to include "is invalid"
       end
