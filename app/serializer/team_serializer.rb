@@ -4,7 +4,6 @@
 class TeamSerializer < ActiveModel::Serializer
   attributes :id, :title
   has_many :players
-  has_one :club
 
   ##
   # Defines the caching key for a team
