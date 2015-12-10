@@ -41,4 +41,5 @@ bower.json
 /public/api/v1/*
 
 # IDEs
+*.iml
 .idea
