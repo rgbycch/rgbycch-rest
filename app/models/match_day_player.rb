@@ -5,6 +5,7 @@ class MatchDayPlayer < ActiveRecord::Base
   extend Searchable
   belongs_to :player, dependent: :destroy
   belongs_to :player_position, dependent: :destroy
+  has_one :match_day_team
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :points, numericality: { greater_than_or_equal_to: 0 }
   validates :fouls, numericality: { greater_than_or_equal_to: 0 }

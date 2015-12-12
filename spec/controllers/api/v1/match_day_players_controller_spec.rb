@@ -42,8 +42,6 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
 
         it "returns the information about a match-day player in a hash" do
           match_day_player_response = json_response[:match_day_player]
-          # TODO Match Day Teams?
-          # expect(match_day_player_response[:match_day_team]).not_to be_nil
           expect(match_day_player_response[:player]).not_to be_nil
           expect(match_day_player_response[:player_position]).not_to be_nil
           expect(match_day_player_response[:rating]).not_to be_nil
@@ -115,10 +113,8 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
           post :create, { match_day_player: @match_day_player_attributes }
         end
 
-        it "renders the json representation for the player just created" do
+        it "renders the json representation for the match-day player just created" do
           match_day_player_response = json_response[:match_day_player]
-          # TODO Match Day Teams?
-          # expect(match_day_player_response[:match_day_team]).to eql @match_day_player_attributes[:match_day_team]
           expect(match_day_player_response[:player]).to eql @match_day_player_attributes[:player]
           expect(match_day_player_response[:player_position]).to eql @match_day_player_attributes[:player_position]
           expect(match_day_player_response[:rating]).to eql @match_day_player_attributes[:rating]
