@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a score type in the system. An example type of score is a 'try', 'penalty' or 'drop goal'
+# Defines all attributes for a ScoreType in the system. An example type of score is a 'try', 'penalty' or 'drop goal'
 
 class ScoreType < ActiveRecord::Base
   extend Searchable
@@ -9,7 +9,7 @@ class ScoreType < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for score types
+  # Used when searching for ScoreTypes
 
   def self.id_params_identifier
     :score_type_ids

@@ -1,15 +1,15 @@
 ##
-# All CRUD and search operations for score types are handled in this controller
+# All CRUD and search operations for ScoreTypes are handled in this controller
 
 class Api::V1::ScoreTypesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :score_types, "Score Types"
+  swagger_controller :score_types, "ScoreTypes"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for Score Types"
+    summary "Searches for ScoreTypes"
     param :query, :score_type_ids, :string, :optional, "score_type_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :score_types
@@ -18,7 +18,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a Score Type"
+    summary "Gets a ScoreType"
     param :path, :id, :integer, :required, "score_type_id"
     response :ok, "Success", :score_type
     response :not_acceptable
@@ -26,7 +26,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new Score Type"
+    summary "Creates a new ScoreType"
     param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
     param :form, :points, :integer, :required, "points"
@@ -35,7 +35,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing Score Type"
+    summary "Updates an existing ScoreType"
     param :path, :id, :integer, :required, "score_type_id"
     param :form, :title, :string, :optional, "title"
     param :form, :url, :string, :optional, "url"
@@ -47,7 +47,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing Score Type"
+    summary "Deletes an existing ScoreType"
     param :path, :id, :integer, :required, "score_type_id"
     response :unauthorized
     response :not_found
@@ -55,21 +55,21 @@ class Api::V1::ScoreTypesController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a score type
+  # Method for searching for a ScoreType
 
   def index
     respond_with ScoreType.search(score_type_search_params)
   end
 
   ##
-  # Method for showing one score type
+  # Method for showing one ScoreType
 
   def show
     respond_with ScoreType.find(params[:id])
   end
 
   ##
-  # Method for creating a score type
+  # Method for creating a ScoreType
 
   def create
     score_type = ScoreType.new(score_type_params)
@@ -81,7 +81,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   ##
-  # Method for updating a score type's details
+  # Method for updating a ScoreType's details
 
   def update
     score_type = ScoreType.find(params[:id])
@@ -93,7 +93,7 @@ class Api::V1::ScoreTypesController < ApplicationController
   end
 
   ##
-  # Method for deleting a score type from the db
+  # Method for deleting a ScoreType from the db
 
   def destroy
     score_type = ScoreType.find(params[:id])

@@ -55,7 +55,7 @@ class Api::V1::ClubsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a club
+  # Method for searching for a Club
 
   def index
     respond_with Club.search(club_search_params)
@@ -69,7 +69,7 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   ##
-  # Method for creating a club
+  # Method for creating a Club
 
   def create
     club = Club.new(club_params)
@@ -81,7 +81,7 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   ##
-  # Method for updating a club's details
+  # Method for updating a Club's details
 
   def update
     club = Club.find(params[:id])
@@ -93,7 +93,7 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   ##
-  # Method for deleting a club from the db
+  # Method for deleting a Club from the db
 
   def destroy
     club = Club.find(params[:id])

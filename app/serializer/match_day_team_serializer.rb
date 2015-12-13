@@ -8,7 +8,7 @@ class MatchDayTeamSerializer < ActiveModel::Serializer
   has_many :match_day_players
 
   ##
-  # Defines the caching key for a club
+  # Defines the caching key for a MatchDayTeam
 
   def cache_key
     [object, scope]

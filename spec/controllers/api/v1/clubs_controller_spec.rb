@@ -32,7 +32,7 @@ describe Api::V1::ClubsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a club which is present" do
+      context "User requests a Club which is present" do
 
         before(:each) do
           @club = FactoryGirl.create :club
@@ -40,7 +40,7 @@ describe Api::V1::ClubsController, :type => :controller do
           get :show, id: @club.id
         end
 
-        it "returns the information about a club in a hash" do
+        it "returns the information about a Club in a hash" do
           club_response = json_response[:club]
           expect(club_response[:title]).not_to be_nil
           expect(club_response[:url]).not_to be_nil
@@ -51,7 +51,7 @@ describe Api::V1::ClubsController, :type => :controller do
 
       end
 
-      context "User requests a club which is not present" do
+      context "User requests a Club which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -89,7 +89,7 @@ describe Api::V1::ClubsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a club is successfully created" do
+      context "when a Club is successfully created" do
 
         before(:each) do
           @club_attributes = FactoryGirl.attributes_for :club

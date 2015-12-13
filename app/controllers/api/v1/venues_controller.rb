@@ -73,7 +73,7 @@ class Api::V1::VenuesController < ApplicationController
   end
 
   ##
-  # Method for creating a venue
+  # Method for creating a Venue
 
   def create
     venue = Venue.new(venue_params)
@@ -85,7 +85,7 @@ class Api::V1::VenuesController < ApplicationController
   end
 
   ##
-  # Method for updating a venue's details
+  # Method for updating a Venue's details
 
   def update
     venue = Venue.find(params[:id])
@@ -97,7 +97,7 @@ class Api::V1::VenuesController < ApplicationController
   end
 
   ##
-  # Method for deleting a venue from the db
+  # Method for deleting a Venue from the db
 
   def destroy
     venue = Venue.find(params[:id])

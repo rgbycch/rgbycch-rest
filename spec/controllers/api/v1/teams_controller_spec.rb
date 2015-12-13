@@ -162,7 +162,7 @@ describe Api::V1::TeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
-      context "adding a player to a team" do
+      context "adding a Player to a team" do
 
         before(:each) do
           @player = FactoryGirl.create :player
@@ -178,7 +178,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "removing a player from a team" do
+      context "removing a Player from a team" do
 
         before(:each) do
           @player = FactoryGirl.create :player

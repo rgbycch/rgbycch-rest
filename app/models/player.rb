@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a player in the system.
+# Defines all attributes for a Player in the system.
 
 class Player < ActiveRecord::Base
   extend Searchable

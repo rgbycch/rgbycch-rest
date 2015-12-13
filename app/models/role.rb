@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for an role in the system. An example type of role would be a player, manager, referee, physio
+# Defines all attributes for an role in the system. An example type of role would be a Player, manager, referee, physio
 
 class Role < ActiveRecord::Base
   extend Searchable

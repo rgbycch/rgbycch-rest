@@ -73,7 +73,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a score type
+  # Method for searching for a MatchDayTeam
 
   def index
     respond_with MatchDayTeam.search(team_search_params)

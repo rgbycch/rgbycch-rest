@@ -32,7 +32,7 @@ describe Api::V1::PlayersController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a player which is present" do
+      context "User requests a Player which is present" do
 
         before(:each) do
           @player = FactoryGirl.create :player
@@ -40,7 +40,7 @@ describe Api::V1::PlayersController, :type => :controller do
           get :show, id: @player.id
         end
 
-        it "returns the information about a player in a hash" do
+        it "returns the information about a Player in a hash" do
           player_response = json_response[:player]
 
           expect(player_response[:first_name]).not_to be_nil
@@ -55,7 +55,7 @@ describe Api::V1::PlayersController, :type => :controller do
 
       end
 
-      context "User requests a player which is not present" do
+      context "User requests a Player which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -94,7 +94,7 @@ describe Api::V1::PlayersController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a player is successfully created" do
+      context "when a Player is successfully created" do
 
         before(:each) do
           @player_attributes = FactoryGirl.attributes_for :player

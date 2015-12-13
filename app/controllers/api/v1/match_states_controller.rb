@@ -5,11 +5,11 @@ class Api::V1::MatchStatesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :match_states, "Match States"
+  swagger_controller :match_states, "MatchStates"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for Match States"
+    summary "Searches for MatchStates"
     param :query, :match_state_ids, :string, :optional, "match_state_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :match_states
@@ -18,7 +18,7 @@ class Api::V1::MatchStatesController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a Match State"
+    summary "Gets a MatchState"
     param :path, :id, :integer, :required, "match_state_id"
     response :ok, "Success", :match_state
     response :not_acceptable
@@ -51,21 +51,21 @@ class Api::V1::MatchStatesController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a Match State
+  # Method for searching for a MatchState
 
   def index
     respond_with MatchState.search(match_state_search_params)
   end
 
   ##
-  # Method for showing one Match State
+  # Method for showing one MatchState
 
   def show
     respond_with MatchState.find(params[:id])
   end
 
   ##
-  # Method for creating a Match State
+  # Method for creating a MatchState
 
   def create
     match_state = MatchState.new(match_state_params)
@@ -77,7 +77,7 @@ class Api::V1::MatchStatesController < ApplicationController
   end
 
   ##
-  # Method for updating a Match State's details
+  # Method for updating a MatchState's details
 
   def update
     match_state = MatchState.find(params[:id])
@@ -89,7 +89,7 @@ class Api::V1::MatchStatesController < ApplicationController
   end
 
   ##
-  # Method for deleting a Match State from the db
+  # Method for deleting a MatchState from the db
 
   def destroy
     match_state = MatchState.find(params[:id])

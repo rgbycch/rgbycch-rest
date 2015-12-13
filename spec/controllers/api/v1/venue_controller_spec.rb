@@ -32,14 +32,14 @@ describe Api::V1::VenuesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a venue which is present" do
+      context "User requests a Venue which is present" do
 
         before(:each) do
           @venue = FactoryGirl.create :venue
           get :show, id: @venue.id
         end
 
-        it "returns the information about a venue in a hash" do
+        it "returns the information about a Venue in a hash" do
           venue_response = json_response[:venue]
           expect(venue_response[:title]).not_to be_nil
           expect(venue_response[:url]).not_to be_nil
@@ -52,7 +52,7 @@ describe Api::V1::VenuesController, :type => :controller do
 
       end
 
-      context "User requests a venue which is not present" do
+      context "User requests a Venue which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -90,7 +90,7 @@ describe Api::V1::VenuesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a venue is successfully created" do
+      context "when a Venue is successfully created" do
 
         before(:each) do
           @venue_attributes = FactoryGirl.attributes_for :venue

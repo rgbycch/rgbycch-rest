@@ -53,21 +53,21 @@ class Api::V1::RolesController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a role
+  # Method for searching for a Role
 
   def index
     respond_with Role.search(role_search_params)
   end
 
   ##
-  # Method for showing one role
+  # Method for showing one Role
 
   def show
     respond_with Role.find(params[:id])
   end
 
   ##
-  # Method for creating a role
+  # Method for creating a Role
 
   def create
     role = Role.new(role_params)
@@ -79,7 +79,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   ##
-  # Method for updating a role's details
+  # Method for updating a Role's details
 
   def update
     role = Role.find(params[:id])
@@ -91,7 +91,7 @@ class Api::V1::RolesController < ApplicationController
   end
 
   ##
-  # Method for deleting a role from the db
+  # Method for deleting a Role from the db
 
   def destroy
     role = Role.find(params[:id])

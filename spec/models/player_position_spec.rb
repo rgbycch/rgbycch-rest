@@ -66,7 +66,7 @@ describe PlayerPosition do
 
       context "when player_position_ids is present" do
 
-        it "returns the player positions associated with those ids" do
+        it "returns the PlayerPositions associated with those ids" do
           search_hash = { player_position_ids: [@player_position1.id, @player_position2.id]}
           expect(PlayerPosition.search(search_hash)).to match_array([@player_position1, @player_position2])
         end

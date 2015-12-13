@@ -32,7 +32,7 @@ describe Api::V1::EventTypesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests an event type which is present" do
+      context "User requests an EventType which is present" do
 
         before(:each) do
           @event_type = FactoryGirl.create :event_type
@@ -40,7 +40,7 @@ describe Api::V1::EventTypesController, :type => :controller do
           get :show, id: @event_type.id
         end
 
-        it "returns the information about an event type in a hash" do
+        it "returns the information about an EventType in a hash" do
           event_type_response = json_response[:event_type]
           expect(event_type_response[:title]).not_to be_nil
           expect(event_type_response[:url]).not_to be_nil
@@ -50,7 +50,7 @@ describe Api::V1::EventTypesController, :type => :controller do
 
       end
 
-      context "User requests an event type which is not present" do
+      context "User requests an EventType which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -89,7 +89,7 @@ describe Api::V1::EventTypesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when an event type is successfully created" do
+      context "when an EventType is successfully created" do
 
         before(:each) do
           @event_type_attributes = FactoryGirl.attributes_for :event_type
@@ -154,12 +154,12 @@ describe Api::V1::EventTypesController, :type => :controller do
       context "when is successfully updated" do
 
         before(:each) do
-          patch :update, { user_id: @user.id, id: @event_type.id, event_type: { title: "Updated Event Type Name" } }
+          patch :update, { user_id: @user.id, id: @event_type.id, event_type: { title: "Updated EventType Name" } }
         end
 
         it "renders the json representation for the updated event type" do
           event_type_response = json_response[:event_type]
-          expect(event_type_response[:title]).to eql "Updated Event Type Name"
+          expect(event_type_response[:title]).to eql "Updated EventType Name"
         end
 
         it { should respond_with 200 }
@@ -189,7 +189,7 @@ describe Api::V1::EventTypesController, :type => :controller do
     context "User is not logged in" do
 
       before(:each) do
-        patch :update, { id: @event_type.id, event_type: { title: "Updated Event Type Name" } }
+        patch :update, { id: @event_type.id, event_type: { title: "Updated EventType Name" } }
       end
 
       it { should respond_with 401 }

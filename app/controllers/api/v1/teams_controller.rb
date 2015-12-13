@@ -43,7 +43,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   swagger_api :add_player do
-    summary "Adds a player to an existing Team"
+    summary "Adds a Player to an existing Team"
     param :path, :team_id, :integer, :required, "team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -53,7 +53,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   swagger_api :remove_player do
-    summary "Removes a player from an existing Team"
+    summary "Removes a Player from an existing Team"
     param :path, :team_id, :integer, :required, "team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -71,7 +71,7 @@ class Api::V1::TeamsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a score type
+  # Method for searching for a ScoreType
 
   def index
     respond_with Team.search(team_search_params)
@@ -109,7 +109,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   ##
-  # Adding a player to a team
+  # Adding a Player to a team
 
   def add_player
     team = Team.find(params[:team_id])

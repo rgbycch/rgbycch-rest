@@ -1,5 +1,5 @@
 ##
-# Ensures a club is formatted correctly in API responses
+# Ensures a Club is formatted correctly in API responses
 
 class ClubSerializer < ActiveModel::Serializer
 
@@ -8,7 +8,7 @@ class ClubSerializer < ActiveModel::Serializer
   has_many :teams
 
   ##
-  # Defines the caching key for a club
+  # Defines the caching key for a Club
 
   def cache_key
     [object, scope]

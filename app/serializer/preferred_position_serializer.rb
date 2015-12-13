@@ -1,5 +1,5 @@
 ##
-# Ensures a preferred position is formatted correctly in API responses
+# Ensures a PreferredPosition is formatted correctly in API responses
 
 class PreferredPositionSerializer < ActiveModel::Serializer
 
@@ -9,7 +9,7 @@ class PreferredPositionSerializer < ActiveModel::Serializer
   has_one :player_position
 
   ##
-  # Defines the caching key for a preferred position
+  # Defines the caching key for a PreferredPosition
 
   def cache_key
     [object, scope]

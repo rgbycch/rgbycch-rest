@@ -1,15 +1,15 @@
 ##
-# All CRUD and search operations for player positions are handled in this controller
+# All CRUD and search operations for PlayerPositions are handled in this controller
 
 class Api::V1::PlayerPositionsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :player_positions, "Player Positions"
+  swagger_controller :player_positions, "PlayerPositions"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for a Player Position"
+    summary "Searches for a PlayerPosition"
     param :query, :player_position_ids, :string, :optional, "player_position_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :player_positions
@@ -18,7 +18,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a Player Position"
+    summary "Gets a PlayerPosition"
     param :path, :id, :integer, :required, "player_position_id"
     response :ok, "Success", :player_position
     response :not_acceptable
@@ -26,7 +26,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new Player Position"
+    summary "Creates a new PlayerPosition"
     param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
     param :form, :position_number, :integer, :required, "position_number"
@@ -35,7 +35,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing Player Position"
+    summary "Updates an existing PlayerPosition"
     param :path, :id, :integer, :required, "player_position_id"
     param :form, :title, :string, :optional, "title"
     param :form, :url, :string, :optional, "url"
@@ -47,7 +47,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing Player Position"
+    summary "Deletes an existing PlayerPosition"
     param :path, :id, :integer, :required, "player_position_id"
     response :unauthorized
     response :not_found
@@ -55,21 +55,21 @@ class Api::V1::PlayerPositionsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for an player position
+  # Method for searching for a PlayerPosition
 
   def index
     respond_with PlayerPosition.search(player_position_search_params)
   end
 
   ##
-  # Method for showing one player position
+  # Method for showing one PlayerPosition
 
   def show
     respond_with PlayerPosition.find(params[:id])
   end
 
   ##
-  # Method for creating a player position
+  # Method for creating a PlayerPosition
 
   def create
     player_position = PlayerPosition.new(player_position_params)
@@ -81,7 +81,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   ##
-  # Method for updating a player position details
+  # Method for updating a PlayerPosition details
 
   def update
     player_position = PlayerPosition.find(params[:id])
@@ -93,7 +93,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   ##
-  # Method for deleting a player position from the db
+  # Method for deleting a PlayerPosition from the db
 
   def destroy
     player_position = PlayerPosition.find(params[:id])
@@ -111,7 +111,7 @@ class Api::V1::PlayerPositionsController < ApplicationController
   end
 
   ##
-  # Strong params used when searching for Player Positions.
+  # Strong params used when searching for PlayerPositions.
 
   def player_position_search_params
     params.permit(:player_position_ids, :keyword)

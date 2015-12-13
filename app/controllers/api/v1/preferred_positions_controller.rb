@@ -1,15 +1,15 @@
 ##
-# All CRUD operations for a player's preferred position is handled in this controller
+# All CRUD operations for a Player's PreferredPosition is handled in this controller
 
 class Api::V1::PreferredPositionsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :preferred_positions, "Preferred Positions"
+  swagger_controller :preferred_positions, "PreferredPositions"
 
   # :nocov:
   swagger_api :show do
-    summary "Gets a Preferred Position"
+    summary "Gets a PreferredPosition"
     param :path, :id, :integer, :required, "preferred_position_id"
     response :ok, "Success", :preferred_position
     response :not_acceptable
@@ -17,7 +17,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new Preferred Position"
+    summary "Creates a new PreferredPosition"
     param :form, :player_id, :string, :required, "player_id"
     param :form, :player_position_id, :string, :required, "player_position_id"
     param :form, :preference, :integer, :required, "preference"
@@ -26,7 +26,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing Preferred Position"
+    summary "Updates an existing PreferredPosition"
     param :path, :id, :integer, :required, "preferred_position_id"
     param :form, :player_id, :string, :optional, "player_id"
     param :form, :player_position_id, :string, :optional, "player_position_id"
@@ -38,7 +38,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing Preferred Position"
+    summary "Deletes an existing PreferredPosition"
     param :path, :id, :integer, :required, "preferred_position_id"
     response :unauthorized
     response :not_found
@@ -46,14 +46,14 @@ class Api::V1::PreferredPositionsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for showing one preferred position
+  # Method for showing one PreferredPosition
 
   def show
     respond_with PreferredPosition.find(params[:id])
   end
 
   ##
-  # Method for creating a preferred position
+  # Method for creating a PreferredPosition
 
   def create
     preferred_position = PreferredPosition.new(preferred_position_params)
@@ -65,7 +65,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   end
 
   ##
-  # Method for updating a preferred position details
+  # Method for updating a PreferredPosition details
 
   def update
     preferred_position = PreferredPosition.find(params[:id])
@@ -77,7 +77,7 @@ class Api::V1::PreferredPositionsController < ApplicationController
   end
 
   ##
-  # Method for deleting a preferred position from the db
+  # Method for deleting a PreferredPosition from the db
 
   def destroy
     preferred_position = PreferredPosition.find(params[:id])
