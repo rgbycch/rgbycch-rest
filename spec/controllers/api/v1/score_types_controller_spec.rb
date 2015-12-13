@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::ScoreTypesController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        3.times { FactoryGirl.create :score_type}
+        get :index
+      end
+
+      it "returns 3 score types from the database" do
+        score_type_response = json_response[:score_types]
+        expect(score_type_response.size).to eq(3)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do

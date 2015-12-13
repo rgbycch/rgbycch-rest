@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::OfficialsController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        3.times { FactoryGirl.create :official}
+        get :index
+      end
+
+      it "returns 3 officials from the database" do
+        official_response = json_response[:officials]
+        expect(official_response.size).to eq(3)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do
