@@ -8,6 +8,9 @@ class Venue < ActiveRecord::Base
   validates :longitude, presence: true
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for venues
+
   def self.id_params_identifier
     :venue_ids
   end

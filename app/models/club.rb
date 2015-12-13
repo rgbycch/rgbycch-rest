@@ -7,6 +7,9 @@ class Club < ActiveRecord::Base
   has_many :teams, dependent: :destroy
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for clubs
+
   def self.id_params_identifier
     :club_ids
   end

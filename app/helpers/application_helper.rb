@@ -1,5 +1,5 @@
 ##
-# App Helper method appear here.
+# App Helper methods appear here.
 
 module ApplicationHelper
 end

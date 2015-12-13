@@ -13,7 +13,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         get :index
       end
 
-      it "returns 3 MatchDay players from the database" do
+      it "returns 3 MatchDayPlayers from the database" do
         match_day_players_response = json_response[:match_day_players]
         expect(match_day_players_response.size).to eq(3)
       end
@@ -32,7 +32,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a MatchDay player which is present" do
+      context "User requests a MatchDayPlayer which is present" do
 
         before(:each) do
           @match_day_player = FactoryGirl.create :match_day_player
@@ -40,7 +40,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
           get :show, id: @match_day_player.id
         end
 
-        it "returns the information about a MatchDay player in a hash" do
+        it "returns the information about a MatchDayPlayer in a hash" do
           match_day_player_response = json_response[:match_day_player]
           expect(match_day_player_response[:player]).not_to be_nil
           expect(match_day_player_response[:player_position]).not_to be_nil
@@ -68,7 +68,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
 
       end
 
-      context "User requests a MatchDay player which is not present" do
+      context "User requests a MatchDayPlayer which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -106,14 +106,14 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a MatchDay player is successfully created" do
+      context "when a MatchDayPlayer is successfully created" do
 
         before(:each) do
           @match_day_player_attributes = FactoryGirl.attributes_for :match_day_player
           post :create, { match_day_player: @match_day_player_attributes }
         end
 
-        it "renders the json representation for the MatchDay player just created" do
+        it "renders the json representation for the MatchDayPlayer just created" do
           match_day_player_response = json_response[:match_day_player]
           expect(match_day_player_response[:player]).to eql @match_day_player_attributes[:player]
           expect(match_day_player_response[:player_position]).to eql @match_day_player_attributes[:player_position]
@@ -153,7 +153,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
           expect(match_day_player_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the MatchDay player could not be created" do
+        it "renders the json errors on why the MatchDayPlayer could not be created" do
           match_day_player_response = json_response
           expect(match_day_player_response[:errors][:rating]).to include "must be greater than or equal to 0"
         end
@@ -193,7 +193,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
           patch :update, { user_id: @user.id, id: @match_day_player.id, match_day_player: { rating: 10 } }
         end
 
-        it "renders the json representation for the updated MatchDay player" do
+        it "renders the json representation for the updated MatchDayPlayer" do
           match_day_player_response = json_response[:match_day_player]
           expect(match_day_player_response[:rating]).to eql 10
         end
@@ -212,7 +212,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
           expect(match_day_player_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the MatchDay player could not be updated" do
+        it "renders the json errors on why the MatchDayPlayer could not be updated" do
           match_day_player_response = json_response
           expect(match_day_player_response[:errors][:rating]).to include "must be greater than or equal to 0"
         end

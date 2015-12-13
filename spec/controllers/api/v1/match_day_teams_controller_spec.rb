@@ -163,7 +163,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
-      context "adding a MatchDay player to a MatchDayTeam" do
+      context "adding a MatchDayPlayer to a MatchDayTeam" do
 
         before(:each) do
           @match_day_player = FactoryGirl.create :match_day_player
@@ -179,7 +179,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
 
       end
 
-      context "removing a MatchDay player from a MatchDayTeam" do
+      context "removing a MatchDayPlayer from a MatchDayTeam" do
 
         before(:each) do
           @match_day_player = FactoryGirl.create :match_day_player

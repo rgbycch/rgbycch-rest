@@ -1,5 +1,5 @@
 ##
-# Ensures a MatchDay player is formatted correctly in API responses
+# Ensures a MatchDayPlayer is formatted correctly in API responses
 
 class MatchDayPlayerSerializer < ActiveModel::Serializer
 

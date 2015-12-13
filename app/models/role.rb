@@ -6,6 +6,9 @@ class Role < ActiveRecord::Base
   validates :title, presence: true
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for roles
+
   def self.id_params_identifier
     :role_ids
   end

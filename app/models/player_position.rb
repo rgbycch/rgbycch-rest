@@ -10,6 +10,9 @@ class PlayerPosition < Role
   has_many :players, through: :preferred_positions
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for player positions
+
   def self.id_params_identifier
     :player_position_ids
   end

@@ -10,7 +10,11 @@ class Player < ActiveRecord::Base
   has_many :positions, through: :preferred_positions
   scope :filter_by_title, lambda { |keyword| where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower(nick_name) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for players
+
   def self.id_params_identifier
     :player_ids
   end
+
 end

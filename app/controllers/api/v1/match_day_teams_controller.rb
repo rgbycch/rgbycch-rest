@@ -45,7 +45,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :add_match_day_player do
-    summary "Adds a MatchDay player to an existing MatchDayTeam"
+    summary "Adds a MatchDayPlayer to an existing MatchDayTeam"
     param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -55,9 +55,9 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :remove_player do
-    summary "Removes an existing MatchDay player from a MatchDayTeam"
+    summary "Removes an existing MatchDayPlayer from a MatchDayTeam"
     param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
-    param :form, :id, :string, :required, "the MatchDay player id"
+    param :form, :id, :string, :required, "the MatchDayPlayer id"
     response :unauthorized
     response :not_found
     response :not_acceptable
@@ -111,7 +111,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Adding a MatchDay player to a MatchDayTeam
+  # Adding a MatchDayPlayer to a MatchDayTeam
 
   def add_match_day_player
     match_day_team = MatchDayTeam.find(params[:match_day_team_id])
@@ -121,7 +121,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Removing a MatchDay player from a MatchDayTeam
+  # Removing a MatchDayPlayer from a MatchDayTeam
 
   def remove_match_day_player
     match_day_team = MatchDayTeam.find(params[:match_day_team_id])

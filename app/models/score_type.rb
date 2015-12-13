@@ -8,6 +8,9 @@ class ScoreType < ActiveRecord::Base
             presence: true
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for score types
+
   def self.id_params_identifier
     :score_type_ids
   end

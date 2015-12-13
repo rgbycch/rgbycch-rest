@@ -8,6 +8,9 @@ class Team < ActiveRecord::Base
   has_and_belongs_to_many :players
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for teams
+
   def self.id_params_identifier
     :team_ids
   end

@@ -1,15 +1,15 @@
 ##
-# All CRUD and search operations for MatchDay players are handled in this controller
+# All CRUD and search operations for MatchDayPlayers are handled in this controller
 
 class Api::V1::MatchDayPlayersController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :match_day_players, "MatchDay Players"
+  swagger_controller :match_day_players, "MatchDayPlayers"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for a MatchDay Player"
+    summary "Searches for a MatchDayPlayer"
     param :query, :match_day_player_ids, :string, :optional, "player_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :match_day_players
@@ -18,7 +18,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a MatchDay Player"
+    summary "Gets a MatchDayPlayer"
     param :path, :id, :integer, :required, "match_day_player_id"
     response :ok, "Success", :match_day_player
     response :not_acceptable
@@ -26,7 +26,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new MatchDay Player"
+    summary "Creates a new MatchDayPlayer"
     param :form, :match_day_team_id, :integer, :required, "match_day_team_id"
     param :form, :player_id, :integer, :required, "player_id"
     param :form, :player_position_id, :integer, :required, "player_position_id"
@@ -53,7 +53,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing MatchDay Player"
+    summary "Updates an existing MatchDayPlayer"
     param :path, :id, :integer, :required, "match_day_player_id"
     param :form, :match_day_team_id, :integer, :optional, "match_day_team_id"
     param :form, :player_id, :integer, :optional, "player_id"
@@ -83,7 +83,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing MatchDay Player"
+    summary "Deletes an existing MatchDayPlayer"
     param :path, :id, :integer, :required, "match_day_player_id"
     response :unauthorized
     response :not_found
@@ -91,21 +91,21 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a MatchDay player
+  # Method for searching for a MatchDayPlayer
 
   def index
     respond_with MatchDayPlayer.search(player_search_params)
   end
 
   ##
-  # Method for showing one MatchDay player
+  # Method for showing one MatchDayPlayer
 
   def show
     respond_with MatchDayPlayer.find(params[:id])
   end
 
   ##
-  # Method for creating a MatchDay player
+  # Method for creating a MatchDayPlayer
 
   def create
     match_day_player = MatchDayPlayer.new(player_params)
@@ -117,7 +117,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   ##
-  # Method for updating a MatchDay player details
+  # Method for updating a MatchDayPlayer details
 
   def update
     match_day_player = MatchDayPlayer.find(params[:id])
@@ -129,7 +129,7 @@ class Api::V1::MatchDayPlayersController < ApplicationController
   end
 
   ##
-  # Method for deleting a MatchDay player from the db
+  # Method for deleting a MatchDayPlayer from the db
 
   def destroy
     match_day_player = MatchDayPlayer.find(params[:id])

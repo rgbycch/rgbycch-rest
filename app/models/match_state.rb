@@ -6,6 +6,9 @@ class MatchState < ActiveRecord::Base
   validates :title, presence: true
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
+  ##
+  # Used when searching for match states
+
   def self.id_params_identifier
     :match_state_ids
   end
