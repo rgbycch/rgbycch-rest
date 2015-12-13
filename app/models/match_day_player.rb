@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a match-day player in the system. A match-day player is different from a regular player in that it records a player's state in a match.
+# Defines all attributes for a MatchDay player in the system. A MatchDay player is different from a regular player in that it records a player's state in a match.
 
 class MatchDayPlayer < ActiveRecord::Base
   extend Searchable

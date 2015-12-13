@@ -1,15 +1,15 @@
 ##
-# All CRUD and search operations for match-day teams are handled in this controller
+# All CRUD and search operations for MatchDay teams are handled in this controller
 
 class Api::V1::MatchDayTeamsController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :match_day_teams, "Match-Day Teams"
+  swagger_controller :match_day_teams, "MatchDay Teams"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for a Match-Day Team"
+    summary "Searches for a MatchDay Team"
     param :query, :match_day_team_ids, :string, :optional, "match_day_team_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :match_day_teams
@@ -18,7 +18,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets a Match-Day Team"
+    summary "Gets a MatchDay Team"
     param :path, :id, :integer, :required, "match_day_team_id"
     response :ok, "Success", :team
     response :not_acceptable
@@ -26,7 +26,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new Match-Day Team"
+    summary "Creates a new MatchDay Team"
     param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
     response :not_acceptable
@@ -34,7 +34,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing Match-Day Team"
+    summary "Updates an existing MatchDay Team"
     param :path, :id, :integer, :required, "match_day_team_id"
     param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
@@ -45,7 +45,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :add_match_day_player do
-    summary "Adds a match-day player to an existing match-day Team"
+    summary "Adds a MatchDay player to an existing MatchDay Team"
     param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -55,9 +55,9 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :remove_player do
-    summary "Removes an existing match-day player from a match-day Team"
+    summary "Removes an existing MatchDay player from a MatchDay Team"
     param :path, :match_day_team_id, :integer, :required, "match_day_team_id"
-    param :form, :id, :string, :required, "the match-day player id"
+    param :form, :id, :string, :required, "the MatchDay player id"
     response :unauthorized
     response :not_found
     response :not_acceptable
@@ -65,7 +65,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing Match-Day Team"
+    summary "Deletes an existing MatchDay Team"
     param :path, :id, :integer, :required, "match_day_team_id"
     response :unauthorized
     response :not_found
@@ -80,14 +80,14 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Method for showing one Match-Day Team
+  # Method for showing one MatchDay Team
 
   def show
     respond_with MatchDayTeam.find(params[:id])
   end
 
   ##
-  # Method for creating a Match-Day Team
+  # Method for creating a MatchDay Team
 
   def create
     match_day_team = MatchDayTeam.new(match_day_team_params)
@@ -99,7 +99,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Method for updating a Match-Day Team's details
+  # Method for updating a MatchDay Team's details
 
   def update
     match_day_team = MatchDayTeam.find(params[:id])
@@ -111,7 +111,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Adding a match-day player to a match-day team
+  # Adding a MatchDay player to a MatchDay team
 
   def add_match_day_player
     match_day_team = MatchDayTeam.find(params[:match_day_team_id])
@@ -121,7 +121,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Removing a match-day player from a match-day team
+  # Removing a MatchDay player from a MatchDay team
 
   def remove_match_day_player
     match_day_team = MatchDayTeam.find(params[:match_day_team_id])
@@ -131,7 +131,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Method for deleting a Match-Day Team from the db
+  # Method for deleting a MatchDay Team from the db
 
   def destroy
     match_day_team = MatchDayTeam.find(params[:id])
@@ -142,7 +142,7 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   private
 
   ##
-  # Common functionality for updating a match-day team
+  # Common functionality for updating a MatchDay team
 
   def update_match_day_team(match_day_team)
     if match_day_team.save
@@ -153,14 +153,14 @@ class Api::V1::MatchDayTeamsController < ApplicationController
   end
 
   ##
-  # Strong params for the Match-Day Team class.
+  # Strong params for the MatchDay Team class.
 
   def match_day_team_params
     params.require(:match_day_team).permit(:title, :url)
   end
 
   ##
-  # Strong params used when searching for Match-Day Teams
+  # Strong params used when searching for MatchDay Teams
 
   def team_search_params
     params.permit(:match_day_team_ids, :keyword)

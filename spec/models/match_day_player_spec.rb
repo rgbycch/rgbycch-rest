@@ -7,6 +7,7 @@ describe MatchDayPlayer do
 
   it { should respond_to(:player) }
   it { should respond_to(:player_position) }
+  it { should respond_to(:match_day_team) }
   it { should respond_to(:rating) }
   it { should respond_to(:points) }
   it { should respond_to(:fouls) }
@@ -66,7 +67,7 @@ describe MatchDayPlayer do
 
       context "when a 'Hatchet' title pattern is sent" do
 
-        it "returns the match-day players matching" do
+        it "returns the MatchDay players matching" do
           # TODO - Figure out how to delegate to the underlying player
           # expect(MatchDayPlayer.filter_by_title("Hatchet").sort).to match_array([@match_day_player2, @match_day_player3, @match_day_player4])
         end
@@ -79,7 +80,7 @@ describe MatchDayPlayer do
 
       context "when an empty hash is sent" do
 
-        it "returns all the match-day players" do
+        it "returns all the MatchDay players" do
           expect(MatchDayPlayer.search({})).to match_array([@match_day_player1, @match_day_player2, @match_day_player3, @match_day_player4])
         end
 
@@ -87,7 +88,7 @@ describe MatchDayPlayer do
 
       context "when match_day_player_ids is present" do
 
-        it "returns the match-day players associated with those ids" do
+        it "returns the MatchDay players associated with those ids" do
           search_hash = { match_day_player_ids: [@match_day_player1.id, @match_day_player2.id]}
           expect(MatchDayPlayer.search(search_hash)).to match_array([@match_day_player1, @match_day_player2])
         end
