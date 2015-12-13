@@ -41,4 +41,9 @@ if Rails.env.development? || Rails.env.production?
   MatchState.create title: "Time Out"
   MatchState.create title: "Full Time"
   MatchState.create title: "Abandoned"
+  # player state
+  PlayerState.create title: "Active"
+  PlayerState.create title: "Suspended"
+  PlayerState.create title: "Retired"
+  PlayerState.create title: "Ineligible"
 end
