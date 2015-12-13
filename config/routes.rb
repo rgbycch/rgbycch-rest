@@ -25,6 +25,7 @@ Rails.application.routes.draw do
         put 'remove_match_day_player'
       end
       resources :match_day_players, :only   => [:show, :create, :update, :destroy, :index]
+      resources :player_states, :only       => [:show, :create, :update, :destroy, :index]
       resources :sessions, :only            => [:create, :destroy]
     end
   end
