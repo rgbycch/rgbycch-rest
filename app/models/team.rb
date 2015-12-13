@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a team in the system.
+# Defines all attributes for a Team in the system.
 
 class Team < ActiveRecord::Base
   extend Searchable

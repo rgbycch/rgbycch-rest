@@ -9,7 +9,7 @@ class MatchDayTeam < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for match day teams
+  # Used when searching for MatchDayTeams
 
   def self.id_params_identifier
     :match_day_team_ids

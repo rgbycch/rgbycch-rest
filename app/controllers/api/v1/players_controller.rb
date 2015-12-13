@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for players are handled in this controller
+# All CRUD and search operations for Players are handled in this controller
 
 class Api::V1::PlayersController < ApplicationController
   respond_to :json

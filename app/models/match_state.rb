@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for an match state in the system. A MatchState could be Kick Off, Full Time or Half Time.
+# Defines all attributes for a MatchState in the system. A MatchState could be Kick Off, Full Time or Half Time.
 
 class MatchState < ActiveRecord::Base
   extend Searchable
@@ -7,7 +7,7 @@ class MatchState < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for match states
+  # Used when searching for MatchStates
 
   def self.id_params_identifier
     :match_state_ids

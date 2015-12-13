@@ -32,7 +32,7 @@ describe Api::V1::TeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a team which is not present" do
+      context "User requests a Team which is not present" do
 
         before(:each) do
           @team = FactoryGirl.create :team
@@ -40,7 +40,7 @@ describe Api::V1::TeamsController, :type => :controller do
           get :show, id: @team.id
         end
 
-        it "returns the information about a team in a hash" do
+        it "returns the information about a Team in a hash" do
           team_response = json_response[:team]
           expect(team_response[:title]).not_to be_nil
         end
@@ -49,7 +49,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "User requests a team which is not present" do
+      context "User requests a Team which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -87,7 +87,7 @@ describe Api::V1::TeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a team is successfully created" do
+      context "when a Team is successfully created" do
 
         before(:each) do
           @team_attributes = FactoryGirl.attributes_for :team
@@ -162,7 +162,7 @@ describe Api::V1::TeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
-      context "adding a Player to a team" do
+      context "adding a Player to a Team" do
 
         before(:each) do
           @player = FactoryGirl.create :player
@@ -178,7 +178,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "removing a Player from a team" do
+      context "removing a Player from a Team" do
 
         before(:each) do
           @player = FactoryGirl.create :player

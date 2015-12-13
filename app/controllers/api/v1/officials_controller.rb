@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for officials are handled in this controller
+# All CRUD and search operations for Officials are handled in this controller
 
 class Api::V1::OfficialsController < ApplicationController
   respond_to :json

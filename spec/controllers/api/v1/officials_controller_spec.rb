@@ -32,7 +32,7 @@ describe Api::V1::OfficialsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests an official which is present" do
+      context "User requests an Official which is present" do
 
         before(:each) do
           @official = FactoryGirl.create :official
@@ -40,7 +40,7 @@ describe Api::V1::OfficialsController, :type => :controller do
           get :show, id: @official.id
         end
 
-        it "returns the information about an official in a hash" do
+        it "returns the information about an Official in a hash" do
           official_response = json_response[:official]
           expect(official_response[:title]).not_to be_nil
         end
@@ -49,7 +49,7 @@ describe Api::V1::OfficialsController, :type => :controller do
 
       end
 
-      context "User requests an official which is not present" do
+      context "User requests an Official which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -87,7 +87,7 @@ describe Api::V1::OfficialsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when an official is successfully created" do
+      context "when an Official is successfully created" do
 
         before(:each) do
           @official_attributes = FactoryGirl.attributes_for :official

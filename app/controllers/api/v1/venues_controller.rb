@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for venues are handled in this controller
+# All CRUD and search operations for Venues are handled in this controller
 
 class Api::V1::VenuesController < ApplicationController
   respond_to :json

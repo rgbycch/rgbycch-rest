@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for match states are handled in this controller
+# All CRUD and search operations for MatchStates are handled in this controller
 
 class Api::V1::MatchStatesController < ApplicationController
   respond_to :json

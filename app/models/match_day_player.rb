@@ -29,7 +29,7 @@ class MatchDayPlayer < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(player.first_name) LIKE ? OR lower(player.last_name) LIKE ? OR lower(player.nick_name) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for match day players
+  # Used when searching for MatchDayPlayers
 
   def self.id_params_identifier
     :match_day_player_ids

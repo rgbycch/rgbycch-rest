@@ -9,7 +9,7 @@ class MatchDayPlayerSerializer < ActiveModel::Serializer
   has_one :player_position
 
   ##
-  # Defines the caching key for an official
+  # Defines the caching key for an Official
 
   def cache_key
     [object, scope]

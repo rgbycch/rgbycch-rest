@@ -1,5 +1,5 @@
 ##
-# Ensures a team is formatted correctly in API responses
+# Ensures a Team is formatted correctly in API responses
 
 class TeamSerializer < ActiveModel::Serializer
   attributes :id, :title
@@ -7,7 +7,7 @@ class TeamSerializer < ActiveModel::Serializer
   has_one :club
 
   ##
-  # Defines the caching key for a team
+  # Defines the caching key for a Team
 
   def cache_key
     [object, scope]

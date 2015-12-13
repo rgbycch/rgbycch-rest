@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for an official in the system.
+# Defines all attributes for an Official in the system.
 
 class Official < ActiveRecord::Base
   extend Searchable
@@ -7,7 +7,7 @@ class Official < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for officials
+  # Used when searching for Officials
 
   def self.id_params_identifier
     :official_ids

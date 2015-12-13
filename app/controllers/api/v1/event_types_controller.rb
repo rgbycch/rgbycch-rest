@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for event types are handled in this controller
+# All CRUD and search operations for EventTypes are handled in this controller
 
 class Api::V1::EventTypesController < ApplicationController
   respond_to :json

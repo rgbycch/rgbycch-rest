@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a match venue in the system.
+# Defines all attributes for a Venue in the system.
 
 class Venue < ActiveRecord::Base
   extend Searchable
@@ -9,7 +9,7 @@ class Venue < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for venues
+  # Used when searching for Venues
 
   def self.id_params_identifier
     :venue_ids

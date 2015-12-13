@@ -7,7 +7,7 @@ class EventType < ActiveRecord::Base
   scope :filter_by_title, lambda { |keyword| where("lower(title) LIKE ?", "%#{keyword.downcase}%" ) }
 
   ##
-  # Used when searching for event types
+  # Used when searching for EventTypes
 
   def self.id_params_identifier
     :event_type_ids

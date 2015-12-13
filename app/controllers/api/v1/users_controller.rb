@@ -53,7 +53,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   ##
-  # Method for creating a user
+  # Method for creating a User
 
   def create
     user = User.new(user_params)
@@ -65,7 +65,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   ##
-  # Method for updating a user's details
+  # Method for updating a User's details
 
   def update
     user = current_user
@@ -77,7 +77,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   ##
-  # Method for deleting a user from the db
+  # Method for deleting a User from the db
 
   def destroy
     user = User.find(params[:id])

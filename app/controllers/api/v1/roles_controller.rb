@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for roles are handled in this controller
+# All CRUD and search operations for Roles are handled in this controller
 
 class Api::V1::RolesController < ApplicationController
   respond_to :json
