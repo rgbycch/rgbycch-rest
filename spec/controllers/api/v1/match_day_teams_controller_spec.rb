@@ -32,14 +32,14 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a MatchDay team which is not present" do
+      context "User requests a MatchDayTeam which is not present" do
 
         before(:each) do
           @match_day_team = FactoryGirl.create :match_day_team
           get :show, id: @match_day_team.id
         end
 
-        it "returns the information about a MatchDay team in a hash" do
+        it "returns the information about a MatchDayTeam in a hash" do
           match_day_team_response = json_response[:match_day_team]
           expect(match_day_team_response[:title]).not_to be_nil
           expect(match_day_team_response[:url]).not_to be_nil
@@ -49,7 +49,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
 
       end
 
-      context "User requests a MatchDay team which is not present" do
+      context "User requests a MatchDayTeam which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -87,7 +87,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a MatchDay team is successfully created" do
+      context "when a MatchDayTeam is successfully created" do
 
         before(:each) do
           @match_day_team_attributes = FactoryGirl.attributes_for :match_day_team
@@ -152,25 +152,25 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
       context "when is successfully updated" do
 
         before(:each) do
-          patch :update, { user_id: @user.id, id: @match_day_team.id, match_day_team: { title: "Updated MatchDay Team Title" } }
+          patch :update, { user_id: @user.id, id: @match_day_team.id, match_day_team: { title: "Updated MatchDayTeam Title" } }
         end
 
-        it "renders the json representation for the updated MatchDay team" do
+        it "renders the json representation for the updated MatchDayTeam" do
           match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:title]).to eql "Updated MatchDay Team Title"
+          expect(match_day_team_response[:title]).to eql "Updated MatchDayTeam Title"
         end
 
         it { should respond_with 200 }
       end
 
-      context "adding a MatchDay player to a MatchDay team" do
+      context "adding a MatchDay player to a MatchDayTeam" do
 
         before(:each) do
           @match_day_player = FactoryGirl.create :match_day_player
           put :add_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
         end
 
-        it "renders the json representation for the updated MatchDay team" do
+        it "renders the json representation for the updated MatchDayTeam" do
           match_day_team_response = json_response[:match_day_team]
           expect(match_day_team_response[:match_day_players].count).to eql 1
         end
@@ -179,14 +179,14 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
 
       end
 
-      context "removing a MatchDay player from a MatchDay team" do
+      context "removing a MatchDay player from a MatchDayTeam" do
 
         before(:each) do
           @match_day_player = FactoryGirl.create :match_day_player
           put :remove_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
         end
 
-        it "renders the json representation for the updated MatchDay team" do
+        it "renders the json representation for the updated MatchDayTeam" do
           match_day_team_response = json_response[:match_day_team]
           expect(match_day_team_response[:match_day_players].count).to eql 0
         end
@@ -195,23 +195,61 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
 
       end
 
-      context "when is not updated" do
+      context "failures when updating a MatchDayTeam" do
 
-        before(:each) do
-          patch :update, { user_id: @user.id, id: @match_day_team.id, match_day_team: { title: nil } }
+        context "when is not updated" do
+
+          before(:each) do
+            patch :update, { user_id: @user.id, id: @match_day_team.id, match_day_team: { title: nil } }
+          end
+
+          it "renders an errors json" do
+            match_day_team_response = json_response
+            expect(match_day_team_response).to have_key(:errors)
+          end
+
+          it "renders the json errors on why the team could not be updated" do
+            match_day_team_response = json_response
+            expect(match_day_team_response[:errors][:title]).to include "can't be blank"
+          end
+
+          it { should respond_with 422 }
         end
 
-        it "renders an errors json" do
-          match_day_team_response = json_response
-          expect(match_day_team_response).to have_key(:errors)
+        context "failures when trying to add a MatchDayPlayer to a MatchDayTeam" do
+
+          before(:each) do
+            @match_day_player = FactoryGirl.create :match_day_player
+            expect_any_instance_of(MatchDayTeam).to receive(:save).and_return(false)
+            put :add_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
+          end
+
+          it "renders an errors json" do
+            match_day_team_response = json_response
+            expect(match_day_team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it "renders the json errors on why the team could not be updated" do
-          match_day_team_response = json_response
-          expect(match_day_team_response[:errors][:title]).to include "can't be blank"
+        context "failures when trying to remove a MatchDayPlayer from a MatchDayTeam" do
+
+          before(:each) do
+            @match_day_player = FactoryGirl.create :match_day_player
+            expect_any_instance_of(MatchDayTeam).to receive(:save).and_return(false)
+            put :remove_match_day_player, { user_id: @user.id, match_day_team_id: @match_day_team.id, id: @match_day_player.id }
+          end
+
+          it "renders an errors json" do
+            match_day_team_response = json_response
+            expect(match_day_team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it { should respond_with 422 }
       end
 
     end
@@ -219,7 +257,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
     context "User is not logged in" do
 
       before(:each) do
-        patch :update, { id: @match_day_team.id, match_day_team: { title: "Updated MatchDay Team Title" } }
+        patch :update, { id: @match_day_team.id, match_day_team: { title: "Updated MatchDayTeam Title" } }
       end
 
       it { should respond_with 401 }

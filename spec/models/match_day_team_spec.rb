@@ -25,7 +25,7 @@ describe MatchDayTeam do
 
       context "when a 'Team' title pattern is sent" do
 
-        it "returns the MatchDay teams matching" do
+        it "returns the MatchDayTeams matching" do
           expect(MatchDayTeam.filter_by_title("Team").sort).to match_array([@match_day_team1, @match_day_team2])
         end
 

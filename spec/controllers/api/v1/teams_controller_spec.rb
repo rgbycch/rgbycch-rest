@@ -194,23 +194,61 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "when is not updated" do
+      context "failures when updating a Team" do
 
-        before(:each) do
-          patch :update, { user_id: @user.id, id: @team.id, team: { title: nil } }
+        context "when is not updated" do
+
+          before(:each) do
+            patch :update, { user_id: @user.id, id: @team.id, team: { title: nil } }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it "renders the json errors on why the team could not be updated" do
+            team_response = json_response
+            expect(team_response[:errors][:title]).to include "can't be blank"
+          end
+
+          it { should respond_with 422 }
         end
 
-        it "renders an errors json" do
-          team_response = json_response
-          expect(team_response).to have_key(:errors)
+        context "failures when trying to add a Player to a Team" do
+
+          before(:each) do
+            @player = FactoryGirl.create :player
+            expect_any_instance_of(Team).to receive(:save).and_return(false)
+            put :add_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it "renders the json errors on why the team could not be updated" do
-          team_response = json_response
-          expect(team_response[:errors][:title]).to include "can't be blank"
+        context "failures when trying to remove a Player from a Team" do
+
+          before(:each) do
+            @player = FactoryGirl.create :player
+            expect_any_instance_of(Team).to receive(:save).and_return(false)
+            put :remove_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it { should respond_with 422 }
       end
 
     end

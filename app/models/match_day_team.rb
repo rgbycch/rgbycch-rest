@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a MatchDay team in the system.
+# Defines all attributes for a MatchDayTeam in the system.
 
 class MatchDayTeam < ActiveRecord::Base
   extend Searchable

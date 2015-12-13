@@ -1,5 +1,5 @@
 ##
-# Ensures a MatchDay team is formatted correctly in API responses
+# Ensures a MatchDayTeam is formatted correctly in API responses
 
 class MatchDayTeamSerializer < ActiveModel::Serializer
 
