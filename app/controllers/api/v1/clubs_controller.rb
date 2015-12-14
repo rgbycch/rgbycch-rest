@@ -75,7 +75,10 @@ class Api::V1::ClubsController < ApplicationController
   # Method for showing one club
 
   def show
-    respond_with Club.find(params[:id])
+    logger.info "find club with id #{params[:id]}"
+    club = Club.find(params[:id]);
+    logger.info "found club?!!"
+    render json: club, status: 200, location: [:api, club]
   end
 
   ##
@@ -108,8 +111,8 @@ class Api::V1::ClubsController < ApplicationController
   def add_team
     logger.info "find club with id #{params[:club_id]}"
     club = Club.find(params[:club_id].to_f)
-    logger.info "find team with id #{params[:team_id]}"
-    team = Team.find(params[:team_id])
+    logger.info "find team with id #{params[:id]}"
+    team = Team.find(params[:id])
     logger.info "number of teams #{club.teams.count}"
     club.teams << team
     logger.info "added team to club"
