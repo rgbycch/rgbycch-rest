@@ -8,5 +8,6 @@ before_script:
   - cp config/secrets.template.yml config/secrets.yml
 
 script:
+  - rake db:migrate
   - RAILS_ENV=test bundle exec rake db:setup --trace
   - bundle exec rspec spec

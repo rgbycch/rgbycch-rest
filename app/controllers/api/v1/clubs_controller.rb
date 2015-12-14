@@ -46,6 +46,16 @@ class Api::V1::ClubsController < ApplicationController
     response :unprocessable_entity
   end
 
+  swagger_api :add_team do
+    summary "Adds a team to an existing Club"
+    param :path, :id, :integer, :required, "id"
+    param :form, :team_id, :integer, :required, "the team id"
+    response :unauthorized
+    response :not_found
+    response :not_acceptable
+    response :unprocessable_entity
+  end
+
   swagger_api :destroy do
     summary "Deletes an existing Club"
     param :path, :id, :integer, :required, "club_id"
@@ -65,7 +75,10 @@ class Api::V1::ClubsController < ApplicationController
   # Method for showing one club
 
   def show
-    respond_with Club.find(params[:id])
+    logger.info "find club with id #{params[:id]}"
+    club = Club.find(params[:id]);
+    logger.info "found club?!!"
+    render json: club, status: 200, location: [:api, club]
   end
 
   ##
@@ -93,6 +106,25 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   ##
+  # Adding a team to a club
+
+  def add_team
+    logger.info "find club with id #{params[:club_id]}"
+    club = Club.find(params[:club_id].to_f)
+    logger.info "find team with id #{params[:id]}"
+    team = Team.find(params[:id])
+    logger.info "number of teams #{club.teams.count}"
+    club.teams << team
+    logger.info "added team to club"
+    logger.info "number of teams #{club.teams.count}"
+    if club.save
+      head 200
+    else
+      failed_to_update(club, "club")
+    end
+  end
+
+  ##
   # Method for deleting a club from the db
 
   def destroy
@@ -102,6 +134,17 @@ class Api::V1::ClubsController < ApplicationController
   end
 
   private
+
+  ##
+  # Common functionality for updating a team
+
+  def update_club(club)
+    if club.save
+      render json: club, status: 200, location: [:api, club]
+    else
+      failed_to_update(club, "club")
+    end
+  end
 
   ##
   # Strong params for the Club class.
