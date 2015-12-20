@@ -43,7 +43,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   swagger_api :add_player do
-    summary "Adds a player to an existing Team"
+    summary "Adds a Player to an existing Team"
     param :path, :team_id, :integer, :required, "team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -53,7 +53,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   swagger_api :remove_player do
-    summary "Removes a player from an existing Team"
+    summary "Removes a Player from an existing Team"
     param :path, :team_id, :integer, :required, "team_id"
     param :form, :id, :string, :required, "the player id"
     response :unauthorized
@@ -71,7 +71,7 @@ class Api::V1::TeamsController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a score type
+  # Method for searching for a ScoreType
 
   def index
     respond_with Team.search(team_search_params)
@@ -85,7 +85,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   ##
-  # Method for creating a team
+  # Method for creating a Team
 
   def create
     team = Team.new(team_params)
@@ -97,7 +97,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   ##
-  # Method for updating a team's details
+  # Method for updating a Team's details
 
   def update
     team = Team.find(params[:id])
@@ -109,7 +109,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   ##
-  # Adding a player to a team
+  # Adding a Player to a Team
 
   def add_player
     team = Team.find(params[:team_id])
@@ -117,6 +117,9 @@ class Api::V1::TeamsController < ApplicationController
     team.players << player
     update_team(team)
   end
+
+  ##
+  # Removing a Player from a Team
 
   def remove_player
     team = Team.find(params[:team_id])
@@ -126,7 +129,7 @@ class Api::V1::TeamsController < ApplicationController
   end
 
   ##
-  # Method for deleting a team from the db
+  # Method for deleting a Team from the db
 
   def destroy
     team = Team.find(params[:id])
@@ -137,7 +140,7 @@ class Api::V1::TeamsController < ApplicationController
   private
 
   ##
-  # Common functionality for updating a team
+  # Common functionality for updating a Team
 
   def update_team(team)
     if team.save

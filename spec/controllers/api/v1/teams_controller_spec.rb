@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::TeamsController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        3.times { FactoryGirl.create :team}
+        get :index
+      end
+
+      it "returns 3 teams from the database" do
+        team_response = json_response[:teams]
+        expect(team_response.size).to eq(3)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do
@@ -11,7 +32,7 @@ describe Api::V1::TeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a team which is not present" do
+      context "User requests a Team which is not present" do
 
         before(:each) do
           @team = FactoryGirl.create :team
@@ -19,7 +40,7 @@ describe Api::V1::TeamsController, :type => :controller do
           get :show, id: @team.id
         end
 
-        it "returns the information about a team in a hash" do
+        it "returns the information about a Team in a hash" do
           team_response = json_response[:team]
           expect(team_response[:title]).not_to be_nil
         end
@@ -28,7 +49,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "User requests a team which is not present" do
+      context "User requests a Team which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -66,7 +87,7 @@ describe Api::V1::TeamsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a team is successfully created" do
+      context "when a Team is successfully created" do
 
         before(:each) do
           @team_attributes = FactoryGirl.attributes_for :team
@@ -141,7 +162,7 @@ describe Api::V1::TeamsController, :type => :controller do
         it { should respond_with 200 }
       end
 
-      context "adding a player to a team" do
+      context "adding a Player to a Team" do
 
         before(:each) do
           @player = FactoryGirl.create :player
@@ -157,7 +178,7 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "removing a player from a team" do
+      context "removing a Player from a Team" do
 
         before(:each) do
           @player = FactoryGirl.create :player
@@ -173,23 +194,61 @@ describe Api::V1::TeamsController, :type => :controller do
 
       end
 
-      context "when is not updated" do
+      context "failures when updating a Team" do
 
-        before(:each) do
-          patch :update, { user_id: @user.id, id: @team.id, team: { title: nil } }
+        context "when is not updated" do
+
+          before(:each) do
+            patch :update, { user_id: @user.id, id: @team.id, team: { title: nil } }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it "renders the json errors on why the team could not be updated" do
+            team_response = json_response
+            expect(team_response[:errors][:title]).to include "can't be blank"
+          end
+
+          it { should respond_with 422 }
         end
 
-        it "renders an errors json" do
-          team_response = json_response
-          expect(team_response).to have_key(:errors)
+        context "failures when trying to add a Player to a Team" do
+
+          before(:each) do
+            @player = FactoryGirl.create :player
+            expect_any_instance_of(Team).to receive(:save).and_return(false)
+            put :add_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it "renders the json errors on why the team could not be created" do
-          team_response = json_response
-          expect(team_response[:errors][:title]).to include "can't be blank"
+        context "failures when trying to remove a Player from a Team" do
+
+          before(:each) do
+            @player = FactoryGirl.create :player
+            expect_any_instance_of(Team).to receive(:save).and_return(false)
+            put :remove_player, { user_id: @user.id, team_id: @team.id, id: @player.id }
+          end
+
+          it "renders an errors json" do
+            team_response = json_response
+            expect(team_response).to have_key(:errors)
+          end
+
+          it { should respond_with 422 }
+
         end
 
-        it { should respond_with 422 }
       end
 
     end

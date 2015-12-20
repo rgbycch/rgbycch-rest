@@ -1,5 +1,5 @@
 ##
-# Defines all attributes a player's preferred position
+# Defines all attributes a Player's PreferredPosition
 
 class PreferredPosition < ActiveRecord::Base
   validates :preference, numericality: { greater_than_or_equal_to: 0 },

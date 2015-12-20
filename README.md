@@ -7,39 +7,39 @@ RESTful API for rgbycch system. Rails based API service.
 2. Install the `2.2.3` version of ruby with ```$ rvm install 2.2.3```
 3. Ensure you are using the `2.2.3` version of ruby with a ```rvm use 2.2.3``` command.
 4. Install the following bundles on your system
-```
-$ gem install bundler
-$ gem install foreman
-$ gem install rails -v 4.0
-```
+  ```
+  $ gem install bundler
+  $ gem install foreman
+  $ gem install rails -v 4.0
+  ```
 5. Check out the codebase.
 6. Install [pow](http://pow.cx) with ```curl get.pow.cx | sh```
 7. Create the symlink for pow:
-```
-cd ~/.pow
-ln -s ~/workspace/rgbycch-rest
-(pow can be restarted by running touch ~/.pow/restart.txt)
-```
+  ```
+  cd ~/.pow
+  ln -s ~/workspace/rgbycch-rest
+  (pow can be restarted by running touch ~/.pow/restart.txt)
+  ```
 8. Install the bundle by executing a ```bundle install``` command at the base of the project.
 9. Generate your configuration using ```bundle exec figaro install```
 10. Get the database up and running:
-```
-rm db/*.sqlite3
-bundle exec rake db:setup
-bundle exec rake db:test:prepare
-```
+  ```
+  rm db/*.sqlite3
+  bundle exec rake db:setup
+  bundle exec rake db:test:prepare
+  ```
 11. Start the server
-```
-bundle exec rails server
-```
+  ```
+  bundle exec rails server
+  ```
 12. Navigate to the [base of the server](http://rgbycch-rest.dev) and you should see the rails sample start page.
 13. Generate a user by executing the following code from the base of the project:
-```
-rails console
-User.create({email: "tom@rgbycch.com",
-                          password: "12345678",
-                          password_confirmation: "12345678"})
-```
+  ```
+  rails console
+  User.create({email: "tom@rgbycch.com",
+                            password: "12345678",
+                            password_confirmation: "12345678"})
+  ```
 14. Ensure that this user has been successfully created by:
 ```
 curl -H 'Accept: application/vnd.rgbycch.v1' http://api.rgbycch-rest.dev/users/1.json

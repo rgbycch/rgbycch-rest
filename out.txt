@@ -1,0 +1,299 @@
+Parsing sources...
+  2% [ 1/49]  app/controllers/api/v1/clubs_controller.rb
+
+  class Api::V1::ClubsController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #club_params
+    #club_search_params
+  4% [ 2/49]  app/controllers/api/v1/event_types_controller.rb
+
+  class Api::V1::EventTypesController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #event_type_params
+    #event_type_search_params
+  6% [ 3/49]  app/controllers/api/v1/match_day_players_controller.rb
+
+  class Api::V1::MatchDayPlayersController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #player_params
+    #player_search_params
+  8% [ 4/49]  app/controllers/api/v1/match_day_teams_controller.rb
+
+  class Api::V1::MatchDayTeamsController
+    #index
+    #show
+    #create
+    #update
+    #add_match_day_player
+    #remove_match_day_player
+    #destroy
+    #update_match_day_team
+    #match_day_team_params
+    #team_search_params
+ 10% [ 5/49]  app/controllers/api/v1/match_states_controller.rb
+
+  class Api::V1::MatchStatesController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #match_state_params
+    #match_state_search_params
+ 12% [ 6/49]  app/controllers/api/v1/officials_controller.rb
+
+  class Api::V1::OfficialsController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #official_params
+    #official_search_params
+ 14% [ 7/49]  app/controllers/api/v1/player_positions_controller.rb
+
+  class Api::V1::PlayerPositionsController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #player_position_params
+    #player_position_search_params
+ 16% [ 8/49]  app/controllers/api/v1/players_controller.rb
+
+  class Api::V1::PlayersController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #player_params
+    #player_search_params
+ 18% [ 9/49]  app/controllers/api/v1/preferred_positions_controller.rb
+
+  class Api::V1::PreferredPositionsController
+    #show
+    #create
+    #update
+    #destroy
+    #preferred_position_params
+ 20% [10/49]  app/controllers/api/v1/roles_controller.rb
+
+  class Api::V1::RolesController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #role_params
+    #role_search_params
+ 22% [11/49]  app/controllers/api/v1/score_types_controller.rb
+
+  class Api::V1::ScoreTypesController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #score_type_params
+    #score_type_search_params
+ 24% [12/49]  app/controllers/api/v1/sessions_controller.rb
+
+  class Api::V1::SessionsController
+    #create
+    #destroy
+ 26% [13/49]  app/controllers/api/v1/teams_controller.rb
+
+  class Api::V1::TeamsController
+    #index
+    #show
+    #create
+    #update
+    #add_player
+    #remove_player
+    #destroy
+    #update_team
+    #team_params
+    #team_search_params
+ 28% [14/49]  app/controllers/api/v1/users_controller.rb
+
+  class Api::V1::UsersController
+    #show
+    #create
+    #update
+    #destroy
+    #user_params
+ 30% [15/49]  app/controllers/api/v1/venues_controller.rb
+
+  class Api::V1::VenuesController
+    #index
+    #show
+    #create
+    #update
+    #destroy
+    #venue_params
+    #venue_search_params
+ 32% [16/49]  app/controllers/application_controller.rb
+
+  class ApplicationController
+ 34% [17/49]  app/controllers/concerns/authenticable.rb
+
+    #current_user
+    #authenticate_with_token!
+  module Authenticable
+ 36% [18/49]  app/controllers/concerns/errorable.rb
+
+    #record_not_found
+    #failed_to_create
+    #failed_to_update
+    #render_error
+  module Errorable
+ 38% [19/49]  app/helpers/application_helper.rb
+
+  module ApplicationHelper
+ 40% [20/49]  app/models/club.rb
+
+  class Club
+    ::id_params_identifier
+ 42% [21/49]  app/models/event_type.rb
+
+  class EventType
+    ::id_params_identifier
+ 44% [22/49]  app/models/match_day_player.rb
+
+  class MatchDayPlayer
+    ::id_params_identifier
+ 46% [23/49]  app/models/match_day_team.rb
+
+  class MatchDayTeam
+    ::id_params_identifier
+ 48% [24/49]  app/models/match_state.rb
+
+  class MatchState
+    ::id_params_identifier
+ 51% [25/49]  app/models/official.rb
+
+  class Official
+    ::id_params_identifier
+ 53% [26/49]  app/models/player.rb
+
+  class Player
+    ::id_params_identifier
+ 55% [27/49]  app/models/player_position.rb
+
+  class PlayerPosition
+    ::id_params_identifier
+ 57% [28/49]  app/models/preferred_position.rb
+
+  class PreferredPosition
+ 59% [29/49]  app/models/role.rb
+
+  class Role
+    ::id_params_identifier
+ 61% [30/49]  app/models/score.rb
+
+  class Score
+ 63% [31/49]  app/models/score_type.rb
+
+  class ScoreType
+    ::id_params_identifier
+ 65% [32/49]  app/models/team.rb
+
+  class Team
+    ::id_params_identifier
+ 67% [33/49]  app/models/user.rb
+
+  class User
+    #generate_authentication_token!
+ 69% [34/49]  app/models/venue.rb
+
+  class Venue
+    ::id_params_identifier
+ 71% [35/49]  app/serializer/club_serializer.rb
+
+  class ClubSerializer
+    #cache_key
+ 73% [36/49]  app/serializer/event_type_serializer.rb
+
+  class EventTypeSerializer
+    #cache_key
+ 75% [37/49]  app/serializer/match_day_player_serializer.rb
+
+  class MatchDayPlayerSerializer
+    #cache_key
+ 77% [38/49]  app/serializer/match_day_team_serializer.rb
+
+  class MatchDayTeamSerializer
+    #cache_key
+ 79% [39/49]  app/serializer/match_state_serializer.rb
+
+  class MatchStateSerializer
+    #cache_key
+ 81% [40/49]  app/serializer/official_serializer.rb
+
+  class OfficialSerializer
+    #cache_key
+ 83% [41/49]  app/serializer/player_position_serializer.rb
+
+  class PlayerPositionSerializer
+    #cache_key
+ 85% [42/49]  app/serializer/player_serializer.rb
+
+  class PlayerSerializer
+    #cache_key
+ 87% [43/49]  app/serializer/preferred_position_serializer.rb
+
+  class PreferredPositionSerializer
+    #cache_key
+ 89% [44/49]  app/serializer/role_serializer.rb
+
+  class RoleSerializer
+    #cache_key
+ 91% [45/49]  app/serializer/score_serializer.rb
+
+  class ScoreSerializer
+    #cache_key
+ 93% [46/49]  app/serializer/score_type_serializer.rb
+
+  class ScoreTypeSerializer
+    #cache_key
+ 95% [47/49]  app/serializer/team_serializer.rb
+
+  class TeamSerializer
+    #cache_key
+ 97% [48/49]  app/serializer/user_serializer.rb
+
+  class UserSerializer
+    #cache_key
+100% [49/49]  app/serializer/venue_serializer.rb
+
+  class VenueSerializer
+    #cache_key
+
+
+  Files:       49
+
+  Classes:     46 (0 undocumented)
+  Modules:      6 (3 undocumented)
+  Constants:    0 (0 undocumented)
+  Attributes:   0 (0 undocumented)
+  Methods:    107 (0 undocumented)
+
+  Total:      159 (3 undocumented)
+   98.11% documented
+
+  Elapsed: 1.1s
+

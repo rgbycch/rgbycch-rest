@@ -2,6 +2,27 @@ require 'spec_helper'
 
 describe Api::V1::ScoreTypesController, :type => :controller do
 
+  describe "GET #index" do
+
+    context "User is logged in" do
+
+      before(:each) do
+        @user = FactoryGirl.create :user
+        api_authorization_header @user.auth_token
+        3.times { FactoryGirl.create :score_type}
+        get :index
+      end
+
+      it "returns 3 ScoreTypes from the database" do
+        score_type_response = json_response[:score_types]
+        expect(score_type_response.size).to eq(3)
+      end
+
+      it { should respond_with 200 }
+    end
+
+  end
+
   describe "GET #show" do
 
     context "User is logged in" do
@@ -11,7 +32,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a score type which is present" do
+      context "User requests a ScoreType which is present" do
 
         before(:each) do
           @score_type = FactoryGirl.create :score_type
@@ -19,7 +40,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
           get :show, id: @score_type.id
         end
 
-        it "returns the information about a score type in a hash" do
+        it "returns the information about a ScoreType in a hash" do
           score_type_response = json_response[:score_type]
           expect(score_type_response[:title]).not_to be_nil
           expect(score_type_response[:url]).not_to be_nil
@@ -30,7 +51,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
 
       end
 
-      context "User requests a score type which is not present" do
+      context "User requests a ScoreType which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -68,14 +89,14 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a score type is successfully created" do
+      context "when a ScoreType is successfully created" do
 
         before(:each) do
           @score_type_attributes = FactoryGirl.attributes_for :score_type
           post :create, { score_type: @score_type_attributes }
         end
 
-        it "renders the json representation for the score type just created" do
+        it "renders the json representation for the ScoreType just created" do
           score_type_response = json_response[:score_type]
           expect(score_type_response[:title]).to eql @score_type_attributes[:title]
           expect(score_type_response[:url]).to eql @score_type_attributes[:url]
@@ -96,7 +117,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
           expect(score_type_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the score type could not be created" do
+        it "renders the json errors on why the ScoreType could not be created" do
           score_type_response = json_response
           expect(score_type_response[:errors][:title]).to include "can't be blank"
         end
@@ -133,12 +154,12 @@ describe Api::V1::ScoreTypesController, :type => :controller do
       context "when is successfully updated" do
 
         before(:each) do
-          patch :update, { user_id: @user.id, id: @score_type.id, score_type: { title: "Updated Score Type Title" } }
+          patch :update, { user_id: @user.id, id: @score_type.id, score_type: { title: "Updated ScoreType Title" } }
         end
 
-        it "renders the json representation for the updated score type" do
+        it "renders the json representation for the updated ScoreType" do
           score_type_response = json_response[:score_type]
-          expect(score_type_response[:title]).to eql "Updated Score Type Title"
+          expect(score_type_response[:title]).to eql "Updated ScoreType Title"
         end
 
         it { should respond_with 200 }
@@ -155,7 +176,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
           expect(score_type_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the score type could not be created" do
+        it "renders the json errors on why the ScoreType could not be updated" do
           score_type_response = json_response
           expect(score_type_response[:errors][:title]).to include "can't be blank"
         end
@@ -168,7 +189,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
     context "User is not logged in" do
 
       before(:each) do
-        patch :update, { id: @score_type.id, score_type: { title: "Updated Score Type Title" } }
+        patch :update, { id: @score_type.id, score_type: { title: "Updated ScoreType Title" } }
       end
 
       it { should respond_with 401 }

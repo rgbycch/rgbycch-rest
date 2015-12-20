@@ -1,5 +1,5 @@
 ##
-# Defines all attributes for a user in the system.
+# Defines all attributes for a User in the system.
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   before_create :generate_authentication_token!
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  ##
+  # Creates a new auth token for this User
 
   def generate_authentication_token!
     begin

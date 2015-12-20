@@ -32,7 +32,7 @@ describe Api::V1::RolesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a role which is present" do
+      context "User requests a Role which is present" do
 
         before(:each) do
           @role = FactoryGirl.create :role
@@ -40,7 +40,7 @@ describe Api::V1::RolesController, :type => :controller do
           get :show, id: @role.id
         end
 
-        it "returns the information about an role in a hash" do
+        it "returns the information about a Role in a hash" do
           role_response = json_response[:role]
           expect(role_response[:title]).not_to be_nil
           expect(role_response[:url]).not_to be_nil
@@ -50,7 +50,7 @@ describe Api::V1::RolesController, :type => :controller do
 
       end
 
-      context "User requests a role which is not present" do
+      context "User requests a Role which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -88,7 +88,7 @@ describe Api::V1::RolesController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when an role is successfully created" do
+      context "when a Role is successfully created" do
 
         before(:each) do
           @role_attributes = FactoryGirl.attributes_for :role
@@ -175,7 +175,7 @@ describe Api::V1::RolesController, :type => :controller do
           expect(role_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the role could not be created" do
+        it "renders the json errors on why the role could not be updated" do
           role_response = json_response
           expect(role_response[:errors][:title]).to include "can't be blank"
         end

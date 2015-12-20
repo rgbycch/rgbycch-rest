@@ -11,7 +11,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a preferred position which is present" do
+      context "User requests a PreferredPosition which is present" do
 
         before(:each) do
           @preferred_position = FactoryGirl.create :preferred_position
@@ -19,7 +19,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
           get :show, id: @preferred_position.id
         end
 
-        it "returns the information about a preferred position in a hash" do
+        it "returns the information about a PreferredPosition in a hash" do
           preferred_position_response = json_response[:preferred_position]
           expect(preferred_position_response[:preference]).not_to be_nil
           expect(preferred_position_response[:player][:id]).not_to be_nil
@@ -30,7 +30,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
 
       end
 
-      context "User requests a preferred position which is not present" do
+      context "User requests a PreferredPosition which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -69,7 +69,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a preferred position is successfully created" do
+      context "when a PreferredPosition is successfully created" do
 
         before(:each) do
           @preferred_position_attributes = FactoryGirl.attributes_for :preferred_position
@@ -155,7 +155,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
           expect(preferred_position_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the preferred position could not be created" do
+        it "renders the json errors on why the preferred position could not be updated" do
           preferred_position_response = json_response
           expect(preferred_position_response[:errors][:preference]).to include "must be greater than or equal to 0"
         end

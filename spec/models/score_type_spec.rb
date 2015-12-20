@@ -27,7 +27,7 @@ describe ScoreType do
 
       context "when a 'Penalty' title pattern is sent" do
 
-        it "returns the score types matching" do
+        it "returns the ScoreTypes matching" do
           expect(ScoreType.filter_by_title("Penalty").sort).to match_array([@score_type2, @score_type3])
         end
 
@@ -39,7 +39,7 @@ describe ScoreType do
 
       context "when an empty hash is sent" do
 
-        it "returns all the score types" do
+        it "returns all the ScoreTypes" do
           expect(ScoreType.search({})).to match_array([@score_type1, @score_type2, @score_type3, @score_type4])
         end
 
@@ -47,7 +47,7 @@ describe ScoreType do
 
       context "when score_type_ids is present" do
 
-        it "returns the score types associated with those ids" do
+        it "returns the ScoreTypes associated with those ids" do
           search_hash = { score_type_ids: [@score_type1.id, @score_type2.id]}
           expect(ScoreType.search(search_hash)).to match_array([@score_type1, @score_type2])
         end

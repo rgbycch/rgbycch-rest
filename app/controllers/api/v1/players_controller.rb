@@ -1,5 +1,5 @@
 ##
-# All CRUD and search operations for players are handled in this controller
+# All CRUD and search operations for Players are handled in this controller
 
 class Api::V1::PlayersController < ApplicationController
   respond_to :json
@@ -61,7 +61,7 @@ class Api::V1::PlayersController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for a player
+  # Method for searching for a Player
 
   def index
     respond_with Player.search(player_search_params)
@@ -75,7 +75,7 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   ##
-  # Method for creating a player
+  # Method for creating a Player
 
   def create
     player = Player.new(player_params)
@@ -87,7 +87,7 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   ##
-  # Method for updating a player details
+  # Method for updating a Player details
 
   def update
     player = Player.find(params[:id])
@@ -99,7 +99,7 @@ class Api::V1::PlayersController < ApplicationController
   end
 
   ##
-  # Method for deleting a player from the db
+  # Method for deleting a Player from the db
 
   def destroy
     player = Player.find(params[:id])

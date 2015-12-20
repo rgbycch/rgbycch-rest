@@ -13,7 +13,7 @@ module Errorable
   end
 
   ##
-  # Used whenever a user tries to create a new record, but either validation of the record fails or the db is down.
+  # Used whenever a User tries to create a new record, but either validation of the record fails or the db is down.
 
   def failed_to_create(model, model_name)
     logger.warn("Creating a new #{model_name} failed with #{model.errors.full_messages}")
@@ -21,7 +21,7 @@ module Errorable
   end
 
   ##
-  # Used whenever a user tries to update an existing record, but either validation of the record fails or the db is down.
+  # Used whenever a User tries to update an existing record, but either validation of the record fails or the db is down.
 
   def failed_to_update(model, model_name)
     logger.warn("Updating an existing #{model_name} failed with #{model.errors.full_messages}")

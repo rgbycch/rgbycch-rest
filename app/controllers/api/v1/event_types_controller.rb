@@ -1,15 +1,15 @@
 ##
-# All CRUD and search operations for event types are handled in this controller
+# All CRUD and search operations for EventTypes are handled in this controller
 
 class Api::V1::EventTypesController < ApplicationController
   respond_to :json
   before_action :authenticate_with_token!
 
-  swagger_controller :event_types, "Event Types"
+  swagger_controller :event_types, "EventTypes"
 
   # :nocov:
   swagger_api :index do
-    summary "Searches for an Event Type"
+    summary "Searches for an EventType"
     param :query, :event_type_ids, :string, :optional, "event_type_ids"
     param :query, :keyword, :string, :optional, "keyword"
     response :ok, "Success", :event_types
@@ -18,7 +18,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   swagger_api :show do
-    summary "Gets an Event Type"
+    summary "Gets an EventType"
     param :path, :id, :integer, :required, "event_type_id"
     response :ok, "Success", :event_type
     response :not_acceptable
@@ -26,7 +26,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   swagger_api :create do
-    summary "Creates a new Event Type"
+    summary "Creates a new EventType"
     param :form, :title, :string, :required, "title"
     param :form, :url, :string, :optional, "url"
     response :not_acceptable
@@ -34,7 +34,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   swagger_api :update do
-    summary "Updates an existing Event Type"
+    summary "Updates an existing EventType"
     param :path, :id, :integer, :required, "event_type_id"
     param :form, :title, :string, :optional, "title"
     param :form, :url, :string, :optional, "url"
@@ -45,7 +45,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   swagger_api :destroy do
-    summary "Deletes an existing Event Type"
+    summary "Deletes an existing EventType"
     param :path, :id, :integer, :required, "event_type_id"
     response :unauthorized
     response :not_found
@@ -53,21 +53,21 @@ class Api::V1::EventTypesController < ApplicationController
   # :nocov:
 
   ##
-  # Method for searching for an event type
+  # Method for searching for an EventType
 
   def index
     respond_with EventType.search(event_type_search_params)
   end
 
   ##
-  # Method for showing one event type
+  # Method for showing one EventType
 
   def show
     respond_with EventType.find(params[:id])
   end
 
   ##
-  # Method for creating an event type
+  # Method for creating an EventType
 
   def create
     event_type = EventType.new(event_type_params)
@@ -79,7 +79,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   ##
-  # Method for updating an event type's details
+  # Method for updating an EventType's details
 
   def update
     event_type = EventType.find(params[:id])
@@ -91,7 +91,7 @@ class Api::V1::EventTypesController < ApplicationController
   end
 
   ##
-  # Method for deleting an event type from the db
+  # Method for deleting an EventType from the db
 
   def destroy
     event_type = EventType.find(params[:id])

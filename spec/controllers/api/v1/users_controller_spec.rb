@@ -4,7 +4,7 @@ describe Api::V1::UsersController, :type => :controller do
 
   describe "GET #show" do
 
-    context "User requests a user which is present" do
+    context "User requests a User which is present" do
 
       before(:each) do
         @user = FactoryGirl.create :user
@@ -12,7 +12,7 @@ describe Api::V1::UsersController, :type => :controller do
         get :show, id: @user.id
       end
 
-      it "returns the information about a user on a hash" do
+      it "returns the information about a User on a hash" do
         user_response = json_response[:user]
         expect(user_response[:email]).to eql @user.email
       end
@@ -21,7 +21,7 @@ describe Api::V1::UsersController, :type => :controller do
 
     end
 
-    context "User requests a user which is not present" do
+    context "User requests a User which is not present" do
 
       before(:each) do
         get :show, id: "zzz"
@@ -106,7 +106,7 @@ describe Api::V1::UsersController, :type => :controller do
         expect(user_response).to have_key(:errors)
       end
 
-      it "renders the json errors on whye the user could not be created" do
+      it "renders the json errors on whye the user could not be updated" do
         user_response = json_response
         expect(user_response[:errors][:email]).to include "is invalid"
       end

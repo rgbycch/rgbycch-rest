@@ -34,4 +34,16 @@ if Rails.env.development? || Rails.env.production?
   PlayerPosition.create title: "Outside Centre", position_number: 13, url: ""
   PlayerPosition.create title: "Right Wing", position_number: 14, url: ""
   PlayerPosition.create title: "Full-Back", position_number: 15, url: ""
+  # match state
+  MatchState.create title: "Kick Off"
+  MatchState.create title: "In Play"
+  MatchState.create title: "Half Time"
+  MatchState.create title: "Time Out"
+  MatchState.create title: "Full Time"
+  MatchState.create title: "Abandoned"
+  # player state
+  PlayerState.create title: "Active"
+  PlayerState.create title: "Suspended"
+  PlayerState.create title: "Retired"
+  PlayerState.create title: "Ineligible"
 end

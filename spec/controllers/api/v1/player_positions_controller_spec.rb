@@ -13,7 +13,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         get :index
       end
 
-      it "returns 3 player positions from the database" do
+      it "returns 3 PlayerPositions from the database" do
         player_position_response = json_response[:player_positions]
         expect(player_position_response.size).to eq(3)
       end
@@ -32,7 +32,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "User requests a player position which is present" do
+      context "User requests a PlayerPosition which is present" do
 
         before(:each) do
           @player_position = FactoryGirl.create :player_position
@@ -40,7 +40,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
           get :show, id: @player_position.id
         end
 
-        it "returns the information about a player position in a hash" do
+        it "returns the information about a PlayerPosition in a hash" do
           player_position_response = json_response[:player_position]
           expect(player_position_response[:title]).not_to be_nil
           expect(player_position_response[:url]).not_to be_nil
@@ -51,7 +51,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
 
       end
 
-      context "User requests a player position which is not present" do
+      context "User requests a PlayerPosition which is not present" do
 
         before(:each) do
           get :show, id: "zzz"
@@ -90,14 +90,14 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         api_authorization_header @user.auth_token
       end
 
-      context "when a player position is successfully created" do
+      context "when a PlayerPosition is successfully created" do
 
         before(:each) do
           @player_position_attributes = FactoryGirl.attributes_for :player_position
           post :create, { player_position: @player_position_attributes }
         end
 
-        it "renders the json representation for the player position just created" do
+        it "renders the json representation for the PlayerPosition just created" do
           player_position_response = json_response[:player_position]
           expect(player_position_response[:title]).to eql @player_position_attributes[:title]
           expect(player_position_response[:url]).to eql @player_position_attributes[:url]
@@ -118,7 +118,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
           expect(player_position_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the player position could not be created" do
+        it "renders the json errors on why the PlayerPosition could not be created" do
           player_position_response = json_response
           expect(player_position_response[:errors][:title]).to include "can't be blank"
         end
@@ -155,12 +155,12 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
       context "when is successfully updated" do
 
         before(:each) do
-          patch :update, { user_id: @user.id, id: @player_position.id, player_position: { title: "Updated Player Position Title" } }
+          patch :update, { user_id: @user.id, id: @player_position.id, player_position: { title: "Updated PlayerPosition Title" } }
         end
 
-        it "renders the json representation for the updated player position" do
+        it "renders the json representation for the updated PlayerPosition" do
           player_position_response = json_response[:player_position]
-          expect(player_position_response[:title]).to eql "Updated Player Position Title"
+          expect(player_position_response[:title]).to eql "Updated PlayerPosition Title"
         end
 
         it { should respond_with 200 }
@@ -177,7 +177,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
           expect(player_position_response).to have_key(:errors)
         end
 
-        it "renders the json errors on why the player position could not be created" do
+        it "renders the json errors on why the PlayerPosition could not be updated" do
           player_position_response = json_response
           expect(player_position_response[:errors][:title]).to include "can't be blank"
         end
@@ -190,7 +190,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
     context "User is not logged in" do
 
       before(:each) do
-        patch :update, { id: @player_position.id, player_position: { title: "Updated Player Position Title" } }
+        patch :update, { id: @player_position.id, player_position: { title: "Updated PlayerPosition Title" } }
       end
 
       it { should respond_with 401 }

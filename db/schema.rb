@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925090316) do
+ActiveRecord::Schema.define(version: 20151220205154) do
 
   create_table "clubs", force: :cascade do |t|
     t.string   "title"
@@ -26,6 +26,75 @@ ActiveRecord::Schema.define(version: 20150925090316) do
     t.string   "url",        default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "match_day_players", force: :cascade do |t|
+    t.integer  "player_id"
+    t.integer  "player_position_id"
+    t.integer  "rating"
+    t.integer  "points"
+    t.integer  "fouls"
+    t.integer  "turnovers_for"
+    t.integer  "turnovers_against"
+    t.integer  "penalties_won"
+    t.integer  "penalties_conceded"
+    t.integer  "yellow_cards"
+    t.integer  "red_cards"
+    t.integer  "carries"
+    t.integer  "yards_carried"
+    t.integer  "forward_passes"
+    t.integer  "successful_lineout_throws"
+    t.integer  "unsuccessful_lineout_throws"
+    t.integer  "scrums_won"
+    t.integer  "scrums_lost"
+    t.integer  "successful_garryowens"
+    t.integer  "unsuccessful_garryowens"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "match_day_team_id"
+  end
+
+  add_index "match_day_players", ["match_day_team_id"], name: "index_match_day_players_on_match_day_team_id"
+  add_index "match_day_players", ["player_id"], name: "index_match_day_players_on_player_id"
+
+  create_table "match_day_teams", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "match_states", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer  "home_match_day_team_id"
+    t.integer  "away_match_day_team_id"
+    t.datetime "kick_off_date"
+    t.integer  "venue_id"
+    t.integer  "referee_id"
+    t.integer  "match_state_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "matches", ["venue_id"], name: "index_matches_on_venue_id"
+
+  create_table "officials", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "player_states", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
@@ -73,6 +142,13 @@ ActiveRecord::Schema.define(version: 20150925090316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer  "home_score"
+    t.integer  "away_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -101,5 +177,15 @@ ActiveRecord::Schema.define(version: 20150925090316) do
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
