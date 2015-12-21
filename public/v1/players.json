@@ -1,0 +1,267 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.rgbycch-rest.dev/api//",
+  "resourcePath": "players",
+  "apis": [
+    {
+      "path": "players.json",
+      "operations": [
+        {
+          "summary": "Searches for a Player",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "player_ids",
+              "type": "string",
+              "description": "player_ids",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "keyword",
+              "type": "string",
+              "description": "keyword",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "players",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::V1::Players#index"
+        }
+      ]
+    },
+    {
+      "path": "players.json",
+      "operations": [
+        {
+          "summary": "Creates a new Player",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "first_name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "last_name",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "nick_name",
+              "type": "string",
+              "description": "nick_name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "dob",
+              "type": "string",
+              "description": "dob",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "email",
+              "type": "string",
+              "description": "email",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "phone_number",
+              "type": "string",
+              "description": "phone_number",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::V1::Players#create"
+        }
+      ]
+    },
+    {
+      "path": "players/{id}.json",
+      "operations": [
+        {
+          "summary": "Gets a Player",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "player_id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "player",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::V1::Players#show"
+        }
+      ]
+    },
+    {
+      "path": "players/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing Player",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "player_id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "first_name",
+              "type": "string",
+              "description": "first_name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "last_name",
+              "type": "string",
+              "description": "last_name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "nick_name",
+              "type": "string",
+              "description": "nick_name",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "dob",
+              "type": "string",
+              "description": "dob",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "email",
+              "type": "string",
+              "description": "email",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "phone_number",
+              "type": "string",
+              "description": "phone_number",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "method": "patch",
+          "nickname": "Api::V1::Players#update"
+        }
+      ]
+    },
+    {
+      "path": "players/{id}.json",
+      "operations": [
+        {
+          "summary": "Deletes an existing Player",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "player_id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Api::V1::Players#destroy"
+        }
+      ]
+    }
+  ]
+}

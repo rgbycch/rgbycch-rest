@@ -1,0 +1,225 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.rgbycch-rest.dev/api//",
+  "resourcePath": "clubs",
+  "apis": [
+    {
+      "path": "clubs.json",
+      "operations": [
+        {
+          "summary": "Searches for a Club",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "club_ids",
+              "type": "string",
+              "description": "club_ids",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "keyword",
+              "type": "string",
+              "description": "keyword",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "clubs",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::V1::Clubs#index"
+        }
+      ]
+    },
+    {
+      "path": "clubs.json",
+      "operations": [
+        {
+          "summary": "Creates a new Club",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "title",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "type": "string",
+              "description": "url",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "founded",
+              "type": "string",
+              "description": "founded",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "method": "post",
+          "nickname": "Api::V1::Clubs#create"
+        }
+      ]
+    },
+    {
+      "path": "clubs/{id}.json",
+      "operations": [
+        {
+          "summary": "Gets a Club",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "club_id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": "club",
+              "message": "Success"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            }
+          ],
+          "method": "get",
+          "nickname": "Api::V1::Clubs#show"
+        }
+      ]
+    },
+    {
+      "path": "clubs/{id}.json",
+      "operations": [
+        {
+          "summary": "Updates an existing Club",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "club_id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "title",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "url",
+              "type": "string",
+              "description": "url",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "founded",
+              "type": "string",
+              "description": "founded",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 406,
+              "responseModel": null,
+              "message": "Not Acceptable"
+            },
+            {
+              "code": 422,
+              "responseModel": null,
+              "message": "Unprocessable Entity"
+            }
+          ],
+          "method": "patch",
+          "nickname": "Api::V1::Clubs#update"
+        }
+      ]
+    },
+    {
+      "path": "clubs/{id}.json",
+      "operations": [
+        {
+          "summary": "Deletes an existing Club",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "club_id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "method": "delete",
+          "nickname": "Api::V1::Clubs#destroy"
+        }
+      ]
+    }
+  ]
+}
