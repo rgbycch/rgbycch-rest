@@ -35,7 +35,7 @@ RESTful API for rgbycch system. Rails based API service.
 12. Navigate to the [base of the server](http://rgbycch-rest.dev) and you should see the rails sample start page.
 13. Generate a user by executing the following code from the base of the project:
   ```
-  rails console
+  bundle exec rails console
   User.create({email: "tom@rgbycch.com",
                             password: "12345678",
                             password_confirmation: "12345678"})
