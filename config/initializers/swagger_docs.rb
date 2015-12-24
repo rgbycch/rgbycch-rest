@@ -1,10 +1,10 @@
 Swagger::Docs::Config.register_apis({
   "1.0" => {
     :api_extension_type => :json,
-    :api_file_path => "public",
+    :api_file_path => "public/",
     :base_path => "http://api.rgbycch-rest.dev",
     :clean_directory => false,
-    :controller_base_path => "",
+    :controller_base_path => "/api/",
     :attributes => {
       :info => {
         "title" => "rgbycch API service",
