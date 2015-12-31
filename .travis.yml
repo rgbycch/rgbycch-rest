@@ -1,13 +1,4 @@
-language: ruby
-rvm:
-  - 2.2.3
-
-bundler_args: --without development
-
-before_script:
-  - cp config/secrets.template.yml config/secrets.yml
-
-script:
-  - rake db:migrate
-  - RAILS_ENV=test bundle exec rake db:setup --trace
-  - bundle exec rspec spec
+language: node_js
+node_js:
+  - "4.1"
+  - "4.0"
