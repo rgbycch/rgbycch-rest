@@ -9,5 +9,5 @@ before_script:
 
 script:
   - bundle exec rake db:setup --trace
-  - bundle exec db:migrate
+  - bundle exec rake db:migrate
   - bundle exec rspec spec
