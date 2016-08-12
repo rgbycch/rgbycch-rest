@@ -14,8 +14,7 @@ describe Api::V1::EventTypesController, :type => :controller do
       end
 
       it "returns 3 event_types from the database" do
-        event_types_response = json_response[:event_types]
-        expect(event_types_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,9 +40,8 @@ describe Api::V1::EventTypesController, :type => :controller do
         end
 
         it "returns the information about an EventType in a hash" do
-          event_type_response = json_response[:event_type]
-          expect(event_type_response[:title]).not_to be_nil
-          expect(event_type_response[:url]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -97,9 +95,8 @@ describe Api::V1::EventTypesController, :type => :controller do
         end
 
         it "renders the json representation for the event type just created" do
-          event_type_response = json_response[:event_type]
-          expect(event_type_response[:title]).to eql @event_type_attributes[:title]
-          expect(event_type_response[:url]).to eql @event_type_attributes[:url]
+          expect(json_response[:title]).to eql @event_type_attributes[:title]
+          expect(json_response[:url]).to eql @event_type_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -158,8 +155,7 @@ describe Api::V1::EventTypesController, :type => :controller do
         end
 
         it "renders the json representation for the updated event type" do
-          event_type_response = json_response[:event_type]
-          expect(event_type_response[:title]).to eql "Updated EventType Name"
+          expect(json_response[:title]).to eql "Updated EventType Name"
         end
 
         it { should respond_with 200 }

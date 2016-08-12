@@ -14,8 +14,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
       end
 
       it "returns 3 MatchDayTeams from the database" do
-        match_day_team_response = json_response[:match_day_teams]
-        expect(match_day_team_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -40,9 +39,8 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         end
 
         it "returns the information about a MatchDayTeam in a hash" do
-          match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:title]).not_to be_nil
-          expect(match_day_team_response[:url]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -95,9 +93,8 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         end
 
         it "renders the json representation for the team just created" do
-          match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:title]).to eql @match_day_team_attributes[:title]
-          expect(match_day_team_response[:url]).to eql @match_day_team_attributes[:url]
+          expect(json_response[:title]).to eql @match_day_team_attributes[:title]
+          expect(json_response[:url]).to eql @match_day_team_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -156,8 +153,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated MatchDayTeam" do
-          match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:title]).to eql "Updated MatchDayTeam Title"
+          expect(json_response[:title]).to eql "Updated MatchDayTeam Title"
         end
 
         it { should respond_with 200 }
@@ -171,8 +167,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated MatchDayTeam" do
-          match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:match_day_players].count).to eql 1
+          expect(json_response[:match_day_players].count).to eql 1
         end
 
         it { should respond_with 200 }
@@ -187,8 +182,7 @@ describe Api::V1::MatchDayTeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated MatchDayTeam" do
-          match_day_team_response = json_response[:match_day_team]
-          expect(match_day_team_response[:match_day_players].count).to eql 0
+          expect(json_response[:match_day_players].count).to eql 0
         end
 
         it { should respond_with 200 }

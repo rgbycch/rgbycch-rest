@@ -14,8 +14,7 @@ describe Api::V1::PlayerStatesController, :type => :controller do
       end
 
       it "returns 3 player states from the database" do
-        player_state_response = json_response[:player_states]
-        expect(player_state_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,8 +40,7 @@ describe Api::V1::PlayerStatesController, :type => :controller do
         end
 
         it "returns the information about a player state in a hash" do
-          player_state_response = json_response[:player_state]
-          expect(player_state_response[:title]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -95,8 +93,7 @@ describe Api::V1::PlayerStatesController, :type => :controller do
         end
 
         it "renders the json representation for the player state just created" do
-          player_state_response = json_response[:player_state]
-          expect(player_state_response[:title]).to eql @player_state_attributes[:title]
+          expect(json_response[:title]).to eql @player_state_attributes[:title]
         end
 
         it { should respond_with 201 }
@@ -155,8 +152,7 @@ describe Api::V1::PlayerStatesController, :type => :controller do
         end
 
         it "renders the json representation for the updated player state" do
-          player_state_response = json_response[:player_state]
-          expect(player_state_response[:title]).to eql "Updated Match State Title"
+          expect(json_response[:title]).to eql "Updated Match State Title"
         end
 
         it { should respond_with 200 }

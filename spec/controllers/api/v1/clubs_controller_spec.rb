@@ -14,8 +14,7 @@ describe Api::V1::ClubsController, :type => :controller do
       end
 
       it "returns 4 clubs from the database" do
-        clubs_response = json_response[:clubs]
-        expect(clubs_response.size).to eq(4)
+        expect(json_response.size).to eq(4)
       end
 
       it { should respond_with 200 }
@@ -41,10 +40,9 @@ describe Api::V1::ClubsController, :type => :controller do
         end
 
         it "returns the information about a Club in a hash" do
-          club_response = json_response[:club]
-          expect(club_response[:title]).not_to be_nil
-          expect(club_response[:url]).not_to be_nil
-          expect(club_response[:founded]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
+          expect(json_response[:founded]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -97,9 +95,8 @@ describe Api::V1::ClubsController, :type => :controller do
         end
 
         it "renders the json representation for the club just created" do
-          club_response = json_response[:club]
-          expect(club_response[:title]).to eql @club_attributes[:title]
-          expect(club_response[:url]).to eql @club_attributes[:url]
+          expect(json_response[:title]).to eql @club_attributes[:title]
+          expect(json_response[:url]).to eql @club_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -158,8 +155,7 @@ describe Api::V1::ClubsController, :type => :controller do
         end
 
         it "renders the json representation for the updated club" do
-          club_response = json_response[:club]
-          expect(club_response[:title]).to eql "Updated Club Title"
+          expect(json_response[:title]).to eql "Updated Club Title"
         end
 
         it { should respond_with 200 }

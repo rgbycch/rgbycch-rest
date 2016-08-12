@@ -14,8 +14,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
       end
 
       it "returns 3 MatchDayPlayers from the database" do
-        match_day_players_response = json_response[:match_day_players]
-        expect(match_day_players_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,27 +40,26 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         end
 
         it "returns the information about a MatchDayPlayer in a hash" do
-          match_day_player_response = json_response[:match_day_player]
-          expect(match_day_player_response[:player]).not_to be_nil
-          expect(match_day_player_response[:player_position]).not_to be_nil
-          expect(match_day_player_response[:rating]).not_to be_nil
-          expect(match_day_player_response[:points]).not_to be_nil
-          expect(match_day_player_response[:fouls]).not_to be_nil
-          expect(match_day_player_response[:turnovers_for]).not_to be_nil
-          expect(match_day_player_response[:turnovers_against]).not_to be_nil
-          expect(match_day_player_response[:penalties_won]).not_to be_nil
-          expect(match_day_player_response[:penalties_conceded]).not_to be_nil
-          expect(match_day_player_response[:yellow_cards]).not_to be_nil
-          expect(match_day_player_response[:red_cards]).not_to be_nil
-          expect(match_day_player_response[:carries]).not_to be_nil
-          expect(match_day_player_response[:yards_carried]).not_to be_nil
-          expect(match_day_player_response[:forward_passes]).not_to be_nil
-          expect(match_day_player_response[:successful_lineout_throws]).not_to be_nil
-          expect(match_day_player_response[:unsuccessful_lineout_throws]).not_to be_nil
-          expect(match_day_player_response[:scrums_won]).not_to be_nil
-          expect(match_day_player_response[:scrums_lost]).not_to be_nil
-          expect(match_day_player_response[:successful_garryowens]).not_to be_nil
-          expect(match_day_player_response[:unsuccessful_garryowens]).not_to be_nil
+          expect(json_response[:player]).not_to be_nil
+          expect(json_response[:player_position]).not_to be_nil
+          expect(json_response[:rating]).not_to be_nil
+          expect(json_response[:points]).not_to be_nil
+          expect(json_response[:fouls]).not_to be_nil
+          expect(json_response[:turnovers_for]).not_to be_nil
+          expect(json_response[:turnovers_against]).not_to be_nil
+          expect(json_response[:penalties_won]).not_to be_nil
+          expect(json_response[:penalties_conceded]).not_to be_nil
+          expect(json_response[:yellow_cards]).not_to be_nil
+          expect(json_response[:red_cards]).not_to be_nil
+          expect(json_response[:carries]).not_to be_nil
+          expect(json_response[:yards_carried]).not_to be_nil
+          expect(json_response[:forward_passes]).not_to be_nil
+          expect(json_response[:successful_lineout_throws]).not_to be_nil
+          expect(json_response[:unsuccessful_lineout_throws]).not_to be_nil
+          expect(json_response[:scrums_won]).not_to be_nil
+          expect(json_response[:scrums_lost]).not_to be_nil
+          expect(json_response[:successful_garryowens]).not_to be_nil
+          expect(json_response[:unsuccessful_garryowens]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -114,27 +112,26 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         end
 
         it "renders the json representation for the MatchDayPlayer just created" do
-          match_day_player_response = json_response[:match_day_player]
-          expect(match_day_player_response[:player]).to eql @match_day_player_attributes[:player]
-          expect(match_day_player_response[:player_position]).to eql @match_day_player_attributes[:player_position]
-          expect(match_day_player_response[:rating]).to eql @match_day_player_attributes[:rating]
-          expect(match_day_player_response[:points]).to eql @match_day_player_attributes[:points]
-          expect(match_day_player_response[:fouls]).to eql @match_day_player_attributes[:fouls]
-          expect(match_day_player_response[:turnovers_for]).to eql @match_day_player_attributes[:turnovers_for]
-          expect(match_day_player_response[:turnovers_against]).to eql @match_day_player_attributes[:turnovers_against]
-          expect(match_day_player_response[:penalties_won]).to eql @match_day_player_attributes[:penalties_won]
-          expect(match_day_player_response[:penalties_conceded]).to eql @match_day_player_attributes[:penalties_conceded]
-          expect(match_day_player_response[:yellow_cards]).to eql @match_day_player_attributes[:yellow_cards]
-          expect(match_day_player_response[:red_cards]).to eql @match_day_player_attributes[:red_cards]
-          expect(match_day_player_response[:carries]).to eql @match_day_player_attributes[:carries]
-          expect(match_day_player_response[:yards_carried]).to eql @match_day_player_attributes[:yards_carried]
-          expect(match_day_player_response[:forward_passes]).to eql @match_day_player_attributes[:forward_passes]
-          expect(match_day_player_response[:successful_lineout_throws]).to eql @match_day_player_attributes[:successful_lineout_throws]
-          expect(match_day_player_response[:unsuccessful_lineout_throws]).to eql @match_day_player_attributes[:unsuccessful_lineout_throws]
-          expect(match_day_player_response[:scrums_won]).to eql @match_day_player_attributes[:scrums_won]
-          expect(match_day_player_response[:scrums_lost]).to eql @match_day_player_attributes[:scrums_lost]
-          expect(match_day_player_response[:successful_garryowens]).to eql @match_day_player_attributes[:successful_garryowens]
-          expect(match_day_player_response[:unsuccessful_garryowens]).to eql @match_day_player_attributes[:unsuccessful_garryowens]
+          expect(json_response[:player]).to eql @match_day_player_attributes[:player]
+          expect(json_response[:player_position]).to eql @match_day_player_attributes[:player_position]
+          expect(json_response[:rating]).to eql @match_day_player_attributes[:rating]
+          expect(json_response[:points]).to eql @match_day_player_attributes[:points]
+          expect(json_response[:fouls]).to eql @match_day_player_attributes[:fouls]
+          expect(json_response[:turnovers_for]).to eql @match_day_player_attributes[:turnovers_for]
+          expect(json_response[:turnovers_against]).to eql @match_day_player_attributes[:turnovers_against]
+          expect(json_response[:penalties_won]).to eql @match_day_player_attributes[:penalties_won]
+          expect(json_response[:penalties_conceded]).to eql @match_day_player_attributes[:penalties_conceded]
+          expect(json_response[:yellow_cards]).to eql @match_day_player_attributes[:yellow_cards]
+          expect(json_response[:red_cards]).to eql @match_day_player_attributes[:red_cards]
+          expect(json_response[:carries]).to eql @match_day_player_attributes[:carries]
+          expect(json_response[:yards_carried]).to eql @match_day_player_attributes[:yards_carried]
+          expect(json_response[:forward_passes]).to eql @match_day_player_attributes[:forward_passes]
+          expect(json_response[:successful_lineout_throws]).to eql @match_day_player_attributes[:successful_lineout_throws]
+          expect(json_response[:unsuccessful_lineout_throws]).to eql @match_day_player_attributes[:unsuccessful_lineout_throws]
+          expect(json_response[:scrums_won]).to eql @match_day_player_attributes[:scrums_won]
+          expect(json_response[:scrums_lost]).to eql @match_day_player_attributes[:scrums_lost]
+          expect(json_response[:successful_garryowens]).to eql @match_day_player_attributes[:successful_garryowens]
+          expect(json_response[:unsuccessful_garryowens]).to eql @match_day_player_attributes[:unsuccessful_garryowens]
 
         end
 
@@ -194,8 +191,7 @@ describe Api::V1::MatchDayPlayersController, :type => :controller do
         end
 
         it "renders the json representation for the updated MatchDayPlayer" do
-          match_day_player_response = json_response[:match_day_player]
-          expect(match_day_player_response[:rating]).to eql 10
+          expect(json_response[:rating]).to eql 10
         end
 
         it { should respond_with 200 }

@@ -14,8 +14,7 @@ describe Api::V1::VenuesController, :type => :controller do
       end
 
       it "returns 3 venues from the database" do
-        venue_response = json_response[:venues]
-        expect(venue_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -40,12 +39,11 @@ describe Api::V1::VenuesController, :type => :controller do
         end
 
         it "returns the information about a Venue in a hash" do
-          venue_response = json_response[:venue]
-          expect(venue_response[:title]).not_to be_nil
-          expect(venue_response[:url]).not_to be_nil
-          expect(venue_response[:latitude]).not_to be_nil
-          expect(venue_response[:longitude]).not_to be_nil
-          expect(venue_response[:capacity]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
+          expect(json_response[:latitude]).not_to be_nil
+          expect(json_response[:longitude]).not_to be_nil
+          expect(json_response[:capacity]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -98,12 +96,11 @@ describe Api::V1::VenuesController, :type => :controller do
         end
 
         it "renders the json representation for the venue just created" do
-          venue_response = json_response[:venue]
-          expect(venue_response[:title]).to eql @venue_attributes[:title]
-          expect(venue_response[:url]).to eql @venue_attributes[:url]
-          expect(venue_response[:latitude]).to eql @venue_attributes[:latitude]
-          expect(venue_response[:longitude]).to eql @venue_attributes[:longitude]
-          expect(venue_response[:capacity]).to eql @venue_attributes[:capacity]
+          expect(json_response[:title]).to eql @venue_attributes[:title]
+          expect(json_response[:url]).to eql @venue_attributes[:url]
+          expect(json_response[:latitude]).to eql @venue_attributes[:latitude]
+          expect(json_response[:longitude]).to eql @venue_attributes[:longitude]
+          expect(json_response[:capacity]).to eql @venue_attributes[:capacity]
         end
 
         it { should respond_with 201 }
@@ -162,8 +159,7 @@ describe Api::V1::VenuesController, :type => :controller do
         end
 
         it "renders the json representation for the updated venue" do
-          venues_response = json_response[:venue]
-          expect(venues_response[:title]).to eql "Updated Venue Title"
+          expect(json_response[:title]).to eql "Updated Venue Title"
         end
 
         it { should respond_with 200 }
