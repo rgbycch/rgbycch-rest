@@ -10,7 +10,7 @@ RESTful API for rgbycch system. Rails based API service.
   ```
   $ gem install bundler
   $ gem install foreman
-  $ gem install rails -v 4.0
+  $ gem install rails -v 5.0.0.1
   ```
 5. Check out the codebase.
 6. Install [pow](http://pow.cx) with ```curl get.pow.cx | sh```
