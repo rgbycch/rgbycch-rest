@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'simplecov'
+require 'shoulda/matchers'
 SimpleCov.start do
   add_filter "/spec/"
 end
@@ -19,5 +20,12 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.before(:each, type: :controller) do
     include_default_accept_headers
+  end
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
   end
 end
