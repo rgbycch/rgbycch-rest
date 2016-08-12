@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MatchDayPlayer do
+describe MatchDayPlayer, type: :model do
   before { @match_day_player = FactoryGirl.build(:match_day_player) }
 
   subject { @match_day_player }

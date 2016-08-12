@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Official do
+describe Official, type: :model do
   before { @official = FactoryGirl.build(:official) }
 
   subject { @official }
@@ -8,7 +8,7 @@ describe Official do
   it { should respond_to(:title) }
   it { should respond_to(:url) }
 
-  it { should validate_presence_of :title }
+  it { should  }
 
   context "filtering and searching" do
 
@@ -53,5 +53,5 @@ describe Official do
     end
 
   end
-  
+
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PreferredPosition do
+describe PreferredPosition, type: :model do
   before { @preferred_position = FactoryGirl.build(:preferred_position) }
 
   subject { @preferred_position }

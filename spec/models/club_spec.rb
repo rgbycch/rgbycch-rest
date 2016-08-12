@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Club do
+describe Club, type: :model do
+  
   before { @club = FactoryGirl.build(:club) }
 
   subject { @club }
@@ -11,7 +12,7 @@ describe Club do
 
   it { should have_many(:teams) }
 
-  it { should validate_presence_of :title }
+  it { should validate_presence_of(:title) }
 
   it { should be_valid }
 

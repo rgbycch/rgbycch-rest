@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Player do
+describe Player, type: :model do
   before { @player = FactoryGirl.build(:player) }
 
   subject { @player }

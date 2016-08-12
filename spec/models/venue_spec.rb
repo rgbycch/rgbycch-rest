@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe Venue do
+describe Venue, type: :model do
+
   before { @venue = FactoryGirl.build(:venue) }
 
   subject { @venue }
@@ -10,9 +11,9 @@ describe Venue do
   it { should respond_to(:longitude) }
   it { should respond_to(:capacity) }
 
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :latitude }
-  it { should validate_presence_of :longitude }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:latitude) }
+  it { should validate_presence_of(:longitude) }
 
   context "filtering and searching" do
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MatchDayTeam do
+describe MatchDayTeam, type: :model do
   before { @match_day_team = FactoryGirl.build(:match_day_team) }
 
   subject { @match_day_team }
@@ -9,7 +9,7 @@ describe MatchDayTeam do
   it { should respond_to(:url) }
   it { should respond_to(:match_day_players) }
 
-  it { should validate_presence_of :title }
+  it { should  }
 
   it { should be_valid }
 
