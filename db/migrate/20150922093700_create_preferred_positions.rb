@@ -1,4 +1,4 @@
-class CreatePreferredPositions < ActiveRecord::Migration
+class CreatePreferredPositions < ActiveRecord::Migration[4.2]
   def change
     create_table :preferred_positions do |t|
       t.references :player, index: true, foreign_key: true

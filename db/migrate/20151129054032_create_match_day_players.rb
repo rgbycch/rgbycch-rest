@@ -1,4 +1,4 @@
-class CreateMatchDayPlayers < ActiveRecord::Migration
+class CreateMatchDayPlayers < ActiveRecord::Migration[4.2]
   def change
     create_table :match_day_players do |t|
       t.references :player, index: true, foreign_key: true

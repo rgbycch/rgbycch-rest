@@ -1,4 +1,4 @@
-class CreatePlayersTeamsJoinTable < ActiveRecord::Migration
+class CreatePlayersTeamsJoinTable < ActiveRecord::Migration[4.2]
   def self.up
     create_table :players_teams, :id => false do |t|
       t.integer :player_id

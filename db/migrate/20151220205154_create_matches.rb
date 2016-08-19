@@ -1,4 +1,4 @@
-class CreateMatches < ActiveRecord::Migration
+class CreateMatches < ActiveRecord::Migration[4.2]
   def change
     create_table :matches do |t|
       t.integer :home_match_day_team_id
