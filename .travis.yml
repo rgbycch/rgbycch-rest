@@ -9,7 +9,7 @@ before_script:
 
 script:
   - rm -f db/*.sqlite3
-  - RAILS_ENV=test bundle exec rake db:setup
-  - RAILS_ENV=test bundle exec rake db:migrate
-  - RAILS_ENV=test bundle exec rake db:test:prepare
-  - RAILS_ENV=test bundle exec rspec spec
+  - bundle exec rake db:setup RAILS_ENV=test
+  - bundle exec rails db:migrate RAILS_ENV=test
+  - bundle exec rake db:test:prepare RAILS_ENV=test
+  - bundle exec rspec spec RAILS_ENV=test
