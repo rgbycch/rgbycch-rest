@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -52,10 +51,9 @@ ActiveRecord::Schema.define(version: 20151220205154) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "match_day_team_id"
+    t.index ["match_day_team_id"], name: "index_match_day_players_on_match_day_team_id"
+    t.index ["player_id"], name: "index_match_day_players_on_player_id"
   end
-
-  add_index "match_day_players", ["match_day_team_id"], name: "index_match_day_players_on_match_day_team_id"
-  add_index "match_day_players", ["player_id"], name: "index_match_day_players_on_player_id"
 
   create_table "match_day_teams", force: :cascade do |t|
     t.string   "title"
@@ -79,9 +77,8 @@ ActiveRecord::Schema.define(version: 20151220205154) do
     t.integer  "match_state_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["venue_id"], name: "index_matches_on_venue_id"
   end
-
-  add_index "matches", ["venue_id"], name: "index_matches_on_venue_id"
 
   create_table "officials", force: :cascade do |t|
     t.string   "title"
@@ -111,9 +108,8 @@ ActiveRecord::Schema.define(version: 20151220205154) do
   create_table "players_teams", id: false, force: :cascade do |t|
     t.integer "player_id"
     t.integer "team_id"
+    t.index ["player_id", "team_id"], name: "index_players_teams_on_player_id_and_team_id"
   end
-
-  add_index "players_teams", ["player_id", "team_id"], name: "index_players_teams_on_player_id_and_team_id"
 
   create_table "preferred_positions", force: :cascade do |t|
     t.integer  "player_id"
@@ -121,10 +117,9 @@ ActiveRecord::Schema.define(version: 20151220205154) do
     t.integer  "preference"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["player_id"], name: "index_preferred_positions_on_player_id"
+    t.index ["player_position_id"], name: "index_preferred_positions_on_player_position_id"
   end
-
-  add_index "preferred_positions", ["player_id"], name: "index_preferred_positions_on_player_id"
-  add_index "preferred_positions", ["player_position_id"], name: "index_preferred_positions_on_player_position_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "title"
@@ -154,9 +149,8 @@ ActiveRecord::Schema.define(version: 20151220205154) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "club_id"
+    t.index ["club_id"], name: "index_teams_on_club_id"
   end
-
-  add_index "teams", ["club_id"], name: "index_teams_on_club_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -172,11 +166,10 @@ ActiveRecord::Schema.define(version: 20151220205154) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "auth_token",             default: ""
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "venues", force: :cascade do |t|
     t.string   "title"
