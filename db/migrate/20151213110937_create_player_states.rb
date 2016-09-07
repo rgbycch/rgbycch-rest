@@ -1,4 +1,4 @@
-class CreatePlayerStates < ActiveRecord::Migration
+class CreatePlayerStates < ActiveRecord::Migration[4.2]
   def change
     create_table :player_states do |t|
       t.string :title

@@ -14,8 +14,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
       end
 
       it "returns 3 ScoreTypes from the database" do
-        score_type_response = json_response[:score_types]
-        expect(score_type_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,10 +40,9 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         end
 
         it "returns the information about a ScoreType in a hash" do
-          score_type_response = json_response[:score_type]
-          expect(score_type_response[:title]).not_to be_nil
-          expect(score_type_response[:url]).not_to be_nil
-          expect(score_type_response[:points]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
+          expect(json_response[:points]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -97,9 +95,8 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         end
 
         it "renders the json representation for the ScoreType just created" do
-          score_type_response = json_response[:score_type]
-          expect(score_type_response[:title]).to eql @score_type_attributes[:title]
-          expect(score_type_response[:url]).to eql @score_type_attributes[:url]
+          expect(json_response[:title]).to eql @score_type_attributes[:title]
+          expect(json_response[:url]).to eql @score_type_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -158,8 +155,7 @@ describe Api::V1::ScoreTypesController, :type => :controller do
         end
 
         it "renders the json representation for the updated ScoreType" do
-          score_type_response = json_response[:score_type]
-          expect(score_type_response[:title]).to eql "Updated ScoreType Title"
+          expect(json_response[:title]).to eql "Updated ScoreType Title"
         end
 
         it { should respond_with 200 }

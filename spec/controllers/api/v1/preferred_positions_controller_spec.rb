@@ -20,10 +20,9 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         end
 
         it "returns the information about a PreferredPosition in a hash" do
-          preferred_position_response = json_response[:preferred_position]
-          expect(preferred_position_response[:preference]).not_to be_nil
-          expect(preferred_position_response[:player][:id]).not_to be_nil
-          expect(preferred_position_response[:player_position][:id]).not_to be_nil
+          expect(json_response[:preference]).not_to be_nil
+          expect(json_response[:player][:id]).not_to be_nil
+          expect(json_response[:player_position][:id]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -77,8 +76,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         end
 
         it "renders the json representation for the preferred position just created" do
-          preferred_position_response = json_response[:preferred_position]
-          expect(preferred_position_response[:preference]).to eql @preferred_position_attributes[:preference]
+          expect(json_response[:preference]).to eql @preferred_position_attributes[:preference]
         end
 
         it { should respond_with 201 }
@@ -137,8 +135,7 @@ describe Api::V1::PreferredPositionsController, :type => :controller do
         end
 
         it "renders the json representation for the updated preferred position" do
-          preferred_position_response = json_response[:preferred_position]
-          expect(preferred_position_response[:preference]).to eql 2
+          expect(json_response[:preference]).to eql 2
         end
 
         it { should respond_with 200 }

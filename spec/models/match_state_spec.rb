@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe MatchState do
+describe MatchState, type: :model do
   before { @match_state = FactoryGirl.build(:match_state) }
 
   subject { @match_state }
 
   it { should respond_to(:title) }
-  it { should validate_presence_of :title }
+  it { should  }
 
   context "filtering and searching" do
 
@@ -51,5 +51,5 @@ describe MatchState do
     end
 
   end
-  
+
 end

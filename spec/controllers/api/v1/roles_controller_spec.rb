@@ -14,8 +14,7 @@ describe Api::V1::RolesController, :type => :controller do
       end
 
       it "returns 3 roles from the database" do
-        roles_response = json_response[:roles]
-        expect(roles_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,9 +40,8 @@ describe Api::V1::RolesController, :type => :controller do
         end
 
         it "returns the information about a Role in a hash" do
-          role_response = json_response[:role]
-          expect(role_response[:title]).not_to be_nil
-          expect(role_response[:url]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -96,9 +94,8 @@ describe Api::V1::RolesController, :type => :controller do
         end
 
         it "renders the json representation for the role just created" do
-          role_response = json_response[:role]
-          expect(role_response[:title]).to eql @role_attributes[:title]
-          expect(role_response[:url]).to eql @role_attributes[:url]
+          expect(json_response[:title]).to eql @role_attributes[:title]
+          expect(json_response[:url]).to eql @role_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -157,8 +154,7 @@ describe Api::V1::RolesController, :type => :controller do
         end
 
         it "renders the json representation for the updated role" do
-          roles_response = json_response[:role]
-          expect(roles_response[:title]).to eql "Updated Role Title"
+          expect(json_response[:title]).to eql "Updated Role Title"
         end
 
         it { should respond_with 200 }

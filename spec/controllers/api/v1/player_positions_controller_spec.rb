@@ -14,8 +14,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
       end
 
       it "returns 3 PlayerPositions from the database" do
-        player_position_response = json_response[:player_positions]
-        expect(player_position_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,10 +40,9 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         end
 
         it "returns the information about a PlayerPosition in a hash" do
-          player_position_response = json_response[:player_position]
-          expect(player_position_response[:title]).not_to be_nil
-          expect(player_position_response[:url]).not_to be_nil
-          expect(player_position_response[:position_number]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
+          expect(json_response[:url]).not_to be_nil
+          expect(json_response[:position_number]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -98,9 +96,8 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         end
 
         it "renders the json representation for the PlayerPosition just created" do
-          player_position_response = json_response[:player_position]
-          expect(player_position_response[:title]).to eql @player_position_attributes[:title]
-          expect(player_position_response[:url]).to eql @player_position_attributes[:url]
+          expect(json_response[:title]).to eql @player_position_attributes[:title]
+          expect(json_response[:url]).to eql @player_position_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -159,8 +156,7 @@ describe Api::V1::PlayerPositionsController, :type => :controller do
         end
 
         it "renders the json representation for the updated PlayerPosition" do
-          player_position_response = json_response[:player_position]
-          expect(player_position_response[:title]).to eql "Updated PlayerPosition Title"
+          expect(json_response[:title]).to eql "Updated PlayerPosition Title"
         end
 
         it { should respond_with 200 }

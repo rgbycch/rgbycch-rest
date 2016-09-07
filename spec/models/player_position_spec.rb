@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PlayerPosition do
+describe PlayerPosition, type: :model do
   before { @player_position = FactoryGirl.build(:player_position) }
 
   subject { @player_position }
@@ -10,7 +10,7 @@ describe PlayerPosition do
   it { should respond_to(:position_number) }
   it { should have_many(:preferred_positions)}
 
-  it { should validate_presence_of :title }
+  it { should  }
   it { should validate_numericality_of(:position_number).is_greater_than_or_equal_to(0) }
 
   it { should be_valid }

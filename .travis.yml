@@ -4,9 +4,16 @@ rvm:
 
 bundler_args: --without development
 
+env:
+  - RAILS_ENV=test
+
 before_script:
+  - mysql -e 'create database my_app_test;'
+  - cp ./.travis.database.yml ./config/database.yml
   - cp config/secrets.template.yml config/secrets.yml
 
 script:
-  - RAILS_ENV=test bundle exec rake db:setup --trace
+  # - bundle exec rails db:environment:set RAILS_ENV=test
+  # - bundle exec rake db:migrate --trace
+  # - bundle exec rake db:test:prepare
   - bundle exec rspec spec

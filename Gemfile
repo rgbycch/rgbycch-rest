@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.0.1'
 gem 'sqlite3'
 gem 'active_model_serializers'
 gem 'figaro'
@@ -19,6 +19,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'mysql2'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'

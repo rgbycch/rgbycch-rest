@@ -14,8 +14,7 @@ describe Api::V1::PlayersController, :type => :controller do
       end
 
       it "returns 3 players from the database" do
-        players_response = json_response[:players]
-        expect(players_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,14 +40,12 @@ describe Api::V1::PlayersController, :type => :controller do
         end
 
         it "returns the information about a Player in a hash" do
-          player_response = json_response[:player]
-
-          expect(player_response[:first_name]).not_to be_nil
-          expect(player_response[:last_name]).not_to be_nil
-          expect(player_response[:nick_name]).not_to be_nil
-          expect(player_response[:dob]).not_to be_nil
-          expect(player_response[:email]).not_to be_nil
-          expect(player_response[:phone_number]).not_to be_nil
+          expect(json_response[:first_name]).not_to be_nil
+          expect(json_response[:last_name]).not_to be_nil
+          expect(json_response[:nick_name]).not_to be_nil
+          expect(json_response[:dob]).not_to be_nil
+          expect(json_response[:email]).not_to be_nil
+          expect(json_response[:phone_number]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -102,9 +99,8 @@ describe Api::V1::PlayersController, :type => :controller do
         end
 
         it "renders the json representation for the player just created" do
-          player_response = json_response[:player]
-          expect(player_response[:title]).to eql @player_attributes[:title]
-          expect(player_response[:url]).to eql @player_attributes[:url]
+          expect(json_response[:title]).to eql @player_attributes[:title]
+          expect(json_response[:url]).to eql @player_attributes[:url]
         end
 
         it { should respond_with 201 }
@@ -163,8 +159,7 @@ describe Api::V1::PlayersController, :type => :controller do
         end
 
         it "renders the json representation for the updated player" do
-          player_response = json_response[:player]
-          expect(player_response[:first_name]).to eql "Updated First Name"
+          expect(json_response[:first_name]).to eql "Updated First Name"
         end
 
         it { should respond_with 200 }

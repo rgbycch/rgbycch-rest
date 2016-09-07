@@ -14,8 +14,7 @@ describe Api::V1::OfficialsController, :type => :controller do
       end
 
       it "returns 3 officials from the database" do
-        official_response = json_response[:officials]
-        expect(official_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,8 +40,7 @@ describe Api::V1::OfficialsController, :type => :controller do
         end
 
         it "returns the information about an Official in a hash" do
-          official_response = json_response[:official]
-          expect(official_response[:title]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -95,8 +93,7 @@ describe Api::V1::OfficialsController, :type => :controller do
         end
 
         it "renders the json representation for the official just created" do
-          official_response = json_response[:official]
-          expect(official_response[:title]).to eql @official_attributes[:title]
+          expect(json_response[:title]).to eql @official_attributes[:title]
         end
 
         it { should respond_with 201 }
@@ -155,8 +152,7 @@ describe Api::V1::OfficialsController, :type => :controller do
         end
 
         it "renders the json representation for the updated official" do
-          official_response = json_response[:official]
-          expect(official_response[:title]).to eql "Updated Official Title"
+          expect(json_response[:title]).to eql "Updated Official Title"
         end
 
         it { should respond_with 200 }

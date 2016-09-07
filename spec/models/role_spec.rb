@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Role do
+describe Role, type: :model do
   before { @role = FactoryGirl.build(:role) }
 
   subject { @role }
 
   it { should respond_to(:title) }
   it { should respond_to(:url) }
-  it { should validate_presence_of :title }
+  it { should  }
 
   it { should be_valid }
 

@@ -14,8 +14,7 @@ describe Api::V1::TeamsController, :type => :controller do
       end
 
       it "returns 3 teams from the database" do
-        team_response = json_response[:teams]
-        expect(team_response.size).to eq(3)
+        expect(json_response.size).to eq(3)
       end
 
       it { should respond_with 200 }
@@ -41,8 +40,7 @@ describe Api::V1::TeamsController, :type => :controller do
         end
 
         it "returns the information about a Team in a hash" do
-          team_response = json_response[:team]
-          expect(team_response[:title]).not_to be_nil
+          expect(json_response[:title]).not_to be_nil
         end
 
         it { should respond_with 200 }
@@ -95,8 +93,7 @@ describe Api::V1::TeamsController, :type => :controller do
         end
 
         it "renders the json representation for the team just created" do
-          team_response = json_response[:team]
-          expect(team_response[:title]).to eql @team_attributes[:title]
+          expect(json_response[:title]).to eql @team_attributes[:title]
         end
 
         it { should respond_with 201 }
@@ -155,8 +152,7 @@ describe Api::V1::TeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated team" do
-          team_response = json_response[:team]
-          expect(team_response[:title]).to eql "Updated Team Title"
+          expect(json_response[:title]).to eql "Updated Team Title"
         end
 
         it { should respond_with 200 }
@@ -170,8 +166,7 @@ describe Api::V1::TeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated team" do
-          team_response = json_response[:team]
-          expect(team_response[:players].count).to eql 1
+          expect(json_response[:players].count).to eql 1
         end
 
         it { should respond_with 200 }
@@ -186,8 +181,7 @@ describe Api::V1::TeamsController, :type => :controller do
         end
 
         it "renders the json representation for the updated team" do
-          team_response = json_response[:team]
-          expect(team_response[:players].count).to eql 0
+          expect(json_response[:players].count).to eql 0
         end
 
         it { should respond_with 200 }
