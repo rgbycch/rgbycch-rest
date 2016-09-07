@@ -13,6 +13,7 @@ before_script:
   - cp config/secrets.template.yml config/secrets.yml
 
 script:
+  - rails db:environment:set RAILS_ENV=test
   - bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec
