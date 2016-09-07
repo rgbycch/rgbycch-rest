@@ -19,6 +19,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'mysql2'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'ffaker'

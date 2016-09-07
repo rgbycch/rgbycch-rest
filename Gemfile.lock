@@ -112,6 +112,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    mysql2 (0.4.4)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   factory_girl_rails
   ffaker
   figaro
+  mysql2
   rails (= 5.0.0.1)
   rspec-rails
   rubycritic
