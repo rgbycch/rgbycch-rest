@@ -8,9 +8,7 @@ before_script:
   - cp config/secrets.template.yml config/secrets.yml
 
 script:
-  - rm -f db/*.sqlite3
   - bundle exec rake db:drop:all RAILS_ENV=test
-  - bundle exec rake rake db:reset RAILS_ENV=test
   - bundle exec rails db:setup RAILS_ENV=test
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec spec
