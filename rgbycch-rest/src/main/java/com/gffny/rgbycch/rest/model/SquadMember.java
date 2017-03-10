@@ -1,12 +1,9 @@
 package com.gffny.rgbycch.rest.model;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-
 /**
  * Created by John D. Gaffney | Isobar US
  * 3/9/17
  */
-@JsonAutoDetect
 public class SquadMember {
 
     private String id;
