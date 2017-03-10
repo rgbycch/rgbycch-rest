@@ -1,6 +1,8 @@
 package com.gffny.rgbycch.rest.controller;
 
 import com.gffny.rgbycch.rest.model.SquadMember;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import java.util.List;
 @RequestMapping("/squad")
 public class SquadController {
 
+    private static final Logger LOG = LoggerFactory.getLogger(IncidentController.class);
+
     // TODO Create Squad through API
 
     // TODO Remove Squad through API
@@ -25,6 +29,8 @@ public class SquadController {
     @RequestMapping(value = "/{squadId}", method = RequestMethod.GET)
     @ResponseBody
     List<SquadMember> getSquadById(@PathVariable  final String squadId) {
+        LOG.debug("handling team request with id: {}", squadId);
+
         List<SquadMember> squadMemberList = new ArrayList<>();
         for(int i = 0; i < 15; i++) {
             squadMemberList.add(new SquadMember(""+i, "John"+i, "Gaffney"));

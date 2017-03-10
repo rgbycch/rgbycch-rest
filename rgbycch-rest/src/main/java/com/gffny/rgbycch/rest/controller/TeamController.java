@@ -2,6 +2,8 @@ package com.gffny.rgbycch.rest.controller;
 
 import com.gffny.rgbycch.rest.model.Team;
 import com.gffny.rgbycch.rest.model.TeamMember;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/team")
 public class TeamController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(IncidentController.class);
 
     // TODO Create Team through API
 
@@ -23,6 +27,7 @@ public class TeamController {
     @RequestMapping(value = "/{teamId}", method = RequestMethod.GET)
     @ResponseBody
     Team getTeamById(@PathVariable  final String teamId) {
+        LOG.debug("handling team request with id: {}", teamId);
 
         TeamMember johnGaffney = new TeamMember("1", "John", "Gaffney");
         Team sampleTeam = new Team();
