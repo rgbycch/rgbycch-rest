@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/squad")
 public class SquadController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IncidentController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(SquadController.class);
 
     // TODO Create Squad through API
 

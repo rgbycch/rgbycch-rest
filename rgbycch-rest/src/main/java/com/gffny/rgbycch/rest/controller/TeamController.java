@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/team")
 public class TeamController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IncidentController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TeamController.class);
 
     // TODO Create Team through API
 
@@ -48,7 +48,6 @@ public class TeamController {
         sampleTeam.setNumberEight(johnGaffney);
         return sampleTeam;
     }
-
 
 
 }
