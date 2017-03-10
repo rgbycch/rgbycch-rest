@@ -14,6 +14,14 @@ import java.util.List;
 @RequestMapping("/squad")
 public class SquadController {
 
+    // TODO Create Squad through API
+
+    // TODO Remove Squad through API
+
+    // TODO Add Member to Squad through API
+
+    // TODO Remove Member from Squad through API
+
     @RequestMapping(value = "/{squadId}", method = RequestMethod.GET)
     @ResponseBody
     List<SquadMember> getSquadById(@PathVariable  final String squadId) {
