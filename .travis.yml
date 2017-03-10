@@ -1,4 +1,5 @@
 language: java
 sudo: false
+before_script: cd rgbycch-rest
 script: mvn spring-boot:run
 
