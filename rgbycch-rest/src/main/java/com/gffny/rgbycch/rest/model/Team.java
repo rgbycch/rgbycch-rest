@@ -6,6 +6,8 @@ package com.gffny.rgbycch.rest.model;
  */
 public class Team {
 
+    // TODO refactor this concept as { List<TeamMember>, match, ... }
+
     private TeamMember fullback;
     private TeamMember rightWing;
     private TeamMember secondCentre;

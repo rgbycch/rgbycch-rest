@@ -6,6 +6,8 @@ package com.gffny.rgbycch.rest.model;
  */
 public class TeamMember extends SquadMember {
 
+    // TODO refactor this concept as { player, position, isCaptain, isViceCaptain }
+
     public TeamMember() {
         // default zero-arg constructor
     }
